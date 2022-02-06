@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class DailyTableViewCell: UITableViewCell {
     
@@ -40,12 +41,11 @@ class DailyTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - NewMethods
-    func updateDaily(weather: MoreWeatherData) {
-        dayLabel.text = getDayForDate(Date(timeIntervalSince1970: Double(weather.daily!.first!.dt)))
-        iconImageView.image = weather.dailyConditionIcon
-        lowTempLabel.text = "\(Int(weather.daily!.first!.temp.min))"
-        highTempLabel.text = "\(Int(weather.daily!.first!.temp.max))"
+    func updateDaily(weather: Daily) {
+        dayLabel.text = getDayForDate(Date(timeIntervalSince1970: Double(weather.dt)))
+        iconImageView.kf.setImage(with: URL(string: "https://openweathermap.org/img/wn/\(weather.weather.first!.icon)@2x.png"), placeholder: nil, options: nil)
+        lowTempLabel.text = "\(Int(weather.temp.min))"
+        highTempLabel.text = "\(Int(weather.temp.max))"
     }
     
     func getDayForDate(_ date: Date?) -> String {
@@ -55,7 +55,7 @@ class DailyTableViewCell: UITableViewCell {
         formatter.dateFormat = "EEEE"
         return formatter.string(from: inputDate)
     }
-    // MARK: - NewMethodsOver
+
     
     override func updateConstraints() {
         super.updateConstraints()
@@ -67,21 +67,20 @@ class DailyTableViewCell: UITableViewCell {
         
         dayLabel.snp.makeConstraints {
             $0.height.equalTo(100)
-            $0.width.equalTo(70)
+            $0.width.equalTo(110)
             $0.leading.equalToSuperview().offset(10)
         }
         
         iconImageView.snp.makeConstraints {
-            
-            $0.height.equalTo(50)
-            $0.width.equalTo(30)
-            $0.top.equalToSuperview().offset(25)
-            $0.left.equalTo(dayLabel.snp.right).offset(30)
+            $0.height.equalTo(70)
+            $0.width.equalTo(50)
+            $0.top.equalToSuperview().offset(15)
+            $0.left.equalTo(dayLabel.snp.right).offset(15)
         }
         lowTempLabel.snp.makeConstraints {
             $0.height.equalTo(100)
             $0.width.equalTo(30)
-            $0.left.equalTo(iconImageView.snp.right).offset(100)
+            $0.left.equalTo(iconImageView.snp.right).offset(80)
         }
         
         highTempLabel.snp.makeConstraints {
@@ -89,8 +88,5 @@ class DailyTableViewCell: UITableViewCell {
             $0.width.equalTo(60)
             $0.trailing.equalToSuperview().offset(10)
         }
-        
-        
     }
-    
 }

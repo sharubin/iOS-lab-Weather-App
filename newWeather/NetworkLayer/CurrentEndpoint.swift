@@ -34,10 +34,12 @@ case getCurrenWeather(city: String)
     
     var parameters: [URLQueryItem] {
         let apiKey = "b0809fedc7ea832cdc5cc0f793119331"
+        let units = "metric"
         
         switch self {
         case .getCurrenWeather(let city):
             return [URLQueryItem(name: "q", value: city),
+                    URLQueryItem(name: "units", value: units),
                     URLQueryItem(name: "appid", value: apiKey)
             ]
         }

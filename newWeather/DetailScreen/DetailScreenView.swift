@@ -220,8 +220,6 @@ class DetailScreenView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    
     override func updateConstraints() {
         super.updateConstraints()
         
@@ -252,7 +250,6 @@ class DetailScreenView: UIView {
         dailyTableView.snp.makeConstraints {
             $0.height.equalTo(700)
         }
-       
     }
 }
 

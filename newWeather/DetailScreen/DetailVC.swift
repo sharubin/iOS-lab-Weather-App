@@ -6,39 +6,18 @@
 //
 
 import UIKit
+import Kingfisher
 
 class DetailVC: UIViewController {
     
-    var dailyModels = [MoreWeatherData]()
-    var hourlyModels = [MoreWeatherData]()
-    
-    // MARK: - Test
-  
-    let weatherDaily1 = MoreWeatherData(timezone: nil, hourly: nil, daily: [Daily(dt: 1643889900, temp: Temp(min: 10, max: 25), weather: [WeatherMore(icon: "10d")])])
-    let weatherDaily2 = MoreWeatherData(timezone: nil, hourly: nil, daily: [Daily(dt: 1643899900, temp: Temp(min: 13, max: 15), weather: [WeatherMore(icon: "01d")])])
-    let weatherDaily3 = MoreWeatherData(timezone: nil, hourly: nil, daily: [Daily(dt: 1643989900, temp: Temp(min: 10, max: 11), weather: [WeatherMore(icon: "02d")])])
-    let weatherHourly1 = MoreWeatherData(timezone: nil, hourly: [Hourly(dt: 1643889900, temp: 12, weather: [WeatherMore(icon: "03d")])], daily: nil)
-    let weatherHourly2 = MoreWeatherData(timezone: nil, hourly: [Hourly(dt: 1643889900, temp: 13, weather: [WeatherMore(icon: "01d")])], daily: nil)
-    let weatherHourly3 = MoreWeatherData(timezone: nil, hourly: [Hourly(dt: 1643889900, temp: 14, weather: [WeatherMore(icon: "02d")])], daily: nil)
-    
-    func appendModels() {
-        
-        dailyModels.append(weatherDaily1)
-        dailyModels.append(weatherDaily2)
-        dailyModels.append(weatherDaily3)
-        
-        hourlyModels.append(weatherHourly1)
-        hourlyModels.append(weatherHourly2)
-        hourlyModels.append(weatherHourly3)
-    }
-// MARK: - TestOver
+    var weather: WeatherData!
+    var dailyModels = [Daily]()
+    var hourlyModels = [Hourly]()
     
     override func loadView() {
-       super.loadView()
+        super.loadView()
         
         self.view = DetailScreenView()
-        appendModels()                          //добавил тест
-        updateCurrent(weather: weather)
     }
     
     override func viewDidLoad() {
@@ -50,19 +29,14 @@ class DetailVC: UIViewController {
         dcv?.hourlyCollectionView.delegate = self
         dcv?.dailyTableView.dataSource = self
         dcv?.dailyTableView.delegate = self
-      /*
-        NetworkEngine.request(endpoint: CurrentEndpoint.getCurrenWeather(city: "minsk")) { (result: Result<WeatherData, Error>) in
+        
+        updateCurrent(weather: weather)
+        
+        NetworkEngine.request(endpoint: OneCallEndpoint.getCurrenWeather(lat: "\(weather.coord.lat)", lon: "\(weather.coord.lon)", exclude: "current,minutely,alerts")) { (result: Result<MoreWeatherData, Error>) in
             switch result {
             case .success(let response):
-                print(response)
-            case .failure(let error):
-                print(error)
-            }
-        } */
-        NetworkEngine.request(endpoint: OneCallEndpoint.getCurrenWeather(lat: "27.5667", lon: "53.9", exclude: "current,minutely,alerts")) { (result: Result<MoreWeatherData, Error>) in
-            switch result {
-            case .success(let response):
-                print(response)
+                self.hourlyModels = response.hourly
+                self.dailyModels = response.daily
             case .failure(let error):
                 print(error)
             }
@@ -71,26 +45,26 @@ class DetailVC: UIViewController {
     
     @objc func buttonTapped() {
         let dcv = self.view as? DetailScreenView
+        dcv?.dailyTableView.reloadData()
+        dcv?.hourlyCollectionView.reloadData()
         dcv?.showMore()
     }
     
-    var weather: WeatherData!
-        
     func updateCurrent(weather: WeatherData) {
-        let scv = self.view as? DetailScreenView
-        guard let scv = scv else { return  }
-        scv.cityLbl.text = weather.name
-        scv.temperatureLbl.text = "\(weather.main.temp) °С"
-        scv.iconImage.image = weather.conditionIcon
-        scv.descriptionLbl.text = weather.weather.first?.weatherDescription
-        scv.minTempLbl.text = "\(weather.main.tempMin) °С"
-        scv.maxTempLbl.text = "\(weather.main.tempMax) °С"
-        scv.feelsLikeLbl.text = "\(weather.main.feelsLike) °С"
-        scv.pressureLbl.text = "\(weather.main.pressure) мм.рт.ст"
-        scv.humidityLbl.text = "\(weather.main.humidity) %"
-        scv.visibilityLbl.text = "\(weather.visibility) км"
-        scv.windSpeedLbl.text = "\(weather.wind.speed) м.c"
-        scv.windDegreeLbl.text = "\(weather.wind.deg) градусов"
+        let dcv = self.view as? DetailScreenView
+        guard let dcv = dcv else { return  }
+        dcv.cityLbl.text = weather.name
+        dcv.temperatureLbl.text = "\(Int(weather.main.temp)) °С"
+        dcv.iconImage.kf.setImage(with: URL(string: "https://openweathermap.org/img/wn/\(weather.weather.first!.icon)@2x.png"), placeholder: nil, options: nil)
+        dcv.descriptionLbl.text = weather.weather.first?.weatherDescription
+        dcv.minTempLbl.text = "\(Int(weather.main.tempMin)) °С"
+        dcv.maxTempLbl.text = "\(Int(weather.main.tempMax)) °С"
+        dcv.feelsLikeLbl.text = "\(Int(weather.main.feelsLike)) °С"
+        dcv.pressureLbl.text = "\(weather.main.pressure) мм.рт.ст"
+        dcv.humidityLbl.text = "\(weather.main.humidity) %"
+        dcv.visibilityLbl.text = "\(weather.visibility) км"
+        dcv.windSpeedLbl.text = "\(weather.wind.speed) м.c"
+        dcv.windDegreeLbl.text = "\(weather.wind.deg) градусов"
     }
 }
 

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class HourlyCollectionViewCell: UICollectionViewCell {
     
@@ -24,11 +25,12 @@ class HourlyCollectionViewCell: UICollectionViewCell {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = "time"
     }
-    // MARK: - NewMethods
-    func updateHourly(weather: MoreWeatherData) {
-        timeLabel.text = getTimeForDate(Date(timeIntervalSince1970: Double(weather.hourly!.first!.dt)))
-        iconImageView.image = weather.hourlyConditionIcon
-        tempLabel.text = "\(Int(weather.hourly!.first!.temp))"
+ 
+    func updateHourly(weather: Hourly) {
+        timeLabel.text = getTimeForDate(Date(timeIntervalSince1970: Double(weather.dt)))
+        iconImageView.kf.setImage(with: URL(string: "https://openweathermap.org/img/wn/\(weather.weather.first!.icon)@2x.png"), placeholder: nil, options: nil)
+
+        tempLabel.text = "\(Int(weather.temp))"
     }
     
     func getTimeForDate(_ date: Date?) -> String {
@@ -38,7 +40,6 @@ class HourlyCollectionViewCell: UICollectionViewCell {
         formatter.dateFormat = "HH:mm"
         return formatter.string(from: inputDate)
     }
-    // MARK: - NewMethodsOver
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -64,14 +65,15 @@ class HourlyCollectionViewCell: UICollectionViewCell {
             $0.leading.trailing.equalToSuperview().inset(10)
         }
         iconImageView.snp.makeConstraints {
-            $0.top.equalTo(timeLabel.snp.bottom).offset(5)
+            $0.height.equalTo(50)
+            $0.width.equalTo(50)
+            $0.top.equalTo(timeLabel.snp.bottom)
             $0.leading.trailing.equalToSuperview().inset(10)
         }
         tempLabel.snp.makeConstraints {
-            $0.top.equalTo(iconImageView.snp.bottom).offset(5)
-            $0.leading.trailing.equalToSuperview().inset(10)
+            $0.top.equalTo(iconImageView.snp.bottom)
+            $0.leading.trailing.equalToSuperview().inset(25)
             $0.bottom.equalTo(5)
         }
-        
     }
 }

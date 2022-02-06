@@ -9,6 +9,8 @@ target 'newWeather' do
   pod 'Then'
   pod 'Alamofire'
   pod 'SnapKit'
+  pod 'Kingfisher' 
+
 
 
 end

@@ -37,26 +37,17 @@ class NetworkEngine {
             
             guard response != nil, let data = data else { return }
             
-    
-            var responseObject: T
-            do {
-                responseObject = try JSONDecoder().decode(T.self, from: data)
-                completion(.success(responseObject))
-            }
-            catch {
-                print("error: \(error)")
-                completion(.failure(error))
-            }
-            /*
-           DispatchQueue.main.async {
-                if let responseObject = try? JSONDecoder().decode(T.self, from: data) {
+            DispatchQueue.main.async {
+                var responseObject: T
+                do {
+                    responseObject = try JSONDecoder().decode(T.self, from: data)
                     completion(.success(responseObject))
-                } else {
-                    let error = NSError(domain: "", code: 200, userInfo: [NSLocalizedDescriptionKey: "failed to decode response"])
-                
+                }
+                catch {
+                    print("error: \(error)")
                     completion(.failure(error))
                 }
-            } */
+            }
         }
         dataTask.resume()
     }
