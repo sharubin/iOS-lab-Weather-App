@@ -10,7 +10,7 @@ import Kingfisher
 
 class DailyTableViewCell: UITableViewCell {
     
-   static let identifier = "DailyTableViewCell"
+    static let identifier = "DailyTableViewCell"
     
     var dayLabel = UILabel().then {
         $0.text = "day"
@@ -48,14 +48,14 @@ class DailyTableViewCell: UITableViewCell {
         highTempLabel.text = "\(Int(weather.temp.max))"
     }
     
-    func getDayForDate(_ date: Date?) -> String {
+    private func getDayForDate(_ date: Date?) -> String {
         guard let inputDate = date else { return "" }
         
         let formatter = DateFormatter()
         formatter.dateFormat = "EEEE"
         return formatter.string(from: inputDate)
     }
-
+    
     
     override func updateConstraints() {
         super.updateConstraints()

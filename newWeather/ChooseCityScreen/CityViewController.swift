@@ -8,9 +8,9 @@
 import UIKit
 
 class CityViewController: UIViewController {
-
+    
     override func loadView() {
-       super.loadView()
+        super.loadView()
         
         self.view = CityScreenView()
     }
@@ -22,7 +22,8 @@ class CityViewController: UIViewController {
         fsv?.downloadBtn.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     }
     
-    @objc func buttonTapped() {
+    
+     @objc private func buttonTapped() {
         
         let сsv = self.view as! CityScreenView
         let text = сsv.textField.text
@@ -34,25 +35,23 @@ class CityViewController: UIViewController {
             return
         }
         
-          NetworkEngine.request(endpoint: CurrentEndpoint.getCurrenWeather(city: text)) { (result: Result<WeatherData, Error>) in
-              switch result {
-              case .success(let response):
-                  print(response)
-                  let vc = DetailVC()
-                  vc.weather = response
-                  self.navigationController?.pushViewController(vc, animated: true)
-              case .failure(let error):
-                  print(error)
-                  let alert = UIAlertController(title: "Ошибка", message: "Город введен не корректно, данные отсутсвуют", preferredStyle:  .alert)
-                  let actionOK = UIAlertAction(title: "OK", style: .default, handler: nil)
-                  alert.addAction(actionOK)
-                  self.present(alert, animated: true, completion: nil)
-              }
-          }
+        NetworkEngine.request(endpoint: CurrentEndpoint.getCurrenWeather(city: text)) { (result: Result<WeatherData, Error>) in
+            switch result {
+            case .success(let response):
+                print(response)
+                let vc = DetailVC()
+                vc.weather = response
+                self.navigationController?.pushViewController(vc, animated: true)
+            case .failure(let error):
+                print(error)
+                let alert = UIAlertController(title: "Ошибка", message: "Город введен не корректно, данные отсутсвуют", preferredStyle:  .alert)
+                let actionOK = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(actionOK)
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
     }
 }
 
 
-extension CityViewController: UITextFieldDelegate {
-    
-}
+

@@ -11,7 +11,7 @@ import SnapKit
 
 
 class CityScreenView: UIView {
-
+    
     let textField = UITextField().then {
         $0.placeholder = "Введите город"
         $0.backgroundColor = .white
@@ -53,5 +53,4 @@ class CityScreenView: UIView {
             $0.left.right.equalToSuperview().inset(120)
         }
     }
-    
 }

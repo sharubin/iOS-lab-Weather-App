@@ -25,15 +25,15 @@ class HourlyCollectionViewCell: UICollectionViewCell {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = "time"
     }
- 
+    
     func updateHourly(weather: Hourly) {
         timeLabel.text = getTimeForDate(Date(timeIntervalSince1970: Double(weather.dt)))
         iconImageView.kf.setImage(with: URL(string: "https://openweathermap.org/img/wn/\(weather.weather.first!.icon)@2x.png"), placeholder: nil, options: nil)
-
+        
         tempLabel.text = "\(Int(weather.temp))"
     }
     
-    func getTimeForDate(_ date: Date?) -> String {
+    private func getTimeForDate(_ date: Date?) -> String {
         guard let inputDate = date else { return "" }
         
         let formatter = DateFormatter()

@@ -32,69 +32,52 @@ class DetailScreenView: UIView {
     }
     let maxTempLbl = UILabel().then {
         $0.text = "0°"
-       
     }
     let minTempLbl = UILabel().then {
         $0.text = "0°"
-        
     }
     let feelsLikeLbl = UILabel().then {
         $0.text = "0"
-        
     }
     let pressureLbl = UILabel().then {
         $0.text = "0"
-        
     }
     let humidityLbl = UILabel().then {
         $0.text = "0"
-        
     }
     let visibilityLbl = UILabel().then {
         $0.text = "0"
-        
     }
     let windSpeedLbl = UILabel().then {
         $0.text = "0"
-        
     }
     let windDegreeLbl = UILabel().then {
         $0.text = "0"
-        
     }
-    let lbl1 = UILabel().then {
+    let textMaxTemp = UILabel().then {
         $0.text = "максимальная температура"
-        
     }
-    let lbl2 = UILabel().then {
+    let textMinTemp = UILabel().then {
         $0.text = "минимальная температура"
-        
     }
-    let lbl3 = UILabel().then {
+    let textFeels = UILabel().then {
         $0.text = "ощущается как"
-       
     }
-    let lbl4 = UILabel().then {
+    let textPressure = UILabel().then {
         $0.text = "давление"
-        
     }
-    let lbl5 = UILabel().then {
+    let textHumidity = UILabel().then {
         $0.text = "влажность"
-     
     }
-    let lbl6 = UILabel().then {
+    let textVisibility = UILabel().then {
         $0.text = "видимость"
-        
     }
-    let lbl7 = UILabel().then {
+    let textSpeed = UILabel().then {
         $0.text = "скорость ветра"
-       
     }
-    let lbl8 = UILabel().then {
+    let textDegree = UILabel().then {
         $0.text = "направление ветра"
-        
     }
-    
     let scrollView = UIScrollView()
     
     let view = UIView()
@@ -128,51 +111,42 @@ class DetailScreenView: UIView {
         $0.spacing = 10
     }
     let leftBottomStack = UIStackView().then {
-       $0.translatesAutoresizingMaskIntoConstraints = false
-       $0.axis = .vertical
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.axis = .vertical
         $0.alignment = .fill
-       $0.distribution = .fill
-       $0.spacing = 10
-   }
-    
+        $0.distribution = .fill
+        $0.spacing = 10
+    }
     let downloadMoreBtn = UIButton().then {
         $0.setTitle("load more", for: .normal)
         $0.setTitleColor(.black, for: .normal)
         $0.backgroundColor = .white
         $0.layer.cornerRadius = 10
-        
     }
-    
     let hourleCollectionViewFlowLayout = UICollectionViewFlowLayout().with {
-           $0.scrollDirection = .horizontal
-           $0.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-           $0.minimumInteritemSpacing = 16
+        $0.scrollDirection = .horizontal
+        $0.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        $0.minimumInteritemSpacing = 16
         $0.itemSize = CGSize(width: 100, height: 100)
-       }
+    }
     lazy var hourlyCollectionView = UICollectionView(frame: .zero, collectionViewLayout: hourleCollectionViewFlowLayout).with {
-            $0.showsHorizontalScrollIndicator = false
-            $0.showsVerticalScrollIndicator = false
-            $0.allowsMultipleSelection = true
-            $0.register(HourlyCollectionViewCell.self, forCellWithReuseIdentifier: HourlyCollectionViewCell.identifier)
+        $0.showsHorizontalScrollIndicator = false
+        $0.showsVerticalScrollIndicator = false
+        $0.allowsMultipleSelection = true
+        $0.register(HourlyCollectionViewCell.self, forCellWithReuseIdentifier: HourlyCollectionViewCell.identifier)
         $0.isHidden = true
-
-        }
+    }
     let dailyTableView = UITableView().then {
         $0.isScrollEnabled = false
         $0.register(DailyTableViewCell.self, forCellReuseIdentifier: DailyTableViewCell.identifier)
         $0.isHidden = true
     }
     
-    func showMore() {
-        dailyTableView.isHidden = false
-        hourlyCollectionView.isHidden = false
-    }
-   
     func viewAddSubview() {
         addSubview(scrollView)
-   
+        
         scrollView.addSubview(view)
-
+        
         view.addSubview(fullStack)
         
         fullStack.addArrangedSubview(topStack)
@@ -189,14 +163,14 @@ class DetailScreenView: UIView {
         bottomStack.addArrangedSubview(leftBottomStack)
         bottomStack.addArrangedSubview(rightBottomStack)
         
-        leftBottomStack.addArrangedSubview(lbl2)
-        leftBottomStack.addArrangedSubview(lbl1)
-        leftBottomStack.addArrangedSubview(lbl3)
-        leftBottomStack.addArrangedSubview(lbl4)
-        leftBottomStack.addArrangedSubview(lbl5)
-        leftBottomStack.addArrangedSubview(lbl6)
-        leftBottomStack.addArrangedSubview(lbl7)
-        leftBottomStack.addArrangedSubview(lbl8)
+        leftBottomStack.addArrangedSubview(textMinTemp)
+        leftBottomStack.addArrangedSubview(textMaxTemp)
+        leftBottomStack.addArrangedSubview(textFeels)
+        leftBottomStack.addArrangedSubview(textPressure)
+        leftBottomStack.addArrangedSubview(textHumidity)
+        leftBottomStack.addArrangedSubview(textVisibility)
+        leftBottomStack.addArrangedSubview(textSpeed)
+        leftBottomStack.addArrangedSubview(textDegree)
         
         rightBottomStack.addArrangedSubview(minTempLbl)
         rightBottomStack.addArrangedSubview(maxTempLbl)
@@ -243,7 +217,7 @@ class DetailScreenView: UIView {
         downloadMoreBtn.snp.makeConstraints {
             $0.height.equalTo(30)
         }
-
+        
         hourlyCollectionView.snp.makeConstraints {
             $0.height.equalTo(90)
         }

@@ -11,8 +11,8 @@ import Kingfisher
 class DetailVC: UIViewController {
     
     var weather: WeatherData!
-    var dailyModels = [Daily]()
-    var hourlyModels = [Hourly]()
+    private var dailyModels = [Daily]()
+    private var hourlyModels = [Hourly]()
     
     override func loadView() {
         super.loadView()
@@ -43,14 +43,20 @@ class DetailVC: UIViewController {
         }
     }
     
-    @objc func buttonTapped() {
+    @objc private func buttonTapped() {
         let dcv = self.view as? DetailScreenView
         dcv?.dailyTableView.reloadData()
         dcv?.hourlyCollectionView.reloadData()
-        dcv?.showMore()
+        showMore()
     }
     
-    func updateCurrent(weather: WeatherData) {
+    private func showMore() {
+        let dcv = self.view as? DetailScreenView
+        dcv?.dailyTableView.isHidden = false
+        dcv?.hourlyCollectionView.isHidden = false
+    }
+    
+    private func updateCurrent(weather: WeatherData) {
         let dcv = self.view as? DetailScreenView
         guard let dcv = dcv else { return  }
         dcv.cityLbl.text = weather.name
