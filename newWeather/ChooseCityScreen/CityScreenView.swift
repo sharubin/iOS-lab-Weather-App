@@ -13,13 +13,15 @@ import SnapKit
 class CityScreenView: UIView {
     
     let textField = UITextField().then {
-        $0.placeholder = "Введите город"
+        $0.placeholder = "Enter the city"
         $0.backgroundColor = .white
     }
     
-    let downloadBtn = UIButton().then {
-        $0.setTitle("Узнать погоду", for: .normal)
+    let downloadButton = UIButton().then {
+        $0.setTitle("Get the weather", for: .normal)
         $0.setTitleColor(.black, for: .normal)
+        $0.backgroundColor = .white
+        $0.layer.cornerRadius = 10
         $0.tintColor = .blue
         $0.setTitleColor(.black, for: .selected)
     }
@@ -27,14 +29,18 @@ class CityScreenView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        addSubview(textField)
-        addSubview(downloadBtn)
-        backgroundColor = .systemGray4
+        viewAddSubview()
+        backgroundColor = UIColor(red: 59/255.0, green: 143/255.0, blue: 195/255.0, alpha: 1.0)
         setNeedsUpdateConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func viewAddSubview() {
+        addSubview(textField)
+        addSubview(downloadButton)
     }
     
     override func updateConstraints() {
@@ -47,7 +53,7 @@ class CityScreenView: UIView {
             $0.left.equalToSuperview().offset(30)
         }
         
-        downloadBtn.snp.makeConstraints {
+        downloadButton.snp.makeConstraints {
             $0.height.equalTo(50)
             $0.top.equalToSuperview().inset(200)
             $0.left.right.equalToSuperview().inset(120)

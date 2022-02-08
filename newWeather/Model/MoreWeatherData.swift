@@ -19,6 +19,20 @@ struct Hourly: Codable {
     let dt: Int
     let temp: Double
     let weather: [WeatherMore]
+    
+    //добавить отформатированную дату и
+    
+    func getLink() -> URL?  {
+        URL(string: "https://openweathermap.org/img/wn/\(weather[0].icon)@2x.png")
+    }
+    
+    public func getTimeForDate() -> String {
+         let inputDate = Date(timeIntervalSince1970: Double(dt))
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        return formatter.string(from: inputDate)
+    }
 }
 
 
@@ -32,6 +46,18 @@ struct Daily: Codable {
     let dt: Int
     let temp: Temp
     let weather: [WeatherMore]
+    
+    func getLink() -> URL?  {
+        URL(string: "https://openweathermap.org/img/wn/\(weather[0].icon)@2x.png")
+    }
+    
+    public func getDayForDate() -> String {
+        let inputDate = Date(timeIntervalSince1970: Double(dt))
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEEE"
+        return formatter.string(from: inputDate)
+    }
 }
 
 // MARK: - Temp

@@ -9,6 +9,8 @@ import UIKit
 
 class CityViewController: UIViewController {
     
+    private let repository = ChooseCityRepositoriy()
+    
     override func loadView() {
         super.loadView()
         
@@ -18,39 +20,46 @@ class CityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let fsv = self.view as? CityScreenView
-        fsv?.downloadBtn.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        let view = self.view as? CityScreenView
+        view?.downloadButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     }
     
     
      @objc private func buttonTapped() {
-        
-        let сsv = self.view as! CityScreenView
-        let text = сsv.textField.text
+        let view = self.view as! CityScreenView
+        let text = view.textField.text
         guard let text = text, !text.isEmpty else {
-            let alert = UIAlertController(title: "Ошибка", message: "Город не введен", preferredStyle:  .alert)
-            let actionOK = UIAlertAction(title: "OK", style: .default, handler: nil)
-            alert.addAction(actionOK)
-            self.present(alert, animated: true, completion: nil)
+            alertFieldIsEmpty()
             return
         }
-        
-        NetworkEngine.request(endpoint: CurrentEndpoint.getCurrenWeather(city: text)) { (result: Result<WeatherData, Error>) in
-            switch result {
-            case .success(let response):
-                print(response)
-                let vc = DetailVC()
-                vc.weather = response
-                self.navigationController?.pushViewController(vc, animated: true)
-            case .failure(let error):
-                print(error)
-                let alert = UIAlertController(title: "Ошибка", message: "Город введен не корректно, данные отсутсвуют", preferredStyle:  .alert)
-                let actionOK = UIAlertAction(title: "OK", style: .default, handler: nil)
-                alert.addAction(actionOK)
-                self.present(alert, animated: true, completion: nil)
-            }
-        }
+         repository.getWeatherForCity(name: text) { result in
+             switch result {
+             case .success(let response):
+                 print(response)
+                 let vc = DetailViewController()
+                 vc.weather = response
+                 self.navigationController?.pushViewController(vc, animated: true)
+             case .failure(let error):
+                 print(error)
+                 self.alertNoData()
+             }
+         }
     }
+    
+    private func alertFieldIsEmpty() {
+        let alert = UIAlertController(title: "Ошибка", message: "Город не введен", preferredStyle:  .alert)
+        let actionOK = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(actionOK)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func alertNoData() {
+        let alert = UIAlertController(title: "Ошибка", message: "Город введен не корректно, данные отсутсвуют", preferredStyle:  .alert)
+        let actionOK = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(actionOK)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
 }
 
 

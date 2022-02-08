@@ -14,31 +14,20 @@ class HourlyCollectionViewCell: UICollectionViewCell {
     
     var iconImageView = UIImageView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.image = UIImage(systemName: "arrow.down")
-        
     }
     var tempLabel = UILabel().then {
+        $0.textColor = .white
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = "temp"
     }
     var timeLabel = UILabel().then {
+        $0.textColor = .white
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = "time"
     }
     
     func updateHourly(weather: Hourly) {
-        timeLabel.text = getTimeForDate(Date(timeIntervalSince1970: Double(weather.dt)))
-        iconImageView.kf.setImage(with: URL(string: "https://openweathermap.org/img/wn/\(weather.weather.first!.icon)@2x.png"), placeholder: nil, options: nil)
-        
-        tempLabel.text = "\(Int(weather.temp))"
-    }
-    
-    private func getTimeForDate(_ date: Date?) -> String {
-        guard let inputDate = date else { return "" }
-        
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm"
-        return formatter.string(from: inputDate)
+        timeLabel.text = weather.getTimeForDate()
+        iconImageView.kf.setImage(with: weather.getLink(), placeholder: nil, options: nil)
+        tempLabel.text = "\(Int(weather.temp))°"
     }
     
     override init(frame: CGRect) {
@@ -72,7 +61,7 @@ class HourlyCollectionViewCell: UICollectionViewCell {
         }
         tempLabel.snp.makeConstraints {
             $0.top.equalTo(iconImageView.snp.bottom)
-            $0.leading.trailing.equalToSuperview().inset(25)
+            $0.leading.trailing.equalToSuperview().inset(15)
             $0.bottom.equalTo(5)
         }
     }
