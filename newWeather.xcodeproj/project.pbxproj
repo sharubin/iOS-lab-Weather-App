@@ -25,6 +25,7 @@
 		EBD1F78727AD47A10030B5F0 /* OneCallEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD1F78627AD47A10030B5F0 /* OneCallEndpoint.swift */; };
 		EBD1F78927B14AD10030B5F0 /* ChooseCityRepositoriy.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD1F78827B14AD10030B5F0 /* ChooseCityRepositoriy.swift */; };
 		EBD1F78B27B1722B0030B5F0 /* DetailCityRepositoriy.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD1F78A27B1722B0030B5F0 /* DetailCityRepositoriy.swift */; };
+		EBD1F78D27B3C12D0030B5F0 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD1F78C27B3C12B0030B5F0 /* Structs.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		EBD1F78627AD47A10030B5F0 /* OneCallEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneCallEndpoint.swift; sourceTree = "<group>"; };
 		EBD1F78827B14AD10030B5F0 /* ChooseCityRepositoriy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCityRepositoriy.swift; sourceTree = "<group>"; };
 		EBD1F78A27B1722B0030B5F0 /* DetailCityRepositoriy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCityRepositoriy.swift; sourceTree = "<group>"; };
+		EBD1F78C27B3C12B0030B5F0 /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 				EB7D8E2D27A7E032004B33F1 /* AppDelegate.swift */,
 				EB7D8E3827A7E037004B33F1 /* LaunchScreen.storyboard */,
 				EB7D8E3627A7E037004B33F1 /* Assets.xcassets */,
+				EBD1F78C27B3C12B0030B5F0 /* Structs.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBD1F78D27B3C12D0030B5F0 /* Structs.swift in Sources */,
 				EBD1F77E27AB298D0030B5F0 /* DailyTableViewCell.swift in Sources */,
 				EB7D8E3227A7E032004B33F1 /* CityViewController.swift in Sources */,
 				EBD1F78527AD3D680030B5F0 /* NetworkEngine.swift in Sources */,

@@ -18,6 +18,7 @@ struct WeatherData: Codable {
     let timezone: Int
     let name: String
     
+    
     public func getDirectionForDegree() -> String {
         switch wind.deg {
         case 337...360:

@@ -15,12 +15,15 @@ class DailyTableViewCell: UITableViewCell {
     
     var dayLabel = UILabel().then {
         $0.textColor = .white
+        $0.font = Fonts().fontForDetailScreen
     }
     var lowTempLabel = UILabel().then {
         $0.textColor = .white
+        $0.font = Fonts().lightFontForDaily
     }
     var highTempLabel = UILabel().then {
         $0.textColor = .white
+        $0.font = Fonts().boldFontForDaily
     }
     var iconImageView = UIImageView()
     
@@ -55,7 +58,7 @@ class DailyTableViewCell: UITableViewCell {
         }
         dayLabel.snp.makeConstraints {
             $0.height.equalTo(100)
-            $0.width.equalTo(105)
+            $0.width.equalTo(115)
             $0.leading.equalToSuperview().offset(10)
         }
         iconImageView.snp.makeConstraints {

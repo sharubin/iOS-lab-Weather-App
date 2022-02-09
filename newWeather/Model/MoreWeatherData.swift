@@ -9,6 +9,7 @@ import Foundation
  
 // MARK: - MoreWeatherData
 struct MoreWeatherData: Codable {
+    
     let timezone: String
     let hourly: [Hourly]
     let daily: [Daily]
@@ -20,14 +21,12 @@ struct Hourly: Codable {
     let temp: Double
     let weather: [WeatherMore]
     
-    //добавить отформатированную дату и
-    
     func getLink() -> URL?  {
         URL(string: "https://openweathermap.org/img/wn/\(weather[0].icon)@2x.png")
     }
     
     public func getTimeForDate() -> String {
-         let inputDate = Date(timeIntervalSince1970: Double(dt))
+        let inputDate = Date(timeIntervalSince1970: Double(dt))
         
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"

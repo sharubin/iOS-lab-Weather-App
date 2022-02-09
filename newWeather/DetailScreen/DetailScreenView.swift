@@ -14,88 +14,88 @@ class DetailScreenView: UIView {
     var cityLabel = UILabel().then {
         $0.textColor = .white
         $0.textAlignment = .center
-        $0.font = UIFont(name: "Copperplate", size: 30)
+        $0.font = Fonts().mainFontForDetailScreen
     }
     let temperatureLabel = UILabel().then {
         $0.textColor = .white
         $0.textAlignment = .center
-        $0.font = UIFont(name: "Copperplate", size: 30)
+        $0.font = Fonts().mainFontForDetailScreen
     }
     let iconImage = UIImageView()
     let descriptionLabel = UILabel().then {
         $0.textColor = .white
-        $0.font = UIFont(name: "Copperplate", size: 23)
+        $0.font = Fonts().mainFontForDetailScreen
     }
     let maxTempLabel = UILabel().then {
         $0.textColor = .white
-        $0.font = UIFont(name: "Copperplate", size: 17)
+        $0.font = Fonts().fontForDetailScreen
     }
     let minTempLabel = UILabel().then {
         $0.textColor = .white
-        $0.font = UIFont(name: "Copperplate", size: 17)
+        $0.font = Fonts().fontForDetailScreen
     }
     let feelsLikeLabel = UILabel().then {
         $0.textColor = .white
-        $0.font = UIFont(name: "Copperplate", size: 17)
+        $0.font = Fonts().fontForDetailScreen
     }
     let pressureLabel = UILabel().then {
         $0.textColor = .white
-        $0.font = UIFont(name: "Copperplate", size: 17)
+        $0.font = Fonts().fontForDetailScreen
     }
     let humidityLabel = UILabel().then {
         $0.textColor = .white
-        $0.font = UIFont(name: "Copperplate", size: 17)
+        $0.font = Fonts().fontForDetailScreen
     }
     let visibilityLabel = UILabel().then {
         $0.textColor = .white
-        $0.font = UIFont(name: "Copperplate", size: 17)
+        $0.font = Fonts().fontForDetailScreen
     }
     let windSpeedLabel = UILabel().then {
         $0.textColor = .white
-        $0.font = UIFont(name: "Copperplate", size: 17)
+        $0.font = Fonts().fontForDetailScreen
     }
     let windDegreeLabel = UILabel().then {
         $0.textColor = .white
-        $0.font = UIFont(name: "Copperplate", size: 17)
+        $0.font = Fonts().fontForDetailScreen
     }
     let textMinTemp = UILabel().then {
-        $0.text = "min temp"
-        $0.font = UIFont(name: "Copperplate", size: 17)
+        $0.text = Titles().minTemp
+        $0.font = Fonts().fontForDetailScreen
         $0.textColor = .white
     }
     let textMaxTemp = UILabel().then {
-        $0.text = "max temp"
-        $0.font = UIFont(name: "Copperplate", size: 17)
+        $0.text = Titles().maxTemp
+        $0.font = Fonts().fontForDetailScreen
         $0.textColor = .white
     }
     let textFeels = UILabel().then {
-        $0.text = "feels like"
-        $0.font = UIFont(name: "Copperplate", size: 17)
+        $0.text = Titles().feelsLike
+        $0.font = Fonts().fontForDetailScreen
         $0.textColor = .white
     }
     let textPressure = UILabel().then {
-        $0.text = "pressure"
-        $0.font = UIFont(name: "Copperplate", size: 17)
+        $0.text = Titles().pressure
+        $0.font = Fonts().fontForDetailScreen
         $0.textColor = .white
     }
     let textHumidity = UILabel().then {
-        $0.text = "humidity"
-        $0.font = UIFont(name: "Copperplate", size: 17)
+        $0.text = Titles().humidity
+        $0.font = Fonts().fontForDetailScreen
         $0.textColor = .white
     }
     let textVisibility = UILabel().then {
-        $0.text = "visibility"
-        $0.font = UIFont(name: "Copperplate", size: 17)
+        $0.text = Titles().visibility
+        $0.font = Fonts().fontForDetailScreen
         $0.textColor = .white
     }
     let textSpeed = UILabel().then {
-        $0.text = "wind speed"
-        $0.font = UIFont(name: "Copperplate", size: 17)
+        $0.text = Titles().windSpeed
+        $0.font = Fonts().fontForDetailScreen
         $0.textColor = .white
     }
     let textDegree = UILabel().then {
-        $0.text = "wind direction"
-        $0.font = UIFont(name: "Copperplate", size: 17)
+        $0.text = Titles().windDirection
+        $0.font = Fonts().fontForDetailScreen
         $0.textColor = .white
     }
     let scrollView = UIScrollView()
@@ -151,7 +151,7 @@ class DetailScreenView: UIView {
         $0.scrollDirection = .horizontal
         $0.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         $0.minimumInteritemSpacing = 16
-        $0.itemSize = CGSize(width: 100, height: 100)
+        $0.itemSize = CGSize(width: 70, height: 100)
     }
     lazy var hourlyCollectionView = UICollectionView(frame: .zero, collectionViewLayout: hourlyCollectionViewFlowLayout).with {
         $0.showsHorizontalScrollIndicator = false
@@ -268,10 +268,7 @@ class DetailScreenView: UIView {
         downloadMoreButton.snp.makeConstraints {
             $0.height.equalTo(30)
         }
-        spinner.snp.makeConstraints {
-            $0.height.equalTo(100)
-            $0.width.equalTo(100)
-        }
+       
         hourlyCollectionView.snp.makeConstraints {
             $0.height.equalTo(100)
         }

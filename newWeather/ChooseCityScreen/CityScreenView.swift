@@ -14,7 +14,11 @@ class CityScreenView: UIView {
     
     let textField = UITextField().then {
         $0.placeholder = "Enter the city"
+       // $0.textAlignment = .center
+        $0.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: $0.frame.height))
+        $0.leftViewMode = .always
         $0.backgroundColor = .white
+        $0.layer.borderColor = UIColor.black.cgColor
     }
     
     let downloadButton = UIButton().then {

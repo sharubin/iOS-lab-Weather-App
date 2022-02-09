@@ -55,6 +55,11 @@ class DetailViewController: UIViewController {
         view?.dailyTableView.dataSource = self
         view?.dailyTableView.delegate = self
         view?.updateCurrent(weather: weather)
+        
+        navigationController?.navigationBar.barTintColor = weather.getBackgroundColor()
+        navigationController?.navigationBar.backIndicatorImage = UIImage(systemName: "arrow.backward.square")
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(systemName: "arrow.backward.square")
+        navigationController?.navigationBar.tintColor = .white
     }
 }
 

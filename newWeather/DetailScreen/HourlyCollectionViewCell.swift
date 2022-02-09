@@ -33,10 +33,14 @@ class HourlyCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        contentViewAddSubview()
+        setNeedsUpdateConstraints()
+    }
+    
+    private func contentViewAddSubview() {
         contentView.addSubview(iconImageView)
         contentView.addSubview(tempLabel)
         contentView.addSubview(timeLabel)
-        setNeedsUpdateConstraints()
     }
     
     required init?(coder: NSCoder) {
