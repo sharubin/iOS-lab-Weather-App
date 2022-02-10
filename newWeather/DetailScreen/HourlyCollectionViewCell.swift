@@ -29,7 +29,7 @@ class HourlyCollectionViewCell: UICollectionViewCell {
     func updateHourly(weather: Hourly) {
         timeLabel.text = weather.getTimeForDate()
         iconImageView.kf.setImage(with: weather.getLink(), placeholder: nil, options: nil)
-        tempLabel.text = "\(Int(weather.temp))°"
+        tempLabel.text = String(format: "%.0f °", weather.temp)
     }
     
     override init(frame: CGRect) {

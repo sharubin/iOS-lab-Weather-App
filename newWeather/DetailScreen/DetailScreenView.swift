@@ -85,55 +85,55 @@ class DetailScreenView: UIView {
     
     let textMinTemp = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = Titles.minTemp
+        $0.text = Strings.DetailView.minTemp
         $0.font = Fonts.fontForDetailScreen
         $0.textColor = Colors.whiteColor
     }
     
     let textMaxTemp = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = Titles.maxTemp
+        $0.text = Strings.DetailView.maxTemp
         $0.font = Fonts.fontForDetailScreen
         $0.textColor = Colors.whiteColor
     }
     
     let textFeels = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = Titles.feelsLike
+        $0.text = Strings.DetailView.feelsLike
         $0.font = Fonts.fontForDetailScreen
         $0.textColor = Colors.whiteColor
     }
     let textPressure = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = Titles.pressure
+        $0.text = Strings.DetailView.pressure
         $0.font = Fonts.fontForDetailScreen
         $0.textColor = Colors.whiteColor
     }
     
     let textHumidity = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = Titles.humidity
+        $0.text = Strings.DetailView.humidity
         $0.font = Fonts.fontForDetailScreen
         $0.textColor = Colors.whiteColor
     }
     
     let textVisibility = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = Titles.visibility
+        $0.text = Strings.DetailView.visibility
         $0.font = Fonts.fontForDetailScreen
         $0.textColor = Colors.whiteColor
     }
     
     let textSpeed = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = Titles.windSpeed
+        $0.text = Strings.DetailView.windSpeed
         $0.font = Fonts.fontForDetailScreen
         $0.textColor = Colors.whiteColor
     }
     
     let textDegree = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = Titles.windDirection
+        $0.text = Strings.DetailView.windDirection
         $0.font = Fonts.fontForDetailScreen
         $0.textColor = Colors.whiteColor
     }
@@ -184,7 +184,7 @@ class DetailScreenView: UIView {
     
     let downloadMoreButton = UIButton().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.setTitle("load more", for: .normal)
+        $0.setTitle(Strings.DetailView.textButton, for: .normal)
         $0.setTitleColor(.black, for: .normal)
         $0.backgroundColor = .white
         $0.layer.cornerRadius = 10
@@ -283,17 +283,17 @@ class DetailScreenView: UIView {
         hourlyCollectionView.backgroundColor = weather.getCellsBackgroundColor()
         dailyTableView.backgroundColor = weather.getCellsBackgroundColor()
         cityLabel.text = weather.name
-        temperatureLabel.text = String(format: "%.0f °С", weather.main.temp)
+        temperatureLabel.text = String(format: "%.0f \(Strings.DetailView.Celsium)", weather.main.temp)
         iconImage.kf.setImage(with: weather.getLink(), placeholder: nil, options: nil)
         descriptionLabel.text = weather.weather[0].weatherDescription
-        minTempLabel.text = String(format: "%.0f °С", weather.main.tempMin)
-        maxTempLabel.text = String(format: "%.0f °С", weather.main.tempMax)
-        feelsLikeLabel.text = String(format: "%.0f °С", weather.main.feelsLike)
+        minTempLabel.text = String(format: "%.0f \(Strings.DetailView.Celsium)", weather.main.tempMin)
+        maxTempLabel.text = String(format: "%.0f \(Strings.DetailView.Celsium)", weather.main.tempMax)
+        feelsLikeLabel.text = String(format: "%.0f \(Strings.DetailView.Celsium)", weather.main.feelsLike)
         let mmRtSt = Double(weather.main.pressure) * 0.75
-        pressureLabel.text = String(format: "%.0f mm Hg", mmRtSt)
-        humidityLabel.text = String(format: "%.0d pct", weather.main.humidity)
-        visibilityLabel.text = String(format: "%.0d м", weather.visibility)
-        windSpeedLabel.text = String(format: "%.2f m/s", weather.wind.speed)
+        pressureLabel.text = String(format: "%.0f \(Strings.DetailView.mmHg)", mmRtSt)
+        humidityLabel.text = String(format: "%.0d \(Strings.DetailView.percent)", weather.main.humidity)
+        visibilityLabel.text = String(format: "%.0d \(Strings.DetailView.meters)", weather.visibility)
+        windSpeedLabel.text = String(format: "%.2f \(Strings.DetailView.speedMS)", weather.wind.speed)
         windDegreeLabel.text = weather.getDirectionForDegree()
     }
     

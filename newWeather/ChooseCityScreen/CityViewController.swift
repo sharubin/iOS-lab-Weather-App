@@ -13,13 +13,14 @@ class CityViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
+        
         self.view = CityScreenView()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let view = self.view as? CityScreenView
-        view?.downloadButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        
+        setup()
     }
     
      @objc private func buttonTapped() {
@@ -42,20 +43,24 @@ class CityViewController: UIViewController {
          }
     }
     
+    private func setup() {
+        let view = self.view as? CityScreenView
+        view?.downloadButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+    }
+    
     private func alertFieldIsEmpty() {
-        let alert = UIAlertController(title: "Ошибка", message: "Город не введен", preferredStyle:  .alert)
-        let actionOK = UIAlertAction(title: "OK", style: .default, handler: nil)
+        let alert = UIAlertController(title: Strings.CityView.error, message: Strings.CityView.emptyText, preferredStyle:  .alert)
+        let actionOK = UIAlertAction(title: Strings.CityView.okString, style: .default, handler: nil)
         alert.addAction(actionOK)
         self.present(alert, animated: true, completion: nil)
     }
     
     private func alertNoData() {
-        let alert = UIAlertController(title: "Ошибка", message: "Город введен не корректно, данные отсутсвуют", preferredStyle:  .alert)
-        let actionOK = UIAlertAction(title: "OK", style: .default, handler: nil)
+        let alert = UIAlertController(title: Strings.CityView.error, message: Strings.CityView.noData, preferredStyle:  .alert)
+        let actionOK = UIAlertAction(title: Strings.CityView.okString, style: .default, handler: nil)
         alert.addAction(actionOK)
         self.present(alert, animated: true, completion: nil)
     }
-    
 }
 
 

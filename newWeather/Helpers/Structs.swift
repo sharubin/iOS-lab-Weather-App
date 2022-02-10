@@ -8,18 +8,33 @@
 import Foundation
 import UIKit
 
-struct Titles {
-    static let minTemp = "min temp"
-    static let maxTemp = "max temp"
-    static let feelsLike = "feels like"
-    static let pressure = "pressure"
-    static let humidity = "humidity"
-    static let visibility = "visibility"
-    static let windSpeed = "wind speed"
-    static let windDirection = "wind direction"
+struct Strings {
     
-    static let EnterTheCity = "Enter the city"
-    static let GetTheWeather = "Get the weather"
+    struct CityView {
+        static let placeholderText = "Enter the city"
+        static let buttonText = "Get the weather"
+        static let error = "Ошибка"
+        static let okString = "OK"
+        static let emptyText = "Город не введен"
+        static let noData = "Город введен не корректно, данные отсутсвуют"
+    }
+    
+    struct DetailView {
+        static let minTemp = "min temp"
+        static let maxTemp = "max temp"
+        static let feelsLike = "feels like"
+        static let pressure = "pressure"
+        static let humidity = "humidity"
+        static let visibility = "visibility"
+        static let windSpeed = "wind speed"
+        static let windDirection = "wind direction"
+        static let textButton = "load more"
+        static let Celsium = "°С"
+        static let mmHg = "mm Hg"
+        static let percent = "pct"
+        static let speedMS = "m/c"
+        static let meters = "m"
+    }
 }
 
 struct Colors {

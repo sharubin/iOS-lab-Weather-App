@@ -12,14 +12,14 @@ import SnapKit
 class CityScreenView: UIView {
     
     let textField = UITextField().then {
-        $0.placeholder = Titles.EnterTheCity
+        $0.placeholder = Strings.CityView.placeholderText
         $0.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: $0.frame.height))
         $0.leftViewMode = .always
         $0.backgroundColor = Colors.whiteColor
     }
     
     let downloadButton = UIButton().then {
-        $0.setTitle(Titles.GetTheWeather, for: .normal)
+        $0.setTitle(Strings.CityView.buttonText, for: .normal)
         $0.setTitleColor(.black, for: .normal)
         $0.backgroundColor = Colors.whiteColor
         $0.layer.cornerRadius = 10

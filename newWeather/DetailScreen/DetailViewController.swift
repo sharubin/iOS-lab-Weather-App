@@ -16,11 +16,13 @@ class DetailViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
+        
         self.view = DetailScreenView()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setup()
     }
     
@@ -79,7 +81,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DailyTableViewCell.identifier, for: indexPath) as! DailyTableViewCell
         cell.updateDaily(weather: dailyModels[indexPath.row])
-        cell.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+        cell.backgroundColor = .clear
         
         return cell
     }
