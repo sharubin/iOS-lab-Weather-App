@@ -18,6 +18,9 @@ struct WeatherData: Codable {
     let timezone: Int
     let name: String
     
+    func getLink() -> URL?  {
+        URL(string: "https://openweathermap.org/img/wn/\(weather[0].icon)@2x.png")
+    }
     
     public func getDirectionForDegree() -> String {
         switch wind.deg {

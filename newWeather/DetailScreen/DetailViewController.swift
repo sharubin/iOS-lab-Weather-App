@@ -6,39 +6,33 @@
 //
 
 import UIKit
-import Kingfisher
 
 class DetailViewController: UIViewController {
     
     private let repository = DetailCityRepositoriy()
-    
     var weather: WeatherData!
     private var dailyModels = [Daily]()
     private var hourlyModels = [Hourly]()
     
     override func loadView() {
         super.loadView()
-        
         self.view = DetailScreenView()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
         setup()
     }
     
     @objc private func buttonTapped() {
         let view = self.view as? DetailScreenView
-        view?.spinner.isHidden = false
-        view?.spinner.startAnimating()
+        view?.changeSpinnerStatus()
         repository.getWeatherForCity(lat: "\(weather.coord.lat)", lon: "\(weather.coord.lon)") { result in
             switch result {
             case .success(let response):
                 self.hourlyModels = response.hourly
                 self.dailyModels = response.daily
-                view?.spinner.isHidden = true
-                view?.spinner.stopAnimating()
+                view?.changeSpinnerStatus()
                 view?.showMore()
             case .failure(let error):
                 print(error)
@@ -55,7 +49,6 @@ class DetailViewController: UIViewController {
         view?.dailyTableView.dataSource = self
         view?.dailyTableView.delegate = self
         view?.updateCurrent(weather: weather)
-        
         navigationController?.navigationBar.barTintColor = weather.getBackgroundColor()
         navigationController?.navigationBar.backIndicatorImage = UIImage(systemName: "arrow.backward.square")
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(systemName: "arrow.backward.square")
@@ -71,9 +64,8 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var cell = collectionView.dequeueReusableCell(withReuseIdentifier: HourlyCollectionViewCell.identifier, for: indexPath) as! HourlyCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HourlyCollectionViewCell.identifier, for: indexPath) as! HourlyCollectionViewCell
         cell.updateHourly(weather: hourlyModels[indexPath.row])
-        
         
         return cell
     }

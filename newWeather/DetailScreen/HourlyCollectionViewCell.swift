@@ -15,10 +15,12 @@ class HourlyCollectionViewCell: UICollectionViewCell {
     var iconImageView = UIImageView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
+    
     var tempLabel = UILabel().then {
         $0.textColor = .white
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
+    
     var timeLabel = UILabel().then {
         $0.textColor = .white
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -53,16 +55,19 @@ class HourlyCollectionViewCell: UICollectionViewCell {
         contentView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+        
         timeLabel.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.trailing.equalToSuperview().inset(10)
         }
+        
         iconImageView.snp.makeConstraints {
             $0.height.equalTo(50)
             $0.width.equalTo(50)
             $0.top.equalTo(timeLabel.snp.bottom)
             $0.leading.trailing.equalToSuperview().inset(10)
         }
+        
         tempLabel.snp.makeConstraints {
             $0.top.equalTo(iconImageView.snp.bottom)
             $0.leading.trailing.equalToSuperview().inset(15)

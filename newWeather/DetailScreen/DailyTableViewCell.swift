@@ -15,16 +15,19 @@ class DailyTableViewCell: UITableViewCell {
     
     var dayLabel = UILabel().then {
         $0.textColor = .white
-        $0.font = Fonts().fontForDetailScreen
+        $0.font = Fonts.fontForDetailScreen
     }
+    
     var lowTempLabel = UILabel().then {
         $0.textColor = .white
-        $0.font = Fonts().lightFontForDaily
+        $0.font = Fonts.lightFontForDaily
     }
+    
     var highTempLabel = UILabel().then {
         $0.textColor = .white
-        $0.font = Fonts().boldFontForDaily
+        $0.font = Fonts.boldFontForDaily
     }
+    
     var iconImageView = UIImageView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -56,22 +59,26 @@ class DailyTableViewCell: UITableViewCell {
             $0.height.equalTo(100)
             $0.edges.equalToSuperview()
         }
+        
         dayLabel.snp.makeConstraints {
             $0.height.equalTo(100)
             $0.width.equalTo(115)
             $0.leading.equalToSuperview().offset(10)
         }
+        
         iconImageView.snp.makeConstraints {
             $0.height.equalTo(70)
             $0.width.equalTo(70)
             $0.top.equalToSuperview().offset(15)
             $0.left.equalTo(dayLabel.snp.right).offset(5)
         }
+        
         lowTempLabel.snp.makeConstraints {
             $0.height.equalTo(100)
             $0.width.equalTo(60)
             $0.left.equalTo(iconImageView.snp.right).offset(30)
         }
+        
         highTempLabel.snp.makeConstraints {
             $0.height.equalTo(100)
             $0.width.equalTo(60)

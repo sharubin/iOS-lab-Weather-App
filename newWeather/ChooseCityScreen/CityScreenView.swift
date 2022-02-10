@@ -9,22 +9,19 @@ import UIKit
 import Then
 import SnapKit
 
-
 class CityScreenView: UIView {
     
     let textField = UITextField().then {
-        $0.placeholder = "Enter the city"
-       // $0.textAlignment = .center
+        $0.placeholder = Titles.EnterTheCity
         $0.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: $0.frame.height))
         $0.leftViewMode = .always
-        $0.backgroundColor = .white
-        $0.layer.borderColor = UIColor.black.cgColor
+        $0.backgroundColor = Colors.whiteColor
     }
     
     let downloadButton = UIButton().then {
-        $0.setTitle("Get the weather", for: .normal)
+        $0.setTitle(Titles.GetTheWeather, for: .normal)
         $0.setTitleColor(.black, for: .normal)
-        $0.backgroundColor = .white
+        $0.backgroundColor = Colors.whiteColor
         $0.layer.cornerRadius = 10
         $0.tintColor = .blue
         $0.setTitleColor(.black, for: .selected)
@@ -32,9 +29,8 @@ class CityScreenView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         viewAddSubview()
-        backgroundColor = UIColor(red: 59/255.0, green: 143/255.0, blue: 195/255.0, alpha: 1.0)
+        backgroundColor = Colors.goodWeatherColor
         setNeedsUpdateConstraints()
     }
     
@@ -59,7 +55,7 @@ class CityScreenView: UIView {
         
         downloadButton.snp.makeConstraints {
             $0.height.equalTo(50)
-            $0.top.equalToSuperview().inset(200)
+            $0.top.equalTo(textField.snp.bottom).offset(50)
             $0.left.right.equalToSuperview().inset(120)
         }
     }

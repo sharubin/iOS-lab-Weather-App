@@ -5,8 +5,6 @@
 //  Created by Artsem Sharubin on 07.02.2022.
 //
 
-import Foundation
-
 class DetailCityRepositoriy {
     
     private let networkEngine: NetworkEngine

@@ -12,92 +12,132 @@ import SnapKit
 class DetailScreenView: UIView {
     
     var cityLabel = UILabel().then {
-        $0.textColor = .white
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.textColor = Colors.whiteColor
         $0.textAlignment = .center
-        $0.font = Fonts().mainFontForDetailScreen
+        $0.font = Fonts.mainFontForDetailScreen
     }
+    
     let temperatureLabel = UILabel().then {
-        $0.textColor = .white
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.textColor = Colors.whiteColor
         $0.textAlignment = .center
-        $0.font = Fonts().mainFontForDetailScreen
+        $0.font = Fonts.mainFontForDetailScreen
     }
-    let iconImage = UIImageView()
+    
+    let iconImage = UIImageView().then {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
     let descriptionLabel = UILabel().then {
-        $0.textColor = .white
-        $0.font = Fonts().mainFontForDetailScreen
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.textColor = Colors.whiteColor
+        $0.font = Fonts.mainFontForDetailScreen
     }
+    
     let maxTempLabel = UILabel().then {
-        $0.textColor = .white
-        $0.font = Fonts().fontForDetailScreen
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.textColor = Colors.whiteColor
+        $0.font = Fonts.fontForDetailScreen
     }
+    
     let minTempLabel = UILabel().then {
-        $0.textColor = .white
-        $0.font = Fonts().fontForDetailScreen
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.textColor = Colors.whiteColor
+        $0.font = Fonts.fontForDetailScreen
     }
+    
     let feelsLikeLabel = UILabel().then {
-        $0.textColor = .white
-        $0.font = Fonts().fontForDetailScreen
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.textColor = Colors.whiteColor
+        $0.font = Fonts.fontForDetailScreen
     }
+    
     let pressureLabel = UILabel().then {
-        $0.textColor = .white
-        $0.font = Fonts().fontForDetailScreen
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.textColor = Colors.whiteColor
+        $0.font = Fonts.fontForDetailScreen
     }
+    
     let humidityLabel = UILabel().then {
-        $0.textColor = .white
-        $0.font = Fonts().fontForDetailScreen
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.textColor = Colors.whiteColor
+        $0.font = Fonts.fontForDetailScreen
     }
+    
     let visibilityLabel = UILabel().then {
-        $0.textColor = .white
-        $0.font = Fonts().fontForDetailScreen
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.textColor = Colors.whiteColor
+        $0.font = Fonts.fontForDetailScreen
     }
+    
     let windSpeedLabel = UILabel().then {
-        $0.textColor = .white
-        $0.font = Fonts().fontForDetailScreen
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.textColor = Colors.whiteColor
+        $0.font = Fonts.fontForDetailScreen
     }
+    
     let windDegreeLabel = UILabel().then {
-        $0.textColor = .white
-        $0.font = Fonts().fontForDetailScreen
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.textColor = Colors.whiteColor
+        $0.font = Fonts.fontForDetailScreen
     }
+    
     let textMinTemp = UILabel().then {
-        $0.text = Titles().minTemp
-        $0.font = Fonts().fontForDetailScreen
-        $0.textColor = .white
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.text = Titles.minTemp
+        $0.font = Fonts.fontForDetailScreen
+        $0.textColor = Colors.whiteColor
     }
+    
     let textMaxTemp = UILabel().then {
-        $0.text = Titles().maxTemp
-        $0.font = Fonts().fontForDetailScreen
-        $0.textColor = .white
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.text = Titles.maxTemp
+        $0.font = Fonts.fontForDetailScreen
+        $0.textColor = Colors.whiteColor
     }
+    
     let textFeels = UILabel().then {
-        $0.text = Titles().feelsLike
-        $0.font = Fonts().fontForDetailScreen
-        $0.textColor = .white
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.text = Titles.feelsLike
+        $0.font = Fonts.fontForDetailScreen
+        $0.textColor = Colors.whiteColor
     }
     let textPressure = UILabel().then {
-        $0.text = Titles().pressure
-        $0.font = Fonts().fontForDetailScreen
-        $0.textColor = .white
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.text = Titles.pressure
+        $0.font = Fonts.fontForDetailScreen
+        $0.textColor = Colors.whiteColor
     }
+    
     let textHumidity = UILabel().then {
-        $0.text = Titles().humidity
-        $0.font = Fonts().fontForDetailScreen
-        $0.textColor = .white
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.text = Titles.humidity
+        $0.font = Fonts.fontForDetailScreen
+        $0.textColor = Colors.whiteColor
     }
+    
     let textVisibility = UILabel().then {
-        $0.text = Titles().visibility
-        $0.font = Fonts().fontForDetailScreen
-        $0.textColor = .white
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.text = Titles.visibility
+        $0.font = Fonts.fontForDetailScreen
+        $0.textColor = Colors.whiteColor
     }
+    
     let textSpeed = UILabel().then {
-        $0.text = Titles().windSpeed
-        $0.font = Fonts().fontForDetailScreen
-        $0.textColor = .white
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.text = Titles.windSpeed
+        $0.font = Fonts.fontForDetailScreen
+        $0.textColor = Colors.whiteColor
     }
+    
     let textDegree = UILabel().then {
-        $0.text = Titles().windDirection
-        $0.font = Fonts().fontForDetailScreen
-        $0.textColor = .white
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.text = Titles.windDirection
+        $0.font = Fonts.fontForDetailScreen
+        $0.textColor = Colors.whiteColor
     }
+    
     let scrollView = UIScrollView()
     
     let view = UIView()
@@ -109,6 +149,7 @@ class DetailScreenView: UIView {
         $0.distribution = .fill
         $0.spacing = 10
     }
+    
     let topStack = UIStackView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .vertical
@@ -116,6 +157,7 @@ class DetailScreenView: UIView {
         $0.distribution = .fill
         $0.spacing = 10
     }
+    
     let bottomStack = UIStackView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .horizontal
@@ -123,6 +165,7 @@ class DetailScreenView: UIView {
         $0.distribution = .fill
         $0.spacing = 10
     }
+    
     let rightBottomStack = UIStackView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .vertical
@@ -130,6 +173,7 @@ class DetailScreenView: UIView {
         $0.distribution = .fill
         $0.spacing = 10
     }
+    
     let leftBottomStack = UIStackView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .vertical
@@ -137,23 +181,30 @@ class DetailScreenView: UIView {
         $0.distribution = .fill
         $0.spacing = 10
     }
+    
     let downloadMoreButton = UIButton().then {
+        $0.translatesAutoresizingMaskIntoConstraints = false
         $0.setTitle("load more", for: .normal)
         $0.setTitleColor(.black, for: .normal)
         $0.backgroundColor = .white
         $0.layer.cornerRadius = 10
     }
+    
     let spinner = UIActivityIndicatorView().then {
+        $0.translatesAutoresizingMaskIntoConstraints = false
         $0.isHidden = true
-        $0.color = .white
+        $0.color = Colors.whiteColor
     }
+    
     let hourlyCollectionViewFlowLayout = UICollectionViewFlowLayout().with {
         $0.scrollDirection = .horizontal
         $0.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         $0.minimumInteritemSpacing = 16
         $0.itemSize = CGSize(width: 70, height: 100)
     }
+    
     lazy var hourlyCollectionView = UICollectionView(frame: .zero, collectionViewLayout: hourlyCollectionViewFlowLayout).with {
+        $0.translatesAutoresizingMaskIntoConstraints = false
         $0.showsHorizontalScrollIndicator = false
         $0.showsVerticalScrollIndicator = false
         $0.allowsMultipleSelection = true
@@ -161,7 +212,9 @@ class DetailScreenView: UIView {
         $0.isHidden = true
         $0.layer.cornerRadius = 20
     }
+    
     let dailyTableView = UITableView().then {
+        $0.translatesAutoresizingMaskIntoConstraints = false
         $0.isScrollEnabled = false
         $0.register(DailyTableViewCell.self, forCellReuseIdentifier: DailyTableViewCell.identifier)
         $0.isHidden = true
@@ -207,6 +260,16 @@ class DetailScreenView: UIView {
         rightBottomStack.addArrangedSubview(windDegreeLabel)
     }
     
+    func changeSpinnerStatus() {
+        if spinner.isHidden == false {
+            spinner.isHidden = true
+            spinner.stopAnimating()
+        } else {
+            spinner.isHidden = false
+            spinner.startAnimating()
+        }
+    }
+    
     func showMore() {
         dailyTableView.isHidden = false
         hourlyCollectionView.isHidden = false
@@ -219,27 +282,24 @@ class DetailScreenView: UIView {
         backgroundColor = weather.getBackgroundColor()
         hourlyCollectionView.backgroundColor = weather.getCellsBackgroundColor()
         dailyTableView.backgroundColor = weather.getCellsBackgroundColor()
-        
         cityLabel.text = weather.name
-        temperatureLabel.text = "\(Int(weather.main.temp)) °С"
-        iconImage.kf.setImage(with: URL(string: "https://openweathermap.org/img/wn/\(weather.weather.first!.icon)@2x.png"), placeholder: nil, options: nil)
-        descriptionLabel.text = weather.weather.first?.weatherDescription
-        minTempLabel.text = "\(Int(weather.main.tempMin)) °С"
-        maxTempLabel.text = "\(Int(weather.main.tempMax)) °С"
-        feelsLikeLabel.text = "\(Int(weather.main.feelsLike)) °С"
-        let mmRtSt = Int(Double(weather.main.pressure) * 0.75)
-        pressureLabel.text = "\(mmRtSt) mm Hg"
-        humidityLabel.text = "\(weather.main.humidity) %"
-        visibilityLabel.text = "\(weather.visibility) м"
-        windSpeedLabel.text = "\(weather.wind.speed) m/s"
+        temperatureLabel.text = String(format: "%.0f °С", weather.main.temp)
+        iconImage.kf.setImage(with: weather.getLink(), placeholder: nil, options: nil)
+        descriptionLabel.text = weather.weather[0].weatherDescription
+        minTempLabel.text = String(format: "%.0f °С", weather.main.tempMin)
+        maxTempLabel.text = String(format: "%.0f °С", weather.main.tempMax)
+        feelsLikeLabel.text = String(format: "%.0f °С", weather.main.feelsLike)
+        let mmRtSt = Double(weather.main.pressure) * 0.75
+        pressureLabel.text = String(format: "%.0f mm Hg", mmRtSt)
+        humidityLabel.text = String(format: "%.0d pct", weather.main.humidity)
+        visibilityLabel.text = String(format: "%.0d м", weather.visibility)
+        windSpeedLabel.text = String(format: "%.2f m/s", weather.wind.speed)
         windDegreeLabel.text = weather.getDirectionForDegree()
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         viewAddSubview()
-       // backgroundColor = UIColor(red: 59/255.0, green: 143/255.0, blue: 195/255.0, alpha: 1.0)
         setNeedsUpdateConstraints()
     }
     
@@ -249,22 +309,25 @@ class DetailScreenView: UIView {
     
     override func updateConstraints() {
         super.updateConstraints()
-        
         scrollView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+        
         view.snp.makeConstraints {
             $0.edges.equalToSuperview()
             $0.width.equalToSuperview()
         }
+        
         fullStack.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.trailing.equalToSuperview().inset(16)
             $0.bottom.equalToSuperview()
         }
+        
         iconImage.snp.makeConstraints {
             $0.width.height.equalTo(120)
         }
+        
         downloadMoreButton.snp.makeConstraints {
             $0.height.equalTo(30)
         }
@@ -272,6 +335,7 @@ class DetailScreenView: UIView {
         hourlyCollectionView.snp.makeConstraints {
             $0.height.equalTo(100)
         }
+        
         dailyTableView.snp.makeConstraints {
             $0.height.equalTo(700)
         }

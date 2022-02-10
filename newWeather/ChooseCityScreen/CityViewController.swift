@@ -13,17 +13,14 @@ class CityViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
-        
         self.view = CityScreenView()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let view = self.view as? CityScreenView
         view?.downloadButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     }
-    
     
      @objc private func buttonTapped() {
         let view = self.view as! CityScreenView
@@ -35,7 +32,6 @@ class CityViewController: UIViewController {
          repository.getWeatherForCity(name: text) { result in
              switch result {
              case .success(let response):
-                 print(response)
                  let vc = DetailViewController()
                  vc.weather = response
                  self.navigationController?.pushViewController(vc, animated: true)
