@@ -48,8 +48,8 @@ class DailyTableViewCell: UITableViewCell {
     func updateDaily(weather: Daily) {
         dayLabel.text = weather.getDayForDate()
         iconImageView.kf.setImage(with: weather.getLink(), placeholder: nil, options: nil)
-        lowTempLabel.text = String(format: "%.0f \(Strings.DetailView.Celsium)", weather.temp.min)
-        highTempLabel.text =  String(format: "%.0f \(Strings.DetailView.Celsium)", weather.temp.max)
+        lowTempLabel.text = String(format: Strings.DetailView.celsium, weather.temp.min)
+        highTempLabel.text =  String(format: Strings.DetailView.celsium, weather.temp.max)
     }
     
     override func updateConstraints() {

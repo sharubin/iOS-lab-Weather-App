@@ -291,9 +291,9 @@ class DetailScreenView: UIView {
         feelsLikeLabel.text = String(format: Strings.DetailView.celsium, weather.main.feelsLike)
         let mmRtSt = Double(weather.main.pressure) * 0.75
         pressureLabel.text = String(format: Strings.DetailView.mmHg, mmRtSt)
-        humidityLabel.text = String(format: Strings.DetailView.humidity, weather.main.humidity)
-        visibilityLabel.text = String(format: Strings.DetailView.visibility, weather.visibility)
-        windSpeedLabel.text = String(format: Strings.DetailView.windSpeed, weather.wind.speed)
+        humidityLabel.text = String(format: Strings.DetailView.percent, weather.main.humidity)
+        visibilityLabel.text = String(format: Strings.DetailView.meters, weather.visibility)
+        windSpeedLabel.text = String(format: Strings.DetailView.speedMS, weather.wind.speed)
         windDegreeLabel.text = weather.getDirectionForDegree()
     }
     
