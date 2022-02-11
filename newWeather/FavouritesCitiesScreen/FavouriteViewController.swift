@@ -9,7 +9,8 @@ import UIKit
 
 class FavouriteViewController: UIViewController {
 
-    var favouriteModels = [Any]()
+    var favouriteModels = [WeatherData]()
+    var favouriteWeather: WeatherData?
     
     override func loadView() {
         super.loadView()
@@ -21,6 +22,7 @@ class FavouriteViewController: UIViewController {
         super.viewDidLoad()
 
         setup()
+        print(favouriteWeather)
     }
     
     private func setup() {

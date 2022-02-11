@@ -43,9 +43,14 @@ class CityViewController: UIViewController {
          }
     }
     
+    @objc private func buttonFavouriteTapped() {
+        self.navigationController?.pushViewController(FavouriteViewController(), animated: true)
+    }
+    
     private func setup() {
         let view = self.view as? CityScreenView
         view?.downloadButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        view?.toFavouriteButton.addTarget(self, action: #selector(buttonFavouriteTapped), for: .touchUpInside)
     }
     
     private func alertFieldIsEmpty() {

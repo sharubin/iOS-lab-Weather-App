@@ -44,7 +44,9 @@ class DetailViewController: UIViewController {
     }
     
     @objc private func addToFavourite() {
-        self.navigationController?.pushViewController(FavouriteViewController(), animated: true)
+        let vc = FavouriteViewController()
+        vc.favouriteWeather = weather
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     private func setup() {
