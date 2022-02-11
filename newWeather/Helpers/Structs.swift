@@ -29,10 +29,10 @@ struct Strings {
         static let windSpeed = "wind speed"
         static let windDirection = "wind direction"
         static let textButton = "load more"
-        static let Celsium = "°С"
-        static let mmHg = "mm Hg"
-        static let percent = "pct"
-        static let speedMS = "m/c"
+        static let celsium = "%.0f °С"
+        static let mmHg = "%.0f mm Hg"
+        static let percent = "%.0d pct"
+        static let speedMS = "%.0d m/c"
         static let meters = "m"
     }
 }

@@ -25,6 +25,13 @@ class HourlyCollectionViewCell: UICollectionViewCell {
         $0.textColor = .white
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
+    let stack = UIStackView().then {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.axis = .vertical
+        $0.alignment = .fill
+        $0.distribution = .fill
+        $0.spacing = 5
+    }
     
     func updateHourly(weather: Hourly) {
         timeLabel.text = weather.getTimeForDate()
@@ -40,9 +47,10 @@ class HourlyCollectionViewCell: UICollectionViewCell {
     }
     
     private func contentViewAddSubview() {
-        contentView.addSubview(iconImageView)
-        contentView.addSubview(tempLabel)
-        contentView.addSubview(timeLabel)
+        contentView.addSubview(stack)
+        stack.addArrangedSubview(timeLabel)
+        stack.addArrangedSubview(iconImageView)
+        stack.addArrangedSubview(tempLabel)
     }
     
     required init?(coder: NSCoder) {
@@ -56,22 +64,12 @@ class HourlyCollectionViewCell: UICollectionViewCell {
             $0.edges.equalToSuperview()
         }
         
-        timeLabel.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.leading.trailing.equalToSuperview().inset(10)
+        stack.snp.makeConstraints { 
+            $0.edges.equalToSuperview()
         }
-        
+            
         iconImageView.snp.makeConstraints {
-            $0.height.equalTo(50)
-            $0.width.equalTo(50)
-            $0.top.equalTo(timeLabel.snp.bottom)
-            $0.leading.trailing.equalToSuperview().inset(10)
-        }
-        
-        tempLabel.snp.makeConstraints {
-            $0.top.equalTo(iconImageView.snp.bottom)
-            $0.leading.trailing.equalToSuperview().inset(15)
-            $0.bottom.equalTo(5)
+            $0.height.width.equalTo(50)
         }
     }
 }

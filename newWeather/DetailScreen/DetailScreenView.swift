@@ -283,17 +283,17 @@ class DetailScreenView: UIView {
         hourlyCollectionView.backgroundColor = weather.getCellsBackgroundColor()
         dailyTableView.backgroundColor = weather.getCellsBackgroundColor()
         cityLabel.text = weather.name
-        temperatureLabel.text = String(format: "%.0f \(Strings.DetailView.Celsium)", weather.main.temp)
+        temperatureLabel.text = String(format: Strings.DetailView.celsium, weather.main.temp)
         iconImage.kf.setImage(with: weather.getLink(), placeholder: nil, options: nil)
         descriptionLabel.text = weather.weather[0].weatherDescription
-        minTempLabel.text = String(format: "%.0f \(Strings.DetailView.Celsium)", weather.main.tempMin)
-        maxTempLabel.text = String(format: "%.0f \(Strings.DetailView.Celsium)", weather.main.tempMax)
-        feelsLikeLabel.text = String(format: "%.0f \(Strings.DetailView.Celsium)", weather.main.feelsLike)
+        minTempLabel.text = String(format: Strings.DetailView.celsium, weather.main.tempMin)
+        maxTempLabel.text = String(format: Strings.DetailView.celsium, weather.main.tempMax)
+        feelsLikeLabel.text = String(format: Strings.DetailView.celsium, weather.main.feelsLike)
         let mmRtSt = Double(weather.main.pressure) * 0.75
-        pressureLabel.text = String(format: "%.0f \(Strings.DetailView.mmHg)", mmRtSt)
-        humidityLabel.text = String(format: "%.0d \(Strings.DetailView.percent)", weather.main.humidity)
-        visibilityLabel.text = String(format: "%.0d \(Strings.DetailView.meters)", weather.visibility)
-        windSpeedLabel.text = String(format: "%.2f \(Strings.DetailView.speedMS)", weather.wind.speed)
+        pressureLabel.text = String(format: Strings.DetailView.mmHg, mmRtSt)
+        humidityLabel.text = String(format: Strings.DetailView.humidity, weather.main.humidity)
+        visibilityLabel.text = String(format: Strings.DetailView.visibility, weather.visibility)
+        windSpeedLabel.text = String(format: Strings.DetailView.windSpeed, weather.wind.speed)
         windDegreeLabel.text = weather.getDirectionForDegree()
     }
     
