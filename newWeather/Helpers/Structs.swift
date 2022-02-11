@@ -32,8 +32,8 @@ struct Strings {
         static let celsium = "%.0f °С"
         static let mmHg = "%.0f mm Hg"
         static let percent = "%.0d pct"
-        static let speedMS = "%.0d m/c"
-        static let meters = "m"
+        static let speedMS = "%.0f m/c"
+        static let meters = "%.0d m"
     }
 }
 

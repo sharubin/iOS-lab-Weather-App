@@ -299,6 +299,7 @@ class DetailScreenView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         viewAddSubview()
         setNeedsUpdateConstraints()
     }
@@ -309,6 +310,7 @@ class DetailScreenView: UIView {
     
     override func updateConstraints() {
         super.updateConstraints()
+        
         scrollView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }

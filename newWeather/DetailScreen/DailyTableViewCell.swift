@@ -33,16 +33,19 @@ class DailyTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        contentView.addSubview(dayLabel)
-        contentView.addSubview(iconImageView)
-        contentView.addSubview(lowTempLabel)
-        contentView.addSubview(highTempLabel)
-        
+        contentViewAddSubview()
         setNeedsUpdateConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func contentViewAddSubview() {
+        contentView.addSubview(dayLabel)
+        contentView.addSubview(iconImageView)
+        contentView.addSubview(lowTempLabel)
+        contentView.addSubview(highTempLabel)
     }
     
     func updateDaily(weather: Daily) {

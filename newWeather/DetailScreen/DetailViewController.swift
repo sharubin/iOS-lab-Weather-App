@@ -43,6 +43,10 @@ class DetailViewController: UIViewController {
         view?.downloadMoreButton.isHidden = true
     }
     
+    @objc private func addToFavourite() {
+        self.navigationController?.pushViewController(FavouriteViewController(), animated: true)
+    }
+    
     private func setup() {
         let view = self.view as? DetailScreenView
         view?.downloadMoreButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
@@ -55,7 +59,14 @@ class DetailViewController: UIViewController {
         navigationController?.navigationBar.backIndicatorImage = UIImage(systemName: "arrow.backward.square")
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(systemName: "arrow.backward.square")
         navigationController?.navigationBar.tintColor = .white
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "add Fv",
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: #selector(addToFavourite))
+        navigationItem.rightBarButtonItem?.tintColor = Colors.whiteColor
     }
+    
+    
 }
 
 
