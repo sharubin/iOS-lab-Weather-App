@@ -66,7 +66,7 @@ class FavouriteTableViewCell: UITableViewCell {
         super.updateConstraints()
         
         contentView.snp.makeConstraints {
-            $0.height.equalTo(125.5)
+            $0.height.equalTo(126)
             $0.edges.equalToSuperview()
         }
         

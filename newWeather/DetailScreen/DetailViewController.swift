@@ -47,6 +47,7 @@ class DetailViewController: UIViewController {
     @objc private func addToFavourite() {
         let model = CityModel()
         model.city = weather.name
+        
         dbManager.save(user: model)
         self.navigationController?.pushViewController(FavouriteViewController(), animated: true)
     }

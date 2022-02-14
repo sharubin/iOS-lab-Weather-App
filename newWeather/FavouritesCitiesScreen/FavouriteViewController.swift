@@ -11,15 +11,11 @@ import Foundation
 
 class FavouriteViewController: UIViewController {
 
+    var presenter: FavouritePresenter!
     let customView = FavouriteScreenView()
-    let dbManager: DBManager = DBManagerImpl()
-    private let repository = FavouriteCityRepositoriy()
-    var favouriteModels = [CityModel]()
-    var favouriteCities = [String]()
     var favouriteWeatherData = [WeatherData]()
     
     override func loadView() {
-        super.loadView()
         
         self.view = customView
     }
@@ -28,30 +24,7 @@ class FavouriteViewController: UIViewController {
         super.viewDidLoad()
 
         setup()
-        favouriteModels = dbManager.obtainUsers()
-        toUsualArray()
-        print(favouriteCities)
-        getWeatherForFavourites()
-    }
-    
-    private func toUsualArray() {
-        for i in favouriteModels {
-            favouriteCities.append(i.city)
-        }
-    }
-    
-    private func getWeatherForFavourites() {
-        for i in favouriteCities {
-            repository.getWeatherForCity(name: i) { result in
-                switch result {
-                case .success(let response):
-                    self.favouriteWeatherData.append(response)
-                    self.customView.tableView.reloadData()
-                case .failure(let error):
-                    print(error)
-                }
-            }
-        }
+        presenter = FavouritePresenter(view: self)
     }
     
     private func setup() {
