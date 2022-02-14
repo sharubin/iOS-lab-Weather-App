@@ -72,7 +72,7 @@ class CityScreenView: UIView {
         toFavouriteButton.snp.makeConstraints {
             $0.height.equalTo(30)
             $0.top.equalToSuperview().offset(80)
-            $0.left.equalToSuperview().inset(300)
+            $0.trailing.equalToSuperview().inset(16)
         }
         
     }

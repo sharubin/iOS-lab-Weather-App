@@ -15,30 +15,26 @@ class FavouriteTableViewCell: UITableViewCell {
     
     let citylabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = "TestCity"
         $0.textColor = .black
-        $0.font = UIFont(name: "Copperplate", size: 30)
+        $0.font = Fonts.mainFontForDetailScreen
     }
     
     let descriptionWeatherLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textColor = .black
-        $0.text = "Description"
-        $0.font = UIFont(name: "Copperplate", size: 15)
+        $0.font = Fonts.fontForDetailScreen
     }
     
     let tempLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = "-17°"
         $0.textColor = .black
-        $0.font = UIFont(name: "Copperplate", size: 30)
+        $0.font = Fonts.mainFontForDetailScreen
     }
     
     let minMaxTempLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = "min.:-19°, max.:-16°"
         $0.textColor = .black
-        $0.font = UIFont(name: "Copperplate", size: 15)
+        $0.font = Fonts.fontForDetailScreen
     }
         
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -59,11 +55,18 @@ class FavouriteTableViewCell: UITableViewCell {
         contentView.addSubview(minMaxTempLabel)
     }
     
+    func updateFavourite(weather: WeatherData) {
+        citylabel.text = weather.name
+        descriptionWeatherLabel.text = weather.weather[0].weatherDescription
+        tempLabel.text = String(format: Strings.DetailView.celsium, weather.main.temp)
+        minMaxTempLabel.text = String(format: Strings.DetailView.minMaxTemp, weather.main.tempMin, weather.main.tempMax)
+    }
+    
     override func updateConstraints() {
         super.updateConstraints()
         
         contentView.snp.makeConstraints {
-            $0.height.equalTo(125)
+            $0.height.equalTo(125.5)
             $0.edges.equalToSuperview()
         }
         

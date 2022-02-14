@@ -13,8 +13,8 @@ class FavouriteScreenView: UIView {
     
     let headingLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = "Избранные города"
-        $0.font = UIFont(name: "Copperplate", size: 40)
+        $0.text = Strings.FavouriteView.header
+        $0.font = Fonts.mainFontForDetailScreen
     }
     
     let tableView = UITableView().then  {

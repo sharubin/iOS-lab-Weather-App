@@ -17,12 +17,12 @@ class HourlyCollectionViewCell: UICollectionViewCell {
     }
     
     var tempLabel = UILabel().then {
-        $0.textColor = .white
+        $0.textColor = Colors.whiteColor
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
     
     var timeLabel = UILabel().then {
-        $0.textColor = .white
+        $0.textColor = Colors.whiteColor
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
     let stack = UIStackView().then {
@@ -36,7 +36,7 @@ class HourlyCollectionViewCell: UICollectionViewCell {
     func updateHourly(weather: Hourly) {
         timeLabel.text = weather.getTimeForDate()
         iconImageView.kf.setImage(with: weather.getLink(), placeholder: nil, options: nil)
-        tempLabel.text = String(format: "%.0f °", weather.temp)
+        tempLabel.text = String(format: Strings.DetailView.celsium, weather.temp)
     }
     
     override init(frame: CGRect) {

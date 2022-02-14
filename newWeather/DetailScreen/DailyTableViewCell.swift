@@ -14,17 +14,17 @@ class DailyTableViewCell: UITableViewCell {
     static let identifier = "DailyTableViewCell"
     
     var dayLabel = UILabel().then {
-        $0.textColor = .white
+        $0.textColor = Colors.whiteColor
         $0.font = Fonts.fontForDetailScreen
     }
     
     var lowTempLabel = UILabel().then {
-        $0.textColor = .white
+        $0.textColor = Colors.whiteColor
         $0.font = Fonts.lightFontForDaily
     }
     
     var highTempLabel = UILabel().then {
-        $0.textColor = .white
+        $0.textColor = Colors.whiteColor
         $0.font = Fonts.boldFontForDaily
     }
     
