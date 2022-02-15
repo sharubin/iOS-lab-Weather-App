@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class DetailViewController: UIViewController {
     
     let dbManager: DBManager = DBManagerImpl()
@@ -45,11 +46,11 @@ class DetailViewController: UIViewController {
     }
     
     @objc private func addToFavourite() {
-        let model = CityModel()
-        model.city = weather.name
+        let model = CityModel(city: weather.name, descriptionWeather: weather.weather[0].weatherDescription, temp: weather.main.temp, tempMin: weather.main.tempMin, tempMax: weather.main.tempMax)
         
         dbManager.save(user: model)
-        self.navigationController?.pushViewController(FavouriteViewController(), animated: true)
+
+   //     self.navigationController?.pushViewController(FavouriteViewController(), animated: true)
     }
     
     private func setup() {

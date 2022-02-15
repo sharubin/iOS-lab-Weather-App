@@ -55,11 +55,11 @@ class FavouriteTableViewCell: UITableViewCell {
         contentView.addSubview(minMaxTempLabel)
     }
     
-    func updateFavourite(weather: WeatherData) {
-        citylabel.text = weather.name
-        descriptionWeatherLabel.text = weather.weather[0].weatherDescription
-        tempLabel.text = String(format: Strings.DetailView.celsium, weather.main.temp)
-        minMaxTempLabel.text = String(format: Strings.DetailView.minMaxTemp, weather.main.tempMin, weather.main.tempMax)
+    func updateFavouriteFromDB(weather: FavouriteWeatherCellModel) {
+        citylabel.text = weather.city
+        descriptionWeatherLabel.text = weather.description
+        tempLabel.text = String(format: Strings.DetailView.celsium, weather.temp)
+        minMaxTempLabel.text = String(format: Strings.DetailView.minMaxTemp, weather.minTemp, weather.maxTemp)
     }
     
     override func updateConstraints() {

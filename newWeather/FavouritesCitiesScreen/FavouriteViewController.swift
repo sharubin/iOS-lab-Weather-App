@@ -6,16 +6,19 @@
 //
 
 import UIKit
-import RealmSwift
-import Foundation
 
 class FavouriteViewController: UIViewController {
 
-    var presenter: FavouritePresenter!
+//    var presenter: FavouritePresenter!
+    
+    private let repository = FavouriteCityRepositoriy()
     let customView = FavouriteScreenView()
-    var favouriteWeatherData = [WeatherData]()
+    
+ 
+    var dataSource = [FavouriteWeatherCellModel]()
     
     override func loadView() {
+        super.loadView()
         
         self.view = customView
     }
@@ -24,12 +27,26 @@ class FavouriteViewController: UIViewController {
         super.viewDidLoad()
 
         setup()
-        presenter = FavouritePresenter(view: self)
+       
+  //      presenter = FavouritePresenter(view: self)
     }
     
     private func setup() {
         customView.tableView.dataSource = self
         customView.tableView.delegate = self
+        fetchData()
+    }
+    
+    private func fetchData() {
+        repository.getData { result in
+            switch result {
+            case .success(let response):
+                self.dataSource = response
+                self.customView.tableView.reloadData()
+            case .failure:
+                print("print error")
+            }
+        }
     }
 }
 
@@ -37,12 +54,14 @@ class FavouriteViewController: UIViewController {
 extension FavouriteViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        favouriteWeatherData.count
+        dataSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FavouriteTableViewCell.identifier, for: indexPath) as! FavouriteTableViewCell
-        cell.updateFavourite(weather: favouriteWeatherData[indexPath.row])
+    //    cell.updateFavouriteFromDB(weather: presenter.favouriteModels[indexPath.row])
+     //   cell.updateFavourite(weather: favouriteWeatherData[indexPath.row])
+        cell.updateFavouriteFromDB(weather: dataSource[indexPath.row])
         
         return cell
     }

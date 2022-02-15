@@ -12,7 +12,7 @@ protocol DBManager {
     
     func save(user: CityModel)
     
-    func obtainUsers() -> [CityModel]
+    func obtainData() -> [CityModel]
     
     func removeObject(object: Object)
     
@@ -20,7 +20,7 @@ protocol DBManager {
 
 class DBManagerImpl: DBManager {
     
-    fileprivate lazy var mainRealm = try! Realm(configuration: .defaultConfiguration)
+    var mainRealm = try! Realm(configuration: .defaultConfiguration)
     
     func save(user: CityModel) {
         
@@ -34,9 +34,12 @@ class DBManagerImpl: DBManager {
         try! mainRealm.write {
             mainRealm.delete(object)
         }
+                            
     }
     
-    func obtainUsers() -> [CityModel] {
+    
+    
+    func obtainData() -> [CityModel] {
         
         let models = mainRealm.objects(CityModel.self)
         
