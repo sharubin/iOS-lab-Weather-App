@@ -10,7 +10,7 @@ import RealmSwift
 
 protocol DBManager {
     
-    func save(user: CityModel)
+    func save(data: CityModel)
     
     func obtainData() -> [CityModel]
     
@@ -22,10 +22,10 @@ class DBManagerImpl: DBManager {
     
     var mainRealm = try! Realm(configuration: .defaultConfiguration)
     
-    func save(user: CityModel) {
+    func save(data: CityModel) {
         
         try! mainRealm.write {
-            mainRealm.add(user)
+            mainRealm.add(data)
         }
     }
     

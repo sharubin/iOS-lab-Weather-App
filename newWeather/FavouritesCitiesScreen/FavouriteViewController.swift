@@ -59,10 +59,25 @@ extension FavouriteViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FavouriteTableViewCell.identifier, for: indexPath) as! FavouriteTableViewCell
-    //    cell.updateFavouriteFromDB(weather: presenter.favouriteModels[indexPath.row])
-     //   cell.updateFavourite(weather: favouriteWeatherData[indexPath.row])
         cell.updateFavouriteFromDB(weather: dataSource[indexPath.row])
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let nextVC = DetailViewController()
+        
+        let name: String
+        name = dataSource[indexPath.row].city
+        repository.getWeatherForCity(name: name) { result in
+            switch result {
+            case .success(let response):
+                nextVC.weather = response
+                self.navigationController?.pushViewController(nextVC, animated: true)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
 }

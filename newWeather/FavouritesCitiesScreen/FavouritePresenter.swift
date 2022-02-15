@@ -1,50 +1,20 @@
-////
-////  FavouritePresenter.swift
-////  newWeather
-////
-////  Created by Artsem Sharubin on 14.02.2022.
-////
 //
-//import Foundation
+//  FavouritePresenter.swift
+//  newWeather
 //
-//class FavouritePresenter {
+//  Created by Artsem Sharubin on 14.02.2022.
 //
-//    weak var view: FavouriteViewController!
-//
-//    let dbManager: DBManager = DBManagerImpl()
-//    private let repository = FavouriteCityRepositoriy()
-//    var favouriteModels = [CityModel]()
-//    var favouriteCities = [String]()
-//
-//    init(view: FavouriteViewController) {
-//        self.view = view
-//
-//        favouriteModels = dbManager.obtainUsers()
-//        toUsualArray()
-//        getWeatherForFavourites()
-//    }
-//
-//    private func toUsualArray() {
-//        for i in favouriteModels {
-//            favouriteCities.append(i.city)
-//        }
-//    }
-//
-//    private func getWeatherForFavourites() {
-//        for i in favouriteCities {
-//            repository.getWeatherForCity(name: i) { [weak self] result in
-//                guard let self = self else { return }
-//                switch result {
-//                case .success(let response):
-//                    self.view.favouriteWeatherData.append(response)
-//                    self.view.customView.tableView.reloadData()
-//                case .failure(let error):
-//                    print(error)
-//                }
-//            }
-//        }
-//    }
-//
-//
-//
-//}
+
+import Foundation
+
+class FavouritePresenter {
+
+    weak var view: FavouriteViewController!
+
+    init(view: FavouriteViewController) {
+        self.view = view
+
+    }
+
+
+}

@@ -12,7 +12,6 @@ import RealmSwift
 class CityModel: Object {
     
     dynamic var city = String()
-    
     dynamic var descriptionWeather = String()
     dynamic var temp = Double()
     dynamic var tempMin = Double()

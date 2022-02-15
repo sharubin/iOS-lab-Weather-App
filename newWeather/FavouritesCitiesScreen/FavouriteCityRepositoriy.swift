@@ -41,12 +41,10 @@ class FavouriteCityRepositoriy {
                     break
                 }
                 group.leave()
-                
             }
         }
         group.notify(queue: .main) {
             completion(.success(cellModels))
         }
     }
-
 }
