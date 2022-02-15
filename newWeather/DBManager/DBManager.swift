@@ -20,29 +20,23 @@ protocol DBManager {
 
 class DBManagerImpl: DBManager {
     
-    var mainRealm = try! Realm(configuration: .defaultConfiguration)
+    var mainRealm = try! Realm()
     
     func save(data: CityModel) {
-        
         try! mainRealm.write {
-            mainRealm.add(data)
+            mainRealm.add(data, update: .modified)
         }
     }
     
     func removeObject(object: Object) {
-        
         try! mainRealm.write {
             mainRealm.delete(object)
         }
-                            
     }
-    
-    
     
     func obtainData() -> [CityModel] {
-        
         let models = mainRealm.objects(CityModel.self)
-        
         return Array(models)
     }
+    
 }

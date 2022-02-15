@@ -17,6 +17,9 @@ class CityModel: Object {
     dynamic var tempMin = Double()
     dynamic var tempMax = Double()
   
+    override static func primaryKey() -> String? {
+      return "city"
+    }
     
     convenience init(city: String, descriptionWeather: String, temp: Double, tempMin: Double, tempMax: Double ) {
         self.init()
