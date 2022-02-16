@@ -11,6 +11,7 @@ import RealmSwift
 @objcMembers
 class CityModel: Object {
     
+    dynamic var id = Int()
     dynamic var city = String()
     dynamic var descriptionWeather = String()
     dynamic var temp = Double()
@@ -21,8 +22,9 @@ class CityModel: Object {
       return "city"
     }
     
-    convenience init(city: String, descriptionWeather: String, temp: Double, tempMin: Double, tempMax: Double ) {
+    convenience init(city: String, descriptionWeather: String, temp: Double, tempMin: Double, tempMax: Double,id: Int ) {
         self.init()
+        self.id = id
         self.city = city
         self.descriptionWeather = descriptionWeather
         self.temp = temp
@@ -35,6 +37,7 @@ class CityModel: Object {
     }
     
     init(weather: WeatherData) {
+        self.id = weather.weather[0].id
         self.city = weather.name
         self.descriptionWeather = weather.weather[0].weatherDescription
         self.temp = weather.main.temp

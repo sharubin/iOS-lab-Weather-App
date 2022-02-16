@@ -55,19 +55,10 @@ class FavouriteTableViewCell: UITableViewCell {
         contentView.addSubview(minMaxTempLabel)
     }
     
-//    public func getBackgroundColor(weather: FavouriteWeatherCellModel) -> UIColor {
-//        switch weather.description {
-//        case 200...499, 502...531, 701...781, 802...804, 600...622:
-//            return Colors.badWeatherColor
-//        case 800...801, 500...501:
-//            return Colors.goodWeatherColor
-//        default:
-//            return .white
-//        }
-//    }
+
     
     func updateFavouriteFromDB(weather: FavouriteWeatherCellModel) {
-        //    backgroundColor =
+        backgroundColor = weather.getBackgroundColor()
         citylabel.text = weather.city
         descriptionWeatherLabel.text = weather.description
         tempLabel.text = String(format: Strings.DetailView.celsium, weather.temp)

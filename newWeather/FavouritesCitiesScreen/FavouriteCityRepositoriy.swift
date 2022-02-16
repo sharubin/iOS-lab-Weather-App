@@ -39,7 +39,7 @@ class FavouriteCityRepositoriy {
                 switch result {
                 case .success(let data):
                     print("data loaded \(city.uppercased())")
-                    let model = CityModel(city: data.name, descriptionWeather: data.weather[0].weatherDescription, temp: data.main.temp, tempMin: data.main.tempMin, tempMax: data.main.tempMax)
+                    let model = CityModel(weather: data)
                     self.dbManager.save(data: model)
                     cellModels.append(FavouriteWeatherCellModel(model: data))
                 case .failure:
