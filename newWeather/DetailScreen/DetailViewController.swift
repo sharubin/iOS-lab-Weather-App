@@ -9,7 +9,6 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
-    let dbManager: DBManager = DBManagerImpl()
     private let repository = DetailCityRepositoriy()
     var weather: WeatherData!
     private var dailyModels = [Daily]()
@@ -45,9 +44,8 @@ class DetailViewController: UIViewController {
     }
     
     @objc private func addToFavourite() {
-        let model = CityModel(city: weather.name, descriptionWeather: weather.weather[0].weatherDescription, temp: weather.main.temp, tempMin: weather.main.tempMin, tempMax: weather.main.tempMax)
-        
-        dbManager.save(data: model)
+        let model = CityModel(weather: weather)
+        repository.addToDB(dataModel: model)
     }
     
     private func setup() {

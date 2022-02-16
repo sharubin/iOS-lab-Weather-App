@@ -34,4 +34,13 @@ class CityModel: Object {
         super.init()
     }
     
+    init(weather: WeatherData) {
+        self.city = weather.name
+        self.descriptionWeather = weather.weather[0].weatherDescription
+        self.temp = weather.main.temp
+        self.tempMin = weather.main.tempMin
+        self.tempMax = weather.main.tempMax
+    }
+    
+    
 }

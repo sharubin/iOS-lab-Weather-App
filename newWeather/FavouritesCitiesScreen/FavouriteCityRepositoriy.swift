@@ -19,6 +19,10 @@ class FavouriteCityRepositoriy {
         networkEngine.request(endpoint: CurrentEndpoint.getCurrenWeather(city: name), completion: completion)
     }
     
+    func deleteFromDB(city: String) {
+        dbManager.removeObjectFor(city: city)
+    }
+    
     func getData(completion: @escaping (Result< [FavouriteWeatherCellModel],Error>) -> Void) {
         let dbArray = dbManager.obtainData()
         let cellModels = dbArray.map { FavouriteWeatherCellModel(model: $0) }
@@ -35,7 +39,8 @@ class FavouriteCityRepositoriy {
                 switch result {
                 case .success(let data):
                     print("data loaded \(city.uppercased())")
-                    //добавить код для обновления базы данных
+                    let model = CityModel(city: data.name, descriptionWeather: data.weather[0].weatherDescription, temp: data.main.temp, tempMin: data.main.tempMin, tempMax: data.main.tempMax)
+                    self.dbManager.save(data: model)
                     cellModels.append(FavouriteWeatherCellModel(model: data))
                 case .failure:
                     break

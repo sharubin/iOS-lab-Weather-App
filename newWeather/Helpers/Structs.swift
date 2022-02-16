@@ -34,11 +34,13 @@ struct Strings {
         static let percent = "%.0d pct"
         static let speedMS = "%.0f m/c"
         static let meters = "%.0d m"
-        static let minMaxTemp = "min.: %.0f °, max.: %.0f °"
+        static let minMaxTemp = "min.: %.0f°, max.: %.0f°"
     }
     
     struct FavouriteView {
         static let header = "Избранные города"
+        static let delete = "Удалить"
+        static let error = "print error"
     }
 }
 

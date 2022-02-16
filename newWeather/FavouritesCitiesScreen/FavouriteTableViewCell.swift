@@ -22,7 +22,7 @@ class FavouriteTableViewCell: UITableViewCell {
     let descriptionWeatherLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textColor = .black
-        $0.font = Fonts.fontForDetailScreen
+        $0.font = Fonts.lightFontForDaily
     }
     
     let tempLabel = UILabel().then {
@@ -34,7 +34,7 @@ class FavouriteTableViewCell: UITableViewCell {
     let minMaxTempLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textColor = .black
-        $0.font = Fonts.fontForDetailScreen
+        $0.font = Fonts.lightFontForDaily
     }
         
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -55,7 +55,19 @@ class FavouriteTableViewCell: UITableViewCell {
         contentView.addSubview(minMaxTempLabel)
     }
     
+//    public func getBackgroundColor(weather: FavouriteWeatherCellModel) -> UIColor {
+//        switch weather.description {
+//        case 200...499, 502...531, 701...781, 802...804, 600...622:
+//            return Colors.badWeatherColor
+//        case 800...801, 500...501:
+//            return Colors.goodWeatherColor
+//        default:
+//            return .white
+//        }
+//    }
+    
     func updateFavouriteFromDB(weather: FavouriteWeatherCellModel) {
+        //    backgroundColor =
         citylabel.text = weather.city
         descriptionWeatherLabel.text = weather.description
         tempLabel.text = String(format: Strings.DetailView.celsium, weather.temp)
@@ -73,26 +85,26 @@ class FavouriteTableViewCell: UITableViewCell {
         citylabel.snp.makeConstraints {
             $0.top.leading.equalToSuperview().offset(10)
             $0.height.equalTo(30)
-            $0.width.equalTo(150)
+            $0.width.equalTo(170)
         }
         
         tempLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(10)
             $0.trailing.equalToSuperview().inset(10)
             $0.height.equalTo(30)
-            $0.width.equalTo(70)
+            $0.width.equalTo(90)
         }
         
         descriptionWeatherLabel.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(10)
             $0.leading.equalToSuperview().offset(10)
             $0.height.equalTo(30)
-            $0.width.equalTo(100)
+            $0.width.equalTo(150)
         }
         
         minMaxTempLabel.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(10)
-            $0.left.equalTo(descriptionWeatherLabel.snp.right).offset(110)
+            $0.left.equalTo(descriptionWeatherLabel.snp.right).offset(60)
             $0.height.equalTo(30)
         }
     }

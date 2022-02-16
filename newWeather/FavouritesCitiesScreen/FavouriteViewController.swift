@@ -13,8 +13,6 @@ class FavouriteViewController: UIViewController {
     
     private let repository = FavouriteCityRepositoriy()
     let customView = FavouriteScreenView()
-    
- 
     var dataSource = [FavouriteWeatherCellModel]()
     
     override func loadView() {
@@ -44,7 +42,7 @@ class FavouriteViewController: UIViewController {
                 self.dataSource = response
                 self.customView.tableView.reloadData()
             case .failure:
-                print("print error")
+                print(Strings.FavouriteView.error)
             }
         }
     }
@@ -80,4 +78,14 @@ extension FavouriteViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let actionDelete = UIContextualAction(style: .destructive, title: Strings.FavouriteView.delete) { _,_,_ in
+            self.repository.deleteFromDB(city: self.dataSource[indexPath.row].city)
+            self.dataSource.remove(at: indexPath.row)
+            tableView.reloadData()
+        }
+        let actions = UISwipeActionsConfiguration(actions: [actionDelete])
+        return actions
+    }
 }
