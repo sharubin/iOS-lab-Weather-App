@@ -8,20 +8,22 @@
 import UIKit
 
 protocol FavouriteViewProtocol: AnyObject {
-    
     func setData(data: [FavouriteWeatherCellModel])
     
+    func pushTo(controller: UIViewController)
 }
 
-class FavouriteViewController: UIViewController {
-
-//    var presenter: FavouritePresenter!
+class FavouriteViewController: UIViewController, FavouriteViewProtocol {
     
-    private let repository = FavouriteCityRepositoriy()
+    func setData(data: [FavouriteWeatherCellModel]) {
+        dataSource = data
+        rootView.tableView.reloadData()
+    }
     
     var rootView: FavouriteScreenView {
         self.view as! FavouriteScreenView
     }
+    var presenter: FavouritePresenterProtocol!
     var dataSource = [FavouriteWeatherCellModel]()
     
     override func loadView() {
@@ -35,26 +37,24 @@ class FavouriteViewController: UIViewController {
 
         setup()
        
-  //      presenter = FavouritePresenter(view: self)
+        presenter = FavouritePresenter(view: self)
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        presenter.fetchData()
     }
     
     private func setup() {
         rootView.tableView.dataSource = self
         rootView.tableView.delegate = self
-        fetchData()
     }
     
-    private func fetchData() {
-        repository.getData { [weak self] result in
-            switch result {
-            case .success(let response):
-                self?.dataSource = response
-                self?.rootView.tableView.reloadData()
-            case .failure:
-                print(Strings.FavouriteView.error)
-            }
-        }
+    func pushTo(controller: UIViewController) {
+        navigationController?.pushViewController(controller, animated: true)
     }
+    
+    
 }
 
 
@@ -72,26 +72,13 @@ extension FavouriteViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let nextVC = DetailViewController()
-        let name: String
-        name = dataSource[indexPath.row].city
-        repository.getWeatherForCity(name: name) { result in
-            switch result {
-            case .success(let response):
-                nextVC.weather = response
-                self.navigationController?.pushViewController(nextVC, animated: true)
-            case .failure(let error):
-                print(error)
-            }
-        }
+        presenter.pushTo(index: indexPath.row)
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let actionDelete = UIContextualAction(style: .destructive, title: Strings.FavouriteView.delete) { [weak self] _,_,_ in
-            self?.repository.deleteFromDB(city: (self?.dataSource[indexPath.row].city)!)
-            self?.dataSource.remove(at: indexPath.row)
-            tableView.reloadData()
+                self?.presenter.deleteByIndex(index: indexPath.row)
         }
         let actions = UISwipeActionsConfiguration(actions: [actionDelete])
         return actions

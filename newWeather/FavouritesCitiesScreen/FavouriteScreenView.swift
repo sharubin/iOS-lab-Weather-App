@@ -30,10 +30,8 @@ class FavouriteScreenView: UIView {
     let contentView = UIView()
     
     private func viewAddSubview() {
-        addSubview(scrollView)
-        scrollView.addSubview(contentView)
-        contentView.addSubview(headingLabel)
-        contentView.addSubview(tableView)
+        addSubview(headingLabel)
+        addSubview(tableView)
     }
   
     override init(frame: CGRect) {
@@ -51,17 +49,8 @@ class FavouriteScreenView: UIView {
     override func updateConstraints() {
         super.updateConstraints()
         
-        scrollView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
-        
-        contentView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-            $0.width.equalToSuperview()
-        }
-        
         headingLabel.snp.makeConstraints {
-            $0.top.equalToSuperview()
+            $0.top.equalTo(safeAreaLayoutGuide).offset(20)
             $0.leading.trailing.equalToSuperview().inset(16)
         }
         
@@ -69,7 +58,6 @@ class FavouriteScreenView: UIView {
             $0.top.equalTo(headingLabel.snp.bottom).offset(10)
             $0.leading.trailing.equalToSuperview().inset(16)
             $0.bottom.equalToSuperview()
-            $0.height.equalTo(2000)
         }
     }
     
