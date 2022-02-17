@@ -12,7 +12,7 @@ class DetailViewController: UIViewController {
     var rootView: DetailScreenView {
         self.view as! DetailScreenView
     }
-    private let repository = DetailCityRepositoriy()
+    private let repository = DetailCityRepository()
     var weather: WeatherData!
     private var dailyModels = [Daily]()
     private var hourlyModels = [Hourly]()
@@ -27,27 +27,9 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         
         setup()
-        check()
-    }
-    
-    private func check() {
-        let city = weather.name
-        let cityFromDB = repository.obtainFor(city: weather.name)
-        if city == cityFromDB {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "remove Fv",
-                                                                style: .plain,
-                                                                target: self,
-                                                                action: #selector(removeFavourite))
-        } else {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "add Fv",
-                                                                style: .plain,
-                                                                target: self,
-                                                                action: #selector(addToFavourite))
-        }
     }
     
     @objc private func buttonTapped() {
-        
         rootView.changeSpinnerStatus()
         repository.getWeatherForCity(lat: "\(weather.coord.lat)", lon: "\(weather.coord.lon)") { [self] result in
             switch result {
@@ -63,26 +45,6 @@ class DetailViewController: UIViewController {
         rootView.downloadMoreButton.isHidden = true
     }
     
-    @objc private func addToFavourite() {
-        let model = CityModel(weather: weather)
-        repository.addToDB(dataModel: model)
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "remove Fv",
-                                                            style: .plain,
-                                                            target: self,
-                                                            action: #selector(removeFavourite))
-    }
-    
-    @objc private func removeFavourite() {
-
-        repository.deleteFromDB(city: weather.name)
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "add Fv",
-                                                            style: .plain,
-                                                            target: self,
-                                                            action: #selector(addToFavourite))
-    }
-    
     private func setup() {
         rootView.downloadMoreButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         rootView.hourlyCollectionView.dataSource = self
@@ -90,6 +52,11 @@ class DetailViewController: UIViewController {
         rootView.dailyTableView.dataSource = self
         rootView.dailyTableView.delegate = self
         rootView.updateCurrent(weather: weather)
+        setupNavigationBar()
+        check()
+    }
+    
+    private func setupNavigationBar() {
         navigationController?.navigationBar.barTintColor = weather.getBackgroundColor()
         navigationController?.navigationBar.backIndicatorImage = UIImage(systemName: "arrow.backward.square")
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(systemName: "arrow.backward.square")
@@ -97,7 +64,31 @@ class DetailViewController: UIViewController {
         navigationItem.rightBarButtonItem?.tintColor = Colors.whiteColor
     }
     
+    private func check() {
+        
+        if repository.check(name: weather.name) {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "remove Fv",
+                                                                style: .plain,
+                                                                target: self,
+                                                                action: #selector(updateFavourite))
+        } else {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "add Fv",
+                                                                style: .plain,
+                                                                target: self,
+                                                                action: #selector(updateFavourite))
+        }
+    }
     
+    @objc private func updateFavourite() {
+        if repository.check(name: weather.name) {
+            repository.deleteFromDB(city: weather.name)
+            navigationItem.rightBarButtonItem?.title = "add Fv"
+        } else {
+            let model = CityModel(weather: weather)
+            repository.saveFavourite(dataModel: model)
+            navigationItem.rightBarButtonItem?.title = "remove Fv"
+        }
+    }
 }
 
 

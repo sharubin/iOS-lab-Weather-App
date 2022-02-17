@@ -15,6 +15,7 @@ class FavouriteScreenView: UIView {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = Strings.FavouriteView.header
         $0.font = Fonts.mainFontForDetailScreen
+        $0.textColor = Colors.whiteColor
     }
     
     let tableView = UITableView().then  {
@@ -29,7 +30,7 @@ class FavouriteScreenView: UIView {
     
     let contentView = UIView()
     
-    private func viewAddSubview() {
+    private func setup() {
         addSubview(headingLabel)
         addSubview(tableView)
     }
@@ -37,8 +38,8 @@ class FavouriteScreenView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = .systemGray4
-        viewAddSubview()
+        backgroundColor = .black
+        setup()
         setNeedsUpdateConstraints()
     }
     
@@ -60,5 +61,4 @@ class FavouriteScreenView: UIView {
             $0.bottom.equalToSuperview()
         }
     }
-    
 }

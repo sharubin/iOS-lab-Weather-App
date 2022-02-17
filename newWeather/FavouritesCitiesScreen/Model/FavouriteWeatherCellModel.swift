@@ -44,5 +44,4 @@ struct FavouriteWeatherCellModel {
             return .white
         }
     }
-    
 }

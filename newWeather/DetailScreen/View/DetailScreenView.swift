@@ -221,7 +221,7 @@ class DetailScreenView: UIView {
         $0.layer.cornerRadius = 20
     }
     
-    func viewAddSubview() {
+    func setup() {
         addSubview(scrollView)
         scrollView.addSubview(view)
         view.addSubview(fullStack)
@@ -300,7 +300,7 @@ class DetailScreenView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        viewAddSubview()
+        setup()
         setNeedsUpdateConstraints()
     }
     

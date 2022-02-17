@@ -5,7 +5,6 @@
 //  Created by Artsem Sharubin on 09.02.2022.
 //
 
-import Foundation
 import UIKit
 
 struct Strings {

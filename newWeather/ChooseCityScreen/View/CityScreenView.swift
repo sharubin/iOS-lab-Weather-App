@@ -38,7 +38,7 @@ class CityScreenView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        viewAddSubview()
+        setup()
         backgroundColor = Colors.goodWeatherColor
         setNeedsUpdateConstraints()
     }
@@ -47,7 +47,7 @@ class CityScreenView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func viewAddSubview() {
+    func setup() {
         addSubview(textField)
         addSubview(downloadButton)
         addSubview(toFavouriteButton)
@@ -74,6 +74,5 @@ class CityScreenView: UIView {
             $0.top.equalToSuperview().offset(80)
             $0.trailing.equalToSuperview().inset(16)
         }
-        
     }
 }

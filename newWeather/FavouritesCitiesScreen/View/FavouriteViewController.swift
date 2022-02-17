@@ -8,17 +8,13 @@
 import UIKit
 
 protocol FavouriteViewProtocol: AnyObject {
+    
     func setData(data: [FavouriteWeatherCellModel])
     
     func pushTo(controller: UIViewController)
 }
 
-class FavouriteViewController: UIViewController, FavouriteViewProtocol {
-    
-    func setData(data: [FavouriteWeatherCellModel]) {
-        dataSource = data
-        rootView.tableView.reloadData()
-    }
+class FavouriteViewController: UIViewController {
     
     var rootView: FavouriteScreenView {
         self.view as! FavouriteScreenView
@@ -36,8 +32,6 @@ class FavouriteViewController: UIViewController, FavouriteViewProtocol {
         super.viewDidLoad()
 
         setup()
-       
-        presenter = FavouritePresenter(view: self)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -48,17 +42,31 @@ class FavouriteViewController: UIViewController, FavouriteViewProtocol {
     private func setup() {
         rootView.tableView.dataSource = self
         rootView.tableView.delegate = self
+        presenter = FavouritePresenter(view: self)
+        setupNavigationBar()
     }
+    
+    func setupNavigationBar() {
+        navigationController?.navigationBar.barTintColor = view.backgroundColor
+        navigationController?.navigationBar.backIndicatorImage = UIImage(systemName: "arrow.backward.square")
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(systemName: "arrow.backward.square")
+        navigationController?.navigationBar.tintColor = .white
+    }
+}
+
+extension FavouriteViewController: FavouriteViewProtocol {
     
     func pushTo(controller: UIViewController) {
         navigationController?.pushViewController(controller, animated: true)
     }
     
-    
+    func setData(data: [FavouriteWeatherCellModel]) {
+        dataSource = data
+        rootView.tableView.reloadData()
+    }
 }
 
-
-extension FavouriteViewController: UITableViewDelegate, UITableViewDataSource {
+extension FavouriteViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         dataSource.count
@@ -66,21 +74,24 @@ extension FavouriteViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FavouriteTableViewCell.identifier, for: indexPath) as! FavouriteTableViewCell
-        cell.updateFavouriteFromDB(weather: dataSource[indexPath.row])
+        cell.set(model: dataSource[indexPath.row])
         
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter.pushTo(index: indexPath.row)
-    }
+}
+
+extension FavouriteViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let actionDelete = UIContextualAction(style: .destructive, title: Strings.FavouriteView.delete) { [weak self] _,_,_ in
-                self?.presenter.deleteByIndex(index: indexPath.row)
+            self?.presenter.deleteByIndex(index: indexPath.row)
         }
         let actions = UISwipeActionsConfiguration(actions: [actionDelete])
         return actions
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.pushTo(index: indexPath.row)
     }
 }

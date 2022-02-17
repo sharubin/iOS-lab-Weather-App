@@ -42,11 +42,11 @@ class HourlyCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        contentViewAddSubview()
+        setup()
         setNeedsUpdateConstraints()
     }
     
-    private func contentViewAddSubview() {
+    private func setup() {
         contentView.addSubview(stack)
         stack.addArrangedSubview(timeLabel)
         stack.addArrangedSubview(iconImageView)

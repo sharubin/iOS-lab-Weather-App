@@ -5,7 +5,21 @@
 //  Created by Artsem Sharubin on 07.02.2022.
 //
 
-class DetailCityRepositoriy {
+protocol DetailRepositoryProtocol {
+    
+    func saveFavourite(dataModel: CityModel)
+    
+    func obtainFor(city: String) -> String
+        
+    func deleteFromDB(city: String)
+    
+    func check(name: String) -> Bool
+    
+    func getWeatherForCity(lat: String, lon: String, completion: @escaping (Result< MoreWeatherData,Error>) -> Void)
+}
+
+
+class DetailCityRepository: DetailRepositoryProtocol {
     
     private let networkEngine: NetworkEngine
     private let dbManager: DBManager
@@ -15,16 +29,25 @@ class DetailCityRepositoriy {
         self.dbManager = dbManager
     }
     
-    func addToDB(dataModel: CityModel) {
+    func saveFavourite(dataModel: CityModel) {
         dbManager.save(data: dataModel)
     }
     
     func obtainFor(city: String) -> String {
         dbManager.obtain(city: city)
     }
-    
+        
     func deleteFromDB(city: String) {
-        dbManager.removeObjectFor(city: city)
+        dbManager.removeCity(city: city)
+    }
+    
+    func check(name: String) -> Bool {
+        let cityFromDB = obtainFor(city: name)
+        if name == cityFromDB {
+            return true
+        } else {
+            return false
+        }
     }
     
     func getWeatherForCity(lat: String, lon: String, completion: @escaping (Result< MoreWeatherData,Error>) -> Void) {

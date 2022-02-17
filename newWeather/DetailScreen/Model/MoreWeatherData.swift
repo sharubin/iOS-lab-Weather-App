@@ -52,7 +52,6 @@ struct Daily: Codable {
     
     public func getDayForDate() -> String {
         let inputDate = Date(timeIntervalSince1970: Double(dt))
-        
         let formatter = DateFormatter()
         formatter.dateFormat = "EEEE"
         return formatter.string(from: inputDate)

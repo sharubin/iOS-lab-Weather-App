@@ -5,7 +5,6 @@
 //  Created by Artsem Sharubin on 12.02.2022.
 //
 
-import Foundation
 import RealmSwift
 
 @objcMembers
@@ -44,6 +43,4 @@ class CityModel: Object {
         self.tempMin = weather.main.tempMin
         self.tempMax = weather.main.tempMax
     }
-    
-    
 }

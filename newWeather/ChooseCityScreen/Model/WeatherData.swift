@@ -5,7 +5,6 @@
 //  Created by Artsem Sharubin on 01.02.2022.
 //
 
-import Foundation
 import UIKit
 import Kingfisher
 
@@ -68,7 +67,6 @@ struct WeatherData: Codable {
             return .white
         }
     }
-    
 }
 
 // MARK: - Coord

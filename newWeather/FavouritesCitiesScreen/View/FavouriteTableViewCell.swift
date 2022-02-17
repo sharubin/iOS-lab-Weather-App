@@ -17,30 +17,34 @@ class FavouriteTableViewCell: UITableViewCell {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textColor = .black
         $0.font = Fonts.mainFontForDetailScreen
+        $0.textColor = Colors.whiteColor
     }
     
     let descriptionWeatherLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textColor = .black
         $0.font = Fonts.lightFontForDaily
+        $0.textColor = Colors.whiteColor
     }
     
     let tempLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textColor = .black
         $0.font = Fonts.mainFontForDetailScreen
+        $0.textColor = Colors.whiteColor
     }
     
     let minMaxTempLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textColor = .black
         $0.font = Fonts.lightFontForDaily
+        $0.textColor = Colors.whiteColor
     }
         
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        contentViewAddSubview()
+        setup()
         setNeedsUpdateConstraints()
     }
     
@@ -48,21 +52,19 @@ class FavouriteTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func contentViewAddSubview() {
+    private func setup() {
         contentView.addSubview(citylabel)
         contentView.addSubview(descriptionWeatherLabel)
         contentView.addSubview(tempLabel)
         contentView.addSubview(minMaxTempLabel)
     }
     
-
-    
-    func updateFavouriteFromDB(weather: FavouriteWeatherCellModel) {
-        backgroundColor = weather.getBackgroundColor()
-        citylabel.text = weather.city
-        descriptionWeatherLabel.text = weather.description
-        tempLabel.text = String(format: Strings.DetailView.celsium, weather.temp)
-        minMaxTempLabel.text = String(format: Strings.DetailView.minMaxTemp, weather.minTemp, weather.maxTemp)
+    func set(model: FavouriteWeatherCellModel) {
+        backgroundColor = model.getBackgroundColor()
+        citylabel.text = model.city
+        descriptionWeatherLabel.text = model.description
+        tempLabel.text = String(format: Strings.DetailView.celsium, model.temp)
+        minMaxTempLabel.text = String(format: Strings.DetailView.minMaxTemp, model.minTemp, model.maxTemp)
     }
     
     override func updateConstraints() {

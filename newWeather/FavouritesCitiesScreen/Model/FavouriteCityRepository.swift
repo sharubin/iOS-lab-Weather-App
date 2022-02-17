@@ -6,7 +6,20 @@
 //
 
 import Foundation
-class FavouriteCityRepositoriy {
+
+protocol FavouriteRepositoryProtocol {
+    
+    func getWeatherForCity(name: String, completion: @escaping (Result< WeatherData,Error>) -> Void)
+    
+    func deleteFromDB(city: String)
+    
+    func getData(completion: @escaping (Result< [FavouriteWeatherCellModel],Error>) -> Void)
+    
+    func fetchUpdatedWeather(for cities:[String], completion: @escaping (Result< [FavouriteWeatherCellModel],Error>) -> Void )
+}
+
+class FavouriteCityRepository: FavouriteRepositoryProtocol {
+    
     private let networkEngine: NetworkEngine
     private let dbManager: DBManager
     
@@ -20,11 +33,11 @@ class FavouriteCityRepositoriy {
     }
     
     func deleteFromDB(city: String) {
-        dbManager.removeObjectFor(city: city)
+        dbManager.removeCity(city: city)
     }
     
     func getData(completion: @escaping (Result< [FavouriteWeatherCellModel],Error>) -> Void) {
-        let dbArray = dbManager.obtainData()
+        let dbArray = dbManager.obtainCities()
         let cellModels = dbArray.map { FavouriteWeatherCellModel(model: $0) }
         completion(.success(cellModels))
         fetchUpdatedWeather(for: cellModels.map { $0.city }, completion: completion)

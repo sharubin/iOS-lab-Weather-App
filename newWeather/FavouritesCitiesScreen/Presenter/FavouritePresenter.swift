@@ -13,17 +13,18 @@ protocol FavouritePresenterProtocol {
     func pushTo(index: Int)
 }
 
-class FavouritePresenter: FavouritePresenterProtocol {
+class FavouritePresenter {
 
     weak var view: FavouriteViewProtocol?
-    private let repository = FavouriteCityRepositoriy()
-
+    private let repository = FavouriteCityRepository()
     var dataSource = [FavouriteWeatherCellModel]()
     
     init(view: FavouriteViewProtocol) {
         self.view = view
-        
     }
+}
+
+extension FavouritePresenter: FavouritePresenterProtocol {
     
     func deleteByIndex(index: Int) {
         repository.deleteFromDB(city: (dataSource[index].city))
@@ -46,8 +47,6 @@ class FavouritePresenter: FavouritePresenterProtocol {
         }
     }
     
-    
-    
     func fetchData() {
         repository.getData { [weak self] result in
             switch result {
@@ -59,7 +58,4 @@ class FavouritePresenter: FavouritePresenterProtocol {
             }
         }
     }
-
-
-
 }

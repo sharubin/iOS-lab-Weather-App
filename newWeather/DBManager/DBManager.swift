@@ -12,11 +12,11 @@ protocol DBManager {
     
     func save(data: CityModel)
     
-    func obtainData() -> [CityModel]
+    func obtainCities() -> [CityModel]
     
     func obtain(city: String) -> String
     
-    func removeObjectFor(city: String)
+    func removeCity(city: String)
 }
 
 class DBManagerImpl: DBManager {
@@ -29,7 +29,7 @@ class DBManagerImpl: DBManager {
         }
     }
         
-    func removeObjectFor(city: String) {
+    func removeCity(city: String) {
         let model = Array(mainRealm.objects(CityModel.self).filter("city == %@", city))
         guard let model = model.first else { return }
         dump(model)
@@ -46,7 +46,7 @@ class DBManagerImpl: DBManager {
         return cityFromDB
     }
     
-    func obtainData() -> [CityModel] {
+    func obtainCities() -> [CityModel] {
         let models = mainRealm.objects(CityModel.self)
         return Array(models)
     }
