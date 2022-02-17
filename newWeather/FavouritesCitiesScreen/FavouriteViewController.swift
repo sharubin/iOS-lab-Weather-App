@@ -7,18 +7,27 @@
 
 import UIKit
 
+protocol FavouriteViewProtocol: AnyObject {
+    
+    func setData(data: [FavouriteWeatherCellModel])
+    
+}
+
 class FavouriteViewController: UIViewController {
 
 //    var presenter: FavouritePresenter!
     
     private let repository = FavouriteCityRepositoriy()
-    let customView = FavouriteScreenView()
+    
+    var rootView: FavouriteScreenView {
+        self.view as! FavouriteScreenView
+    }
     var dataSource = [FavouriteWeatherCellModel]()
     
     override func loadView() {
         super.loadView()
         
-        self.view = customView
+        self.view = FavouriteScreenView()
     }
     
     override func viewDidLoad() {
@@ -30,17 +39,17 @@ class FavouriteViewController: UIViewController {
     }
     
     private func setup() {
-        customView.tableView.dataSource = self
-        customView.tableView.delegate = self
+        rootView.tableView.dataSource = self
+        rootView.tableView.delegate = self
         fetchData()
     }
     
     private func fetchData() {
-        repository.getData { result in
+        repository.getData { [weak self] result in
             switch result {
             case .success(let response):
-                self.dataSource = response
-                self.customView.tableView.reloadData()
+                self?.dataSource = response
+                self?.rootView.tableView.reloadData()
             case .failure:
                 print(Strings.FavouriteView.error)
             }
@@ -64,7 +73,6 @@ extension FavouriteViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let nextVC = DetailViewController()
-        
         let name: String
         name = dataSource[indexPath.row].city
         repository.getWeatherForCity(name: name) { result in
@@ -80,9 +88,9 @@ extension FavouriteViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
-        let actionDelete = UIContextualAction(style: .destructive, title: Strings.FavouriteView.delete) { _,_,_ in
-            self.repository.deleteFromDB(city: self.dataSource[indexPath.row].city)
-            self.dataSource.remove(at: indexPath.row)
+        let actionDelete = UIContextualAction(style: .destructive, title: Strings.FavouriteView.delete) { [weak self] _,_,_ in
+            self?.repository.deleteFromDB(city: (self?.dataSource[indexPath.row].city)!)
+            self?.dataSource.remove(at: indexPath.row)
             tableView.reloadData()
         }
         let actions = UISwipeActionsConfiguration(actions: [actionDelete])

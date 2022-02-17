@@ -14,9 +14,7 @@ protocol DBManager {
     
     func obtainData() -> [CityModel]
     
-    func removeObject(object: Object)
-    
-    func obtainDataFor(city: String) -> Results<CityModel>
+    func obtain(city: String) -> String
     
     func removeObjectFor(city: String)
 }
@@ -30,13 +28,7 @@ class DBManagerImpl: DBManager {
             mainRealm.add(data, update: .modified)
         }
     }
-    
-    func removeObject(object: Object) {
-        try! mainRealm.write {
-            mainRealm.delete(object)
-        }
-    }
-    
+        
     func removeObjectFor(city: String) {
         let model = Array(mainRealm.objects(CityModel.self).filter("city == %@", city))
         guard let model = model.first else { return }
@@ -46,9 +38,12 @@ class DBManagerImpl: DBManager {
         }
     }
     
-    func obtainDataFor(city: String) -> Results<CityModel> {
-        let model = mainRealm.objects(CityModel.self).filter("city == %@", city)
-        return model
+    func obtain(city: String) -> String {
+        let model = Array(mainRealm.objects(CityModel.self).filter("city == %@", city))
+        let firstModel = model.first
+        guard let firstModel = firstModel else { return ""}
+        let cityFromDB = firstModel.city
+        return cityFromDB
     }
     
     func obtainData() -> [CityModel] {

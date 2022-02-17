@@ -7,11 +7,15 @@
 
 import Foundation
 
+protocol FavouritePresenterProtocol {
+    
+}
+
 class FavouritePresenter {
 
-    weak var view: FavouriteViewController!
+    weak var view: FavouriteViewProtocol?
 
-    init(view: FavouriteViewController) {
+    init(view: FavouriteViewProtocol) {
         self.view = view
 
     }

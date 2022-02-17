@@ -19,6 +19,14 @@ class DetailCityRepositoriy {
         dbManager.save(data: dataModel)
     }
     
+    func obtainFor(city: String) -> String {
+        dbManager.obtain(city: city)
+    }
+    
+    func deleteFromDB(city: String) {
+        dbManager.removeObjectFor(city: city)
+    }
+    
     func getWeatherForCity(lat: String, lon: String, completion: @escaping (Result< MoreWeatherData,Error>) -> Void) {
         networkEngine.request(endpoint: OneCallEndpoint.getCurrenWeather(lat: lat, lon: lon, exclude: "current,minutely,alerts"), completion: completion)
     }

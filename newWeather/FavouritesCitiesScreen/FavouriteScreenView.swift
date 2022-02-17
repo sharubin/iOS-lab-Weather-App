@@ -22,6 +22,7 @@ class FavouriteScreenView: UIView {
         $0.isScrollEnabled = false
         $0.register(FavouriteTableViewCell.self, forCellReuseIdentifier: FavouriteTableViewCell.identifier)
         $0.layer.cornerRadius = 20
+        $0.backgroundColor = .clear
     }
     
     let scrollView = UIScrollView()
@@ -61,14 +62,14 @@ class FavouriteScreenView: UIView {
         
         headingLabel.snp.makeConstraints {
             $0.top.equalToSuperview()
-            $0.width.equalToSuperview()
+            $0.leading.trailing.equalToSuperview().inset(16)
         }
         
         tableView.snp.makeConstraints {
             $0.top.equalTo(headingLabel.snp.bottom).offset(10)
             $0.leading.trailing.equalToSuperview().inset(16)
             $0.bottom.equalToSuperview()
-            $0.height.equalTo(500)
+            $0.height.equalTo(2000)
         }
     }
     
