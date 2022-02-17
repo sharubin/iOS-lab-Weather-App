@@ -7,7 +7,7 @@
 
 protocol DetailRepositoryProtocol {
     
-    func saveFavourite(dataModel: CityModel)
+    func saveFavourite(dataModel: WeatherData)
     
     func obtainFor(city: String) -> String
         
@@ -29,7 +29,8 @@ class DetailCityRepository: DetailRepositoryProtocol {
         self.dbManager = dbManager
     }
     
-    func saveFavourite(dataModel: CityModel) {
+    func saveFavourite(dataModel: WeatherData) {
+        let dataModel = CityModel(weather: dataModel)
         dbManager.save(data: dataModel)
     }
     

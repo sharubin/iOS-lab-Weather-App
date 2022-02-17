@@ -21,6 +21,8 @@
 		EB7D8E3A27A7E037004B33F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB7D8E3827A7E037004B33F1 /* LaunchScreen.storyboard */; };
 		EB7D8E4627A81BE9004B33F1 /* CityScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7D8E4527A81BE9004B33F1 /* CityScreenView.swift */; };
 		EB7D8E4827A82DD3004B33F1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7D8E4727A82DD3004B33F1 /* DetailViewController.swift */; };
+		EBC61A5F27BEA8DD003729BA /* FavoriteControllerDelegateDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC61A5E27BEA8DD003729BA /* FavoriteControllerDelegateDataSource.swift */; };
+		EBC61A6127BEB072003729BA /* DetailControllerDelegateDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC61A6027BEB072003729BA /* DetailControllerDelegateDataSource.swift */; };
 		EBD1F77027A844F30030B5F0 /* DetailScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD1F76F27A844F30030B5F0 /* DetailScreenView.swift */; };
 		EBD1F77427A88A9D0030B5F0 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD1F77327A88A9D0030B5F0 /* WeatherData.swift */; };
 		EBD1F77627A894290030B5F0 /* MoreWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD1F77527A894290030B5F0 /* MoreWeatherData.swift */; };
@@ -56,6 +58,8 @@
 		EB7D8E3B27A7E037004B33F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB7D8E4527A81BE9004B33F1 /* CityScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityScreenView.swift; sourceTree = "<group>"; };
 		EB7D8E4727A82DD3004B33F1 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		EBC61A5E27BEA8DD003729BA /* FavoriteControllerDelegateDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteControllerDelegateDataSource.swift; sourceTree = "<group>"; };
+		EBC61A6027BEB072003729BA /* DetailControllerDelegateDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailControllerDelegateDataSource.swift; sourceTree = "<group>"; };
 		EBD1F76F27A844F30030B5F0 /* DetailScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScreenView.swift; sourceTree = "<group>"; };
 		EBD1F77327A88A9D0030B5F0 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		EBD1F77527A894290030B5F0 /* MoreWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreWeatherData.swift; sourceTree = "<group>"; };
@@ -164,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				EB3B720227B66ECA0009556E /* FavouriteViewController.swift */,
+				EBC61A5E27BEA8DD003729BA /* FavoriteControllerDelegateDataSource.swift */,
 				EB3B720027B66EA00009556E /* FavouriteScreenView.swift */,
 				EB3B720427B678320009556E /* FavouriteTableViewCell.swift */,
 			);
@@ -184,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				EB7D8E4727A82DD3004B33F1 /* DetailViewController.swift */,
+				EBC61A6027BEB072003729BA /* DetailControllerDelegateDataSource.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -403,11 +409,13 @@
 				EBD1F78B27B1722B0030B5F0 /* DetailCityRepository.swift in Sources */,
 				EB3B720E27B803BE0009556E /* DBManager.swift in Sources */,
 				EBD1F77027A844F30030B5F0 /* DetailScreenView.swift in Sources */,
+				EBC61A6127BEB072003729BA /* DetailControllerDelegateDataSource.swift in Sources */,
 				EB7D8E4827A82DD3004B33F1 /* DetailViewController.swift in Sources */,
 				EBD1F77627A894290030B5F0 /* MoreWeatherData.swift in Sources */,
 				EBD1F78327AD39070030B5F0 /* CurrentEndpoint.swift in Sources */,
 				EBD1F77427A88A9D0030B5F0 /* WeatherData.swift in Sources */,
 				EB7D8E4627A81BE9004B33F1 /* CityScreenView.swift in Sources */,
+				EBC61A5F27BEA8DD003729BA /* FavoriteControllerDelegateDataSource.swift in Sources */,
 				EB3B720127B66EA00009556E /* FavouriteScreenView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

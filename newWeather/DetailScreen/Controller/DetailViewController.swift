@@ -12,10 +12,11 @@ class DetailViewController: UIViewController {
     var rootView: DetailScreenView {
         self.view as! DetailScreenView
     }
-    private let repository = DetailCityRepository()
+    
+    private let repository: DetailRepositoryProtocol = DetailCityRepository()
     var weather: WeatherData!
-    private var dailyModels = [Daily]()
-    private var hourlyModels = [Hourly]()
+    var dailyModels = [Daily]()
+    var hourlyModels = [Hourly]()
     
     override func loadView() {
         super.loadView()
@@ -67,12 +68,12 @@ class DetailViewController: UIViewController {
     private func check() {
         
         if repository.check(name: weather.name) {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "remove Fv",
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: Strings.DetailView.removeFv,
                                                                 style: .plain,
                                                                 target: self,
                                                                 action: #selector(updateFavourite))
         } else {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "add Fv",
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: Strings.DetailView.addFv,
                                                                 style: .plain,
                                                                 target: self,
                                                                 action: #selector(updateFavourite))
@@ -82,40 +83,11 @@ class DetailViewController: UIViewController {
     @objc private func updateFavourite() {
         if repository.check(name: weather.name) {
             repository.deleteFromDB(city: weather.name)
-            navigationItem.rightBarButtonItem?.title = "add Fv"
+            navigationItem.rightBarButtonItem?.title = Strings.DetailView.addFv
         } else {
-            let model = CityModel(weather: weather)
-            repository.saveFavourite(dataModel: model)
-            navigationItem.rightBarButtonItem?.title = "remove Fv"
+            repository.saveFavourite(dataModel: weather)
+            navigationItem.rightBarButtonItem?.title = Strings.DetailView.removeFv
         }
     }
 }
 
-
-extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        hourlyModels.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HourlyCollectionViewCell.identifier, for: indexPath) as! HourlyCollectionViewCell
-        cell.updateHourly(weather: hourlyModels[indexPath.row])
-        
-        return cell
-    }
-}
-
-extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        dailyModels.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: DailyTableViewCell.identifier, for: indexPath) as! DailyTableViewCell
-        cell.updateDaily(weather: dailyModels[indexPath.row])
-        cell.backgroundColor = .clear
-        
-        return cell
-    }
-}

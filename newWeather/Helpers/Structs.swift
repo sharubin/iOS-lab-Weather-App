@@ -34,6 +34,8 @@ struct Strings {
         static let speedMS = "%.0f m/c"
         static let meters = "%.0d m"
         static let minMaxTemp = "min.: %.0f°, max.: %.0f°"
+        static let addFv = "add fv"
+        static let removeFv = "remove fv"
     }
     
     struct FavouriteView {
