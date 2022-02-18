@@ -35,13 +35,12 @@ extension FavouritePresenter: FavouritePresenterProtocol {
     }
     
     func pushTo(index: Int) {
-        let nextVC = DetailViewController()
         let name: String
         name = dataSource[index].city
         repository.getWeatherForCity(name: name) { [weak self] result in
             switch result {
             case .success(let response):
-                nextVC.weather = response
+                let nextVC = DetailViewController(weather: response)
                 self?.view?.pushTo(controller: nextVC)
             case .failure(let error):
                 print(error)

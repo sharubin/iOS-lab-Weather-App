@@ -13,10 +13,20 @@ class DetailViewController: UIViewController {
         self.view as! DetailScreenView
     }
     
-    private let repository: DetailRepositoryProtocol = DetailCityRepository()
-    var weather: WeatherData!
     var dailyModels = [Daily]()
     var hourlyModels = [Hourly]()
+    private var repository: DetailRepositoryProtocol
+    var weather: WeatherData!
+    
+    init(repository: DetailRepositoryProtocol = DetailCityRepository(), weather: WeatherData) {
+        self.repository = repository
+        self.weather = weather
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func loadView() {
         super.loadView()

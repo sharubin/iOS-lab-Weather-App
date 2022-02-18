@@ -9,9 +9,18 @@ import UIKit
 
 class CityViewController: UIViewController {
     
-    private let repository: CityRepositoryProtocol = ChooseCityRepository()
+    private let repository: CityRepositoryProtocol
     var rootView: CityScreenView {
         self.view as! CityScreenView
+    }
+    
+    init(repository: CityRepositoryProtocol = ChooseCityRepository()) {
+        self.repository = repository
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func loadView() {
@@ -36,8 +45,7 @@ class CityViewController: UIViewController {
          repository.getWeatherForCity(name: text) { [weak self] result in
              switch result {
              case .success(let response):
-                 let vc = DetailViewController()
-                 vc.weather = response
+                 let vc = DetailViewController(weather: response)
                  self?.navigationController?.pushViewController(vc, animated: true)
              case .failure(let error):
                  print(error)
