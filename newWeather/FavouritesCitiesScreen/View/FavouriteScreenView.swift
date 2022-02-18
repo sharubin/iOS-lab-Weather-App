@@ -11,7 +11,7 @@ import SnapKit
 
 class FavouriteScreenView: UIView {
     
-    let headingLabel = UILabel().then {
+    private let headingLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = Strings.FavouriteView.header
         $0.font = Fonts.mainFontForDetailScreen
@@ -26,9 +26,9 @@ class FavouriteScreenView: UIView {
         $0.backgroundColor = .clear
     }
     
-    let scrollView = UIScrollView()
+    private let scrollView = UIScrollView()
     
-    let contentView = UIView()
+    private let contentView = UIView()
     
     private func setup() {
         addSubview(headingLabel)

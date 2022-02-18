@@ -16,7 +16,7 @@ protocol FavouriteViewProtocol: AnyObject {
 
 class FavouriteViewController: UIViewController {
     
-    var rootView: FavouriteScreenView {
+    private var rootView: FavouriteScreenView {
         self.view as! FavouriteScreenView
     }
     var presenter: FavouritePresenterProtocol!
@@ -46,7 +46,7 @@ class FavouriteViewController: UIViewController {
         setupNavigationBar()
     }
     
-    func setupNavigationBar() {
+    private func setupNavigationBar() {
         navigationController?.navigationBar.barTintColor = view.backgroundColor
         navigationController?.navigationBar.backIndicatorImage = UIImage(systemName: "arrow.backward.square")
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(systemName: "arrow.backward.square")

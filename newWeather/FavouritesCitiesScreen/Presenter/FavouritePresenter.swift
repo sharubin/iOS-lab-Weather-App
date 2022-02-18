@@ -15,9 +15,9 @@ protocol FavouritePresenterProtocol {
 
 class FavouritePresenter {
 
-    weak var view: FavouriteViewProtocol?
+    weak private var view: FavouriteViewProtocol?
     private let repository: FavouriteRepositoryProtocol
-    var dataSource = [FavouriteWeatherCellModel]()
+    private var dataSource = [FavouriteWeatherCellModel]()
     
     init(view: FavouriteViewProtocol, repository: FavouriteRepositoryProtocol = FavouriteCityRepository()) {
         self.view = view

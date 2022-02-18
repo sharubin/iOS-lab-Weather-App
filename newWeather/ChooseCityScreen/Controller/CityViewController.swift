@@ -10,7 +10,7 @@ import UIKit
 class CityViewController: UIViewController {
     
     private let repository: CityRepositoryProtocol
-    var rootView: CityScreenView {
+    private var rootView: CityScreenView {
         self.view as! CityScreenView
     }
     

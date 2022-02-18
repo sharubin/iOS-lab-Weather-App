@@ -13,22 +13,22 @@ class DailyTableViewCell: UITableViewCell {
     
     static let identifier = "DailyTableViewCell"
     
-    var dayLabel = UILabel().then {
+    private let dayLabel = UILabel().then {
         $0.textColor = Colors.whiteColor
         $0.font = Fonts.fontForDetailScreen
     }
     
-    var lowTempLabel = UILabel().then {
+    private let lowTempLabel = UILabel().then {
         $0.textColor = Colors.whiteColor
         $0.font = Fonts.lightFontForDaily
     }
     
-    var highTempLabel = UILabel().then {
+    private let highTempLabel = UILabel().then {
         $0.textColor = Colors.whiteColor
         $0.font = Fonts.boldFontForDaily
     }
     
-    var iconImageView = UIImageView()
+    private let iconImageView = UIImageView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -41,7 +41,7 @@ class DailyTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup() {
+    private func setup() {
         contentView.addSubview(dayLabel)
         contentView.addSubview(iconImageView)
         contentView.addSubview(lowTempLabel)

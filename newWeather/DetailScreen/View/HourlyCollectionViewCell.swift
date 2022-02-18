@@ -12,21 +12,21 @@ class HourlyCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "HourlyCollectionViewCell"
     
-    var iconImageView = UIImageView().then {
+    private let iconImageView = UIImageView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    var tempLabel = UILabel().then {
+    private let tempLabel = UILabel().then {
         $0.textColor = Colors.whiteColor
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    var timeLabel = UILabel().then {
+    private let timeLabel = UILabel().then {
         $0.textColor = Colors.whiteColor
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    let stack = UIStackView().then {
+    private let stack = UIStackView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .vertical
         $0.alignment = .fill

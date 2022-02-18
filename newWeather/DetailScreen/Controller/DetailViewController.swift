@@ -15,8 +15,8 @@ class DetailViewController: UIViewController {
     
     var dailyModels = [Daily]()
     var hourlyModels = [Hourly]()
-    private var repository: DetailRepositoryProtocol
-    var weather: WeatherData!
+    private let repository: DetailRepositoryProtocol
+    private var weather: WeatherData
     
     init(repository: DetailRepositoryProtocol = DetailCityRepository(), weather: WeatherData) {
         self.repository = repository

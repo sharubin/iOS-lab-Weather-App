@@ -13,28 +13,28 @@ class FavouriteTableViewCell: UITableViewCell {
     
     static let identifier = "FavouriteTableViewCell"
     
-    let citylabel = UILabel().then {
+    private let citylabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textColor = .black
         $0.font = Fonts.mainFontForDetailScreen
         $0.textColor = Colors.whiteColor
     }
     
-    let descriptionWeatherLabel = UILabel().then {
+    private let descriptionWeatherLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textColor = .black
         $0.font = Fonts.lightFontForDaily
         $0.textColor = Colors.whiteColor
     }
     
-    let tempLabel = UILabel().then {
+    private let tempLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textColor = .black
         $0.font = Fonts.mainFontForDetailScreen
         $0.textColor = Colors.whiteColor
     }
     
-    let minMaxTempLabel = UILabel().then {
+    private let minMaxTempLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textColor = .black
         $0.font = Fonts.lightFontForDaily
