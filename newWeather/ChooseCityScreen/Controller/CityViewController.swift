@@ -9,7 +9,7 @@ import UIKit
 
 class CityViewController: UIViewController {
     
-    private let repository = ChooseCityRepository()
+    private let repository: CityRepositoryProtocol = ChooseCityRepository()
     var rootView: CityScreenView {
         self.view as! CityScreenView
     }

@@ -41,6 +41,7 @@ class DetailViewController: UIViewController {
                 rootView.showMore()
             case .failure(let error):
                 print(error)
+                self.rootView.changeSpinnerStatus()
             }
         }
         rootView.downloadMoreButton.isHidden = true

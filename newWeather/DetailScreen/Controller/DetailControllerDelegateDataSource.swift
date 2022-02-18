@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension DetailViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         hourlyModels.count
@@ -21,7 +21,11 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
 }
 
-extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
+extension DetailViewController: UICollectionViewDelegate {
+    
+}
+
+extension DetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         dailyModels.count
     }
@@ -33,4 +37,8 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
+}
+
+extension DetailViewController: UITableViewDelegate {
+    
 }

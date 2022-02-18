@@ -28,7 +28,7 @@ class CityScreenView: UIView {
     }
     
     let toFavouriteButton = UIButton().then {
-        $0.setTitle("To Favourites", for: .normal)
+        $0.setTitle(Strings.CityView.buttonFavourite, for: .normal)
         $0.setTitleColor(.black, for: .normal)
         $0.backgroundColor = Colors.whiteColor
         $0.layer.cornerRadius = 10

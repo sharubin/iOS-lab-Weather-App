@@ -16,6 +16,7 @@ struct Strings {
         static let okString = "OK"
         static let emptyText = "Город не введен"
         static let noData = "Город введен не корректно, данные отсутсвуют"
+        static let buttonFavourite = "To Favourites"
     }
     
     struct DetailView {
