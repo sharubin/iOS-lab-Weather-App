@@ -6,15 +6,10 @@
 //
 
 protocol DetailRepositoryProtocol {
-    
     func saveFavourite(dataModel: WeatherData)
-    
     func obtainFor(city: String) -> String
-        
     func deleteFromDB(city: String)
-    
     func check(name: String) -> Bool
-    
     func getWeatherForCity(lat: String, lon: String, completion: @escaping (Result< MoreWeatherData,Error>) -> Void)
 }
 

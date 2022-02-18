@@ -25,6 +25,7 @@ class HourlyCollectionViewCell: UICollectionViewCell {
         $0.textColor = Colors.whiteColor
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
+    
     let stack = UIStackView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .vertical

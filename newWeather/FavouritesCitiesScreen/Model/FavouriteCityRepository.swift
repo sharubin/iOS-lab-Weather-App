@@ -10,11 +10,8 @@ import Foundation
 protocol FavouriteRepositoryProtocol {
     
     func getWeatherForCity(name: String, completion: @escaping (Result< WeatherData,Error>) -> Void)
-    
     func deleteFromDB(city: String)
-    
     func getData(completion: @escaping (Result< [FavouriteWeatherCellModel],Error>) -> Void)
-    
     func fetchUpdatedWeather(for cities:[String], completion: @escaping (Result< [FavouriteWeatherCellModel],Error>) -> Void )
 }
 

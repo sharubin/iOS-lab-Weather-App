@@ -23,7 +23,6 @@ class FavouritePresenter {
         self.view = view
         self.repository = repository
     }
-   
 }
 
 extension FavouritePresenter: FavouritePresenterProtocol {

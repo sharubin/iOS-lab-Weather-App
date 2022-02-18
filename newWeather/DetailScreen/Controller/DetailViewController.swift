@@ -77,7 +77,6 @@ class DetailViewController: UIViewController {
     }
     
     private func check() {
-        
         if repository.check(name: weather.name) {
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: Strings.DetailView.removeFv,
                                                                 style: .plain,
