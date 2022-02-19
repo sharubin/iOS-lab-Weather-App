@@ -5,8 +5,7 @@
 //  Created by Artsem Sharubin on 01.02.2022.
 //
 
-import Foundation
-import SwiftUI
+import UIKit
 import Kingfisher
 
 struct WeatherData: Codable {
@@ -50,9 +49,9 @@ struct WeatherData: Codable {
     public func getBackgroundColor() -> UIColor {
         switch weather.first!.id {
         case 200...499, 502...531, 701...781, 802...804, 600...622:
-            return UIColor(red: 119/255.0, green: 139/255.0, blue: 158/255.0, alpha: 1.0)
+            return Colors.badWeatherColor
         case 800...801, 500...501:
-            return UIColor(red: 59/255.0, green: 143/255.0, blue: 195/255.0, alpha: 1.0)
+            return Colors.goodWeatherColor
         default:
             return .white
         }
@@ -61,14 +60,13 @@ struct WeatherData: Codable {
     public func getCellsBackgroundColor() -> UIColor {
         switch weather.first!.id {
         case 200...499, 502...531, 701...781, 802...804, 600...622:
-            return UIColor(red: 86/255.0, green: 113/255.0, blue: 135/255.0, alpha: 1.0)
+            return Colors.badWeatherColorCells
         case 800...801, 500...501:
-            return UIColor(red: 26/255.0, green: 130/255.0, blue: 196/255.0, alpha: 1.0)
+            return Colors.goodWeatherColorCells
         default:
             return .white
         }
     }
-    
 }
 
 // MARK: - Coord

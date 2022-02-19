@@ -27,9 +27,18 @@ class CityScreenView: UIView {
         $0.setTitleColor(.black, for: .selected)
     }
     
+    let toFavouriteButton = UIButton().then {
+        $0.setTitle(Strings.CityView.buttonFavourite, for: .normal)
+        $0.setTitleColor(.black, for: .normal)
+        $0.backgroundColor = Colors.whiteColor
+        $0.layer.cornerRadius = 10
+        $0.tintColor = .blue
+        $0.setTitleColor(.black, for: .selected)
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        viewAddSubview()
+        setup()
         backgroundColor = Colors.goodWeatherColor
         setNeedsUpdateConstraints()
     }
@@ -38,9 +47,10 @@ class CityScreenView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func viewAddSubview() {
+    func setup() {
         addSubview(textField)
         addSubview(downloadButton)
+        addSubview(toFavouriteButton)
     }
     
     override func updateConstraints() {
@@ -48,7 +58,7 @@ class CityScreenView: UIView {
         
         textField.snp.makeConstraints {
             $0.height.equalTo(50)
-            $0.top.equalToSuperview().offset(100)
+            $0.top.equalToSuperview().offset(300)
             $0.right.equalToSuperview().inset(30)
             $0.left.equalToSuperview().offset(30)
         }
@@ -57,6 +67,12 @@ class CityScreenView: UIView {
             $0.height.equalTo(50)
             $0.top.equalTo(textField.snp.bottom).offset(50)
             $0.left.right.equalToSuperview().inset(120)
+        }
+        
+        toFavouriteButton.snp.makeConstraints {
+            $0.height.equalTo(30)
+            $0.top.equalToSuperview().offset(80)
+            $0.trailing.equalToSuperview().inset(16)
         }
     }
 }

@@ -5,7 +5,11 @@
 //  Created by Artsem Sharubin on 07.02.2022.
 //
 
-class ChooseCityRepositoriy {
+protocol CityRepositoryProtocol {
+    func getWeatherForCity(name: String, completion: @escaping (Result< WeatherData,Error>) -> Void)
+}
+
+class ChooseCityRepository: CityRepositoryProtocol {
     private let networkEngine: NetworkEngine
     
     init(networkEngine: NetworkEngine = NetworkEngine()) {

@@ -9,7 +9,6 @@ import Foundation
  
 // MARK: - MoreWeatherData
 struct MoreWeatherData: Codable {
-    
     let timezone: String
     let hourly: [Hourly]
     let daily: [Daily]
@@ -27,7 +26,6 @@ struct Hourly: Codable {
     
     public func getTimeForDate() -> String {
         let inputDate = Date(timeIntervalSince1970: Double(dt))
-        
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
         return formatter.string(from: inputDate)
@@ -52,7 +50,6 @@ struct Daily: Codable {
     
     public func getDayForDate() -> String {
         let inputDate = Date(timeIntervalSince1970: Double(dt))
-        
         let formatter = DateFormatter()
         formatter.dateFormat = "EEEE"
         return formatter.string(from: inputDate)

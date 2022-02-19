@@ -11,138 +11,138 @@ import SnapKit
 
 class DetailScreenView: UIView {
     
-    var cityLabel = UILabel().then {
+    private let cityLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textColor = Colors.whiteColor
         $0.textAlignment = .center
         $0.font = Fonts.mainFontForDetailScreen
     }
     
-    let temperatureLabel = UILabel().then {
+    private let temperatureLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textColor = Colors.whiteColor
         $0.textAlignment = .center
         $0.font = Fonts.mainFontForDetailScreen
     }
     
-    let iconImage = UIImageView().then {
+    private let iconImage = UIImageView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    let descriptionLabel = UILabel().then {
+    private let descriptionLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textColor = Colors.whiteColor
         $0.font = Fonts.mainFontForDetailScreen
     }
     
-    let maxTempLabel = UILabel().then {
+    private let maxTempLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textColor = Colors.whiteColor
         $0.font = Fonts.fontForDetailScreen
     }
     
-    let minTempLabel = UILabel().then {
+    private let minTempLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textColor = Colors.whiteColor
         $0.font = Fonts.fontForDetailScreen
     }
     
-    let feelsLikeLabel = UILabel().then {
+    private let feelsLikeLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textColor = Colors.whiteColor
         $0.font = Fonts.fontForDetailScreen
     }
     
-    let pressureLabel = UILabel().then {
+    private let pressureLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textColor = Colors.whiteColor
         $0.font = Fonts.fontForDetailScreen
     }
     
-    let humidityLabel = UILabel().then {
+    private let humidityLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textColor = Colors.whiteColor
         $0.font = Fonts.fontForDetailScreen
     }
     
-    let visibilityLabel = UILabel().then {
+    private let visibilityLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textColor = Colors.whiteColor
         $0.font = Fonts.fontForDetailScreen
     }
     
-    let windSpeedLabel = UILabel().then {
+    private let windSpeedLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textColor = Colors.whiteColor
         $0.font = Fonts.fontForDetailScreen
     }
     
-    let windDegreeLabel = UILabel().then {
+    private let windDegreeLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textColor = Colors.whiteColor
         $0.font = Fonts.fontForDetailScreen
     }
     
-    let textMinTemp = UILabel().then {
+    private let textMinTemp = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = Strings.DetailView.minTemp
         $0.font = Fonts.fontForDetailScreen
         $0.textColor = Colors.whiteColor
     }
     
-    let textMaxTemp = UILabel().then {
+    private let textMaxTemp = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = Strings.DetailView.maxTemp
         $0.font = Fonts.fontForDetailScreen
         $0.textColor = Colors.whiteColor
     }
     
-    let textFeels = UILabel().then {
+    private let textFeels = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = Strings.DetailView.feelsLike
         $0.font = Fonts.fontForDetailScreen
         $0.textColor = Colors.whiteColor
     }
-    let textPressure = UILabel().then {
+    private let textPressure = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = Strings.DetailView.pressure
         $0.font = Fonts.fontForDetailScreen
         $0.textColor = Colors.whiteColor
     }
     
-    let textHumidity = UILabel().then {
+    private let textHumidity = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = Strings.DetailView.humidity
         $0.font = Fonts.fontForDetailScreen
         $0.textColor = Colors.whiteColor
     }
     
-    let textVisibility = UILabel().then {
+    private let textVisibility = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = Strings.DetailView.visibility
         $0.font = Fonts.fontForDetailScreen
         $0.textColor = Colors.whiteColor
     }
     
-    let textSpeed = UILabel().then {
+    private let textSpeed = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = Strings.DetailView.windSpeed
         $0.font = Fonts.fontForDetailScreen
         $0.textColor = Colors.whiteColor
     }
     
-    let textDegree = UILabel().then {
+    private let textDegree = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = Strings.DetailView.windDirection
         $0.font = Fonts.fontForDetailScreen
         $0.textColor = Colors.whiteColor
     }
     
-    let scrollView = UIScrollView()
+    private let scrollView = UIScrollView()
     
-    let view = UIView()
+    private let view = UIView()
     
-    let fullStack = UIStackView().then {
+    private let fullStack = UIStackView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .vertical
         $0.alignment = .fill
@@ -150,7 +150,7 @@ class DetailScreenView: UIView {
         $0.spacing = 10
     }
     
-    let topStack = UIStackView().then {
+    private let topStack = UIStackView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .vertical
         $0.alignment = .center
@@ -158,7 +158,7 @@ class DetailScreenView: UIView {
         $0.spacing = 10
     }
     
-    let bottomStack = UIStackView().then {
+    private let bottomStack = UIStackView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .horizontal
         $0.alignment = .center
@@ -166,7 +166,7 @@ class DetailScreenView: UIView {
         $0.spacing = 10
     }
     
-    let rightBottomStack = UIStackView().then {
+    private let rightBottomStack = UIStackView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .vertical
         $0.alignment = .fill
@@ -174,7 +174,7 @@ class DetailScreenView: UIView {
         $0.spacing = 10
     }
     
-    let leftBottomStack = UIStackView().then {
+    private let leftBottomStack = UIStackView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .vertical
         $0.alignment = .fill
@@ -190,13 +190,13 @@ class DetailScreenView: UIView {
         $0.layer.cornerRadius = 10
     }
     
-    let spinner = UIActivityIndicatorView().then {
+    private let spinner = UIActivityIndicatorView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.isHidden = true
         $0.color = Colors.whiteColor
     }
     
-    let hourlyCollectionViewFlowLayout = UICollectionViewFlowLayout().with {
+    private let hourlyCollectionViewFlowLayout = UICollectionViewFlowLayout().with {
         $0.scrollDirection = .horizontal
         $0.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         $0.minimumInteritemSpacing = 16
@@ -221,7 +221,7 @@ class DetailScreenView: UIView {
         $0.layer.cornerRadius = 20
     }
     
-    func viewAddSubview() {
+    private func setup() {
         addSubview(scrollView)
         scrollView.addSubview(view)
         view.addSubview(fullStack)
@@ -299,7 +299,8 @@ class DetailScreenView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        viewAddSubview()
+        
+        setup()
         setNeedsUpdateConstraints()
     }
     
@@ -309,6 +310,7 @@ class DetailScreenView: UIView {
     
     override func updateConstraints() {
         super.updateConstraints()
+        
         scrollView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
