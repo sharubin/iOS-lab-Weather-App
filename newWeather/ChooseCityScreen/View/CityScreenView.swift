@@ -36,6 +36,15 @@ class CityScreenView: UIView {
         $0.setTitleColor(.black, for: .selected)
     }
     
+    let toMapButton = UIButton().then {
+        $0.setTitle(Strings.CityView.toMapButton, for: .normal)
+        $0.setTitleColor(.black, for: .normal)
+        $0.backgroundColor = Colors.whiteColor
+        $0.layer.cornerRadius = 10
+        $0.tintColor = .blue
+        $0.setTitleColor(.black, for: .selected)
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -51,6 +60,7 @@ class CityScreenView: UIView {
         addSubview(textField)
         addSubview(downloadButton)
         addSubview(toFavouriteButton)
+        addSubview(toMapButton)
     }
     
     override func updateConstraints() {
@@ -72,6 +82,12 @@ class CityScreenView: UIView {
         toFavouriteButton.snp.makeConstraints {
             $0.height.equalTo(30)
             $0.top.equalToSuperview().offset(80)
+            $0.trailing.equalToSuperview().inset(16)
+        }
+        
+        toMapButton.snp.makeConstraints {
+            $0.height.equalTo(30)
+            $0.top.equalTo(toFavouriteButton.snp.bottom).offset(10)
             $0.trailing.equalToSuperview().inset(16)
         }
     }

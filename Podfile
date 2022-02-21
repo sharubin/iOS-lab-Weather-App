@@ -11,6 +11,7 @@ target 'newWeather' do
   pod 'SnapKit'
   pod 'Kingfisher'
   pod 'RealmSwift'
+  pod 'GoogleMaps'
 
 
 

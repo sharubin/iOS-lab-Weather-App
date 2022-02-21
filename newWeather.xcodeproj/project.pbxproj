@@ -35,6 +35,10 @@
 		EBD1F78927B14AD10030B5F0 /* ChooseCityRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD1F78827B14AD10030B5F0 /* ChooseCityRepository.swift */; };
 		EBD1F78B27B1722B0030B5F0 /* DetailCityRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD1F78A27B1722B0030B5F0 /* DetailCityRepository.swift */; };
 		EBD1F78D27B3C12D0030B5F0 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD1F78C27B3C12B0030B5F0 /* Structs.swift */; };
+		EBDFFE1F27C177A8005758BF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDFFE1E27C177A8005758BF /* MapViewController.swift */; };
+		EBDFFE2127C39600005758BF /* CurrentCoordinateEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDFFE2027C39600005758BF /* CurrentCoordinateEndpoint.swift */; };
+		EBDFFE2327C397B7005758BF /* MapRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDFFE2227C397B7005758BF /* MapRepository.swift */; };
+		EBDFFE2827C39BBF005758BF /* MapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDFFE2727C39BBF005758BF /* MapPresenter.swift */; };
 		F906F3E58F1FEDADDB4EA1CE /* Pods_newWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EEC6755AD3225951014152E /* Pods_newWeather.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +76,10 @@
 		EBD1F78827B14AD10030B5F0 /* ChooseCityRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCityRepository.swift; sourceTree = "<group>"; };
 		EBD1F78A27B1722B0030B5F0 /* DetailCityRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCityRepository.swift; sourceTree = "<group>"; };
 		EBD1F78C27B3C12B0030B5F0 /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
+		EBDFFE1E27C177A8005758BF /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		EBDFFE2027C39600005758BF /* CurrentCoordinateEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentCoordinateEndpoint.swift; sourceTree = "<group>"; };
+		EBDFFE2227C397B7005758BF /* MapRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRepository.swift; sourceTree = "<group>"; };
+		EBDFFE2727C39BBF005758BF /* MapPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +147,7 @@
 				EBD1F77727A935320030B5F0 /* ChooseCityScreen */,
 				EBD1F77827A935480030B5F0 /* DetailScreen */,
 				EB3B71FF27B66E220009556E /* FavouritesCitiesScreen */,
+				EBC61A6227C15FEA003729BA /* MapScreen */,
 				EB7D8E4427A81B83004B33F1 /* Helpers */,
 				EB7D8E3B27A7E037004B33F1 /* Info.plist */,
 			);
@@ -238,6 +247,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		EBC61A6227C15FEA003729BA /* MapScreen */ = {
+			isa = PBXGroup;
+			children = (
+				EBDFFE2627C39B89005758BF /* Model */,
+				EBDFFE2527C39B7D005758BF /* View */,
+				EBDFFE2427C39B6F005758BF /* Presenter */,
+			);
+			path = MapScreen;
+			sourceTree = "<group>";
+		};
 		EBD1F77727A935320030B5F0 /* ChooseCityScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,9 +283,34 @@
 				EBD1F78027AD36FF0030B5F0 /* Endpoint.swift */,
 				EBD1F78227AD39070030B5F0 /* CurrentEndpoint.swift */,
 				EBD1F78627AD47A10030B5F0 /* OneCallEndpoint.swift */,
+				EBDFFE2027C39600005758BF /* CurrentCoordinateEndpoint.swift */,
 				EBD1F78427AD3D680030B5F0 /* NetworkEngine.swift */,
 			);
 			path = NetworkLayer;
+			sourceTree = "<group>";
+		};
+		EBDFFE2427C39B6F005758BF /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				EBDFFE2727C39BBF005758BF /* MapPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		EBDFFE2527C39B7D005758BF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EBDFFE1E27C177A8005758BF /* MapViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EBDFFE2627C39B89005758BF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EBDFFE2227C397B7005758BF /* MapRepository.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		F1D79AB9B0B050A7F967F8E0 /* Frameworks */ = {
@@ -289,6 +333,7 @@
 				EB7D8E2727A7E032004B33F1 /* Frameworks */,
 				EB7D8E2827A7E032004B33F1 /* Resources */,
 				68E997347D4E4E1B27CE2257 /* [CP] Embed Pods Frameworks */,
+				DE93D256834227CB4B9C0DE4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -384,6 +429,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-newWeather/Pods-newWeather-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		DE93D256834227CB4B9C0DE4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-newWeather/Pods-newWeather-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-newWeather/Pods-newWeather-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-newWeather/Pods-newWeather-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -408,11 +470,15 @@
 				EBD1F78727AD47A10030B5F0 /* OneCallEndpoint.swift in Sources */,
 				EBD1F78B27B1722B0030B5F0 /* DetailCityRepository.swift in Sources */,
 				EB3B720E27B803BE0009556E /* DBManager.swift in Sources */,
+				EBDFFE2827C39BBF005758BF /* MapPresenter.swift in Sources */,
+				EBDFFE2327C397B7005758BF /* MapRepository.swift in Sources */,
 				EBD1F77027A844F30030B5F0 /* DetailScreenView.swift in Sources */,
 				EBC61A6127BEB072003729BA /* DetailControllerDelegateDataSource.swift in Sources */,
 				EB7D8E4827A82DD3004B33F1 /* DetailViewController.swift in Sources */,
 				EBD1F77627A894290030B5F0 /* MoreWeatherData.swift in Sources */,
 				EBD1F78327AD39070030B5F0 /* CurrentEndpoint.swift in Sources */,
+				EBDFFE2127C39600005758BF /* CurrentCoordinateEndpoint.swift in Sources */,
+				EBDFFE1F27C177A8005758BF /* MapViewController.swift in Sources */,
 				EBD1F77427A88A9D0030B5F0 /* WeatherData.swift in Sources */,
 				EB7D8E4627A81BE9004B33F1 /* CityScreenView.swift in Sources */,
 				EBC61A5F27BEA8DD003729BA /* FavoriteControllerDelegateDataSource.swift in Sources */,
