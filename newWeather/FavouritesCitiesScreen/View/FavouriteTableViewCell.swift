@@ -81,7 +81,7 @@ class FavouriteTableViewCell: UITableViewCell {
         
         tempLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(10)
-            $0.trailing.equalToSuperview().offset(10)
+            $0.trailing.equalToSuperview().inset(10)
         }
         
         descriptionWeatherLabel.snp.makeConstraints {
@@ -91,7 +91,7 @@ class FavouriteTableViewCell: UITableViewCell {
         
         minMaxTempLabel.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(10)
-            $0.trailing.equalToSuperview().offset(16)
+            $0.trailing.equalToSuperview().inset(10)
         }
     }
 }
