@@ -20,6 +20,9 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         
         presenter = MapPresenter(view: self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         setup()
     }
     
@@ -30,7 +33,16 @@ class MapViewController: UIViewController {
         let mapView = GMSMapView.map(withFrame: self.view.frame, camera: camera)
         self.view.addSubview(mapView)
         mapView.delegate = self
+        
+        let array = presenter.obtainCities()
+        for model in array {
+            let marker = GMSMarker()
+            marker.position = CLLocationCoordinate2D(latitude: model.lat, longitude: model.lon)
+            marker.title = "\(model.city)"
+            marker.map = mapView
+        }
     }
+    
 }
 
 extension MapViewController: GMSMapViewDelegate {

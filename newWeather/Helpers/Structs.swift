@@ -41,8 +41,8 @@ struct Strings {
     }
     
     struct FavouriteView {
-        static let header = "Избранные города"
-        static let delete = "Удалить"
+        static let header = "Favourite cities"
+        static let delete = "Delete"
         static let error = "print error"
     }
 }

@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import GoogleMaps
 
 protocol MapPresenterProtocol {
     func getWeather(lat: String, lon: String)
+    func obtainCities() -> [CityModel] 
 }
 
 class MapPresenter {
@@ -36,4 +38,7 @@ extension MapPresenter: MapPresenterProtocol {
         }
     }
     
+    func obtainCities() -> [CityModel] {
+        repository.obtainCities()
+    }
 }
