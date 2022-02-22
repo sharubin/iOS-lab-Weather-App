@@ -66,4 +66,3 @@ struct Keys {
     static let googleKey = "AIzaSyCs7j4Ngv12hif30OndDfzpmqCKXkYDsAY"
     static let apiKey = "b0809fedc7ea832cdc5cc0f793119331"
 }
-
