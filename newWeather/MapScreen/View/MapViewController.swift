@@ -27,7 +27,7 @@ class MapViewController: UIViewController {
     }
     
     private func setup() {
-        GMSServices.provideAPIKey("AIzaSyCs7j4Ngv12hif30OndDfzpmqCKXkYDsAY")
+        GMSServices.provideAPIKey(Keys.googleKey)
         
         let camera = GMSCameraPosition.camera(withLatitude: 53.91, longitude: 30.32, zoom: 5.0)
         let mapView = GMSMapView.map(withFrame: self.view.frame, camera: camera)

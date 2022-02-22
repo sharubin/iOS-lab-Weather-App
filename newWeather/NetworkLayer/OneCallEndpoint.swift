@@ -33,7 +33,7 @@ enum OneCallEndpoint: Endpoint {
     }
     
     var parameters: [URLQueryItem] {
-        let apiKey = "b0809fedc7ea832cdc5cc0f793119331"
+        let apiKey = Keys.apiKey
         let units = "metric"
         
         switch self {
