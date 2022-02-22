@@ -10,10 +10,12 @@ import GoogleMaps
 
 protocol MapViewProtocol: AnyObject {
     func pushTo(controller: UIViewController)
+    func setData(data: [Marker])
 }
 
 class MapViewController: UIViewController {
      
+    var arrayMarker = [Marker]()
     var presenter: MapPresenterProtocol!
     
     override func viewDidLoad() {
@@ -34,11 +36,11 @@ class MapViewController: UIViewController {
         self.view.addSubview(mapView)
         mapView.delegate = self
         
-        let array = presenter.obtainCities()
-        for model in array {
+        for model in arrayMarker {
             let marker = GMSMarker()
             marker.position = CLLocationCoordinate2D(latitude: model.lat, longitude: model.lon)
-            marker.title = "\(model.city)"
+            marker.title = "\(model.name)"
+            marker.snippet = String(format: Strings.MapView.minMaxTemp, model.minTemp, model.maxTemp)
             marker.map = mapView
         }
     }
@@ -55,5 +57,10 @@ extension MapViewController: GMSMapViewDelegate {
 extension MapViewController: MapViewProtocol {
     func pushTo(controller: UIViewController) {
         navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func setData(data: [Marker]) {
+        arrayMarker = data
+//        rootView.tableView.reloadData()
     }
 }

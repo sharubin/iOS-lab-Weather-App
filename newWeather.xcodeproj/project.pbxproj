@@ -39,6 +39,7 @@
 		EBDFFE2127C39600005758BF /* CurrentCoordinateEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDFFE2027C39600005758BF /* CurrentCoordinateEndpoint.swift */; };
 		EBDFFE2327C397B7005758BF /* MapRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDFFE2227C397B7005758BF /* MapRepository.swift */; };
 		EBDFFE2827C39BBF005758BF /* MapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDFFE2727C39BBF005758BF /* MapPresenter.swift */; };
+		EBDFFE2A27C4F8ED005758BF /* Marker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDFFE2927C4F8ED005758BF /* Marker.swift */; };
 		F906F3E58F1FEDADDB4EA1CE /* Pods_newWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EEC6755AD3225951014152E /* Pods_newWeather.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +81,7 @@
 		EBDFFE2027C39600005758BF /* CurrentCoordinateEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentCoordinateEndpoint.swift; sourceTree = "<group>"; };
 		EBDFFE2227C397B7005758BF /* MapRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRepository.swift; sourceTree = "<group>"; };
 		EBDFFE2727C39BBF005758BF /* MapPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresenter.swift; sourceTree = "<group>"; };
+		EBDFFE2927C4F8ED005758BF /* Marker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -309,6 +311,7 @@
 			isa = PBXGroup;
 			children = (
 				EBDFFE2227C397B7005758BF /* MapRepository.swift */,
+				EBDFFE2927C4F8ED005758BF /* Marker.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -460,6 +463,7 @@
 				EB7D8E3227A7E032004B33F1 /* CityViewController.swift in Sources */,
 				EB3B720527B678320009556E /* FavouriteTableViewCell.swift in Sources */,
 				EBD1F78527AD3D680030B5F0 /* NetworkEngine.swift in Sources */,
+				EBDFFE2A27C4F8ED005758BF /* Marker.swift in Sources */,
 				EB5B62C427BA4B1D00BC4788 /* FavouritePresenter.swift in Sources */,
 				EB3B720327B66ECA0009556E /* FavouriteViewController.swift in Sources */,
 				EBD1F77C27AACF3B0030B5F0 /* HourlyCollectionViewCell.swift in Sources */,

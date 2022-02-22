@@ -45,6 +45,10 @@ struct Strings {
         static let delete = "Delete"
         static let error = "print error"
     }
+    
+    struct MapView {
+        static let minMaxTemp = "min.: %.0f°, max.: %.0f°"
+    }
 }
 
 struct Colors {

@@ -10,7 +10,7 @@ import GoogleMaps
 
 protocol MapPresenterProtocol {
     func getWeather(lat: String, lon: String)
-    func obtainCities() -> [CityModel] 
+    func obtainCities()
 }
 
 class MapPresenter {
@@ -21,6 +21,7 @@ class MapPresenter {
     init(view: MapViewProtocol, repository: MapRepositoryProtocol = MapRepository()) {
         self.view = view
         self.repository = repository
+        obtainCities()
     }
 }
 
@@ -38,7 +39,13 @@ extension MapPresenter: MapPresenterProtocol {
         }
     }
     
-    func obtainCities() -> [CityModel] {
-        repository.obtainCities()
+    func obtainCities() {
+        let arrayOfCityModel = repository.obtainCities()
+        var arrayOfMarkers = [Marker]()
+        for i in arrayOfCityModel{
+        let marker = Marker(data: i)
+            arrayOfMarkers.append(marker)
+        }
+        self.view?.setData(data: arrayOfMarkers)
     }
 }
