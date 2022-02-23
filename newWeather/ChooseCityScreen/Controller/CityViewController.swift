@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import CoreLocation
 
 class CityViewController: UIViewController {
     
+    let managerLocation = CLLocationManager()
     private let repository: CityRepositoryProtocol
     private var rootView: CityScreenView {
         self.view as! CityScreenView
@@ -33,6 +35,7 @@ class CityViewController: UIViewController {
         super.viewDidLoad()
         
         setup()
+        managerLocation.requestWhenInUseAuthorization()
     }
     
      @objc private func buttonTapped() {

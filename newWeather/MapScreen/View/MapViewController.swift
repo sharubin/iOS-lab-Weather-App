@@ -7,6 +7,8 @@
 
 import UIKit
 import GoogleMaps
+import CoreLocation
+
 
 protocol MapViewProtocol: AnyObject {
     func pushTo(controller: UIViewController)
@@ -14,9 +16,22 @@ protocol MapViewProtocol: AnyObject {
 }
 
 class MapViewController: UIViewController {
-     
+    
+    var rootView: MapView {
+        self.view as! MapView
+    }
+    let managerLocation = CLLocationManager()
     var arrayMarker = [Marker]()
     var presenter: MapPresenterProtocol!
+    var mapView: GMSMapView {
+        rootView.mapView
+    }
+    
+    override func loadView() {
+        super.loadView()
+        
+        self.view = MapView()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,17 +40,19 @@ class MapViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         setup()
     }
     
     private func setup() {
-        GMSServices.provideAPIKey(Keys.googleKey)
-        
-        let camera = GMSCameraPosition.camera(withLatitude: 53.91, longitude: 30.32, zoom: 5.0)
-        let mapView = GMSMapView.map(withFrame: self.view.frame, camera: camera)
-        self.view.addSubview(mapView)
-        mapView.delegate = self
-        
+        setupCurrentLocation()
+        setupGoogleMap()
+        rootView.ToMyLocationButton.addTarget(self, action: #selector(goToMyLocation), for: .touchUpInside)
+        putMarkersOnMap()
+    }
+    
+    private func putMarkersOnMap() {
         for model in arrayMarker {
             let marker = GMSMarker()
             marker.position = CLLocationCoordinate2D(latitude: model.lat, longitude: model.lon)
@@ -45,6 +62,26 @@ class MapViewController: UIViewController {
         }
     }
     
+    private func setupCurrentLocation() {
+        managerLocation.delegate = self
+        managerLocation.startUpdatingLocation()
+    }
+    
+    private func setupGoogleMap() {
+        mapView.delegate = self
+        mapView.isMyLocationEnabled = true
+    }
+    
+}
+
+extension MapViewController: CLLocationManagerDelegate {
+    
+    @objc func goToMyLocation() {
+        guard let lat = mapView.myLocation?.coordinate.latitude,
+              let lon = mapView.myLocation?.coordinate.longitude else { return }
+        let camera = GMSCameraPosition.camera(withLatitude: lat ,longitude: lon , zoom: 12)
+        mapView.animate(to: camera)
+    }
 }
 
 extension MapViewController: GMSMapViewDelegate {
@@ -61,6 +98,5 @@ extension MapViewController: MapViewProtocol {
     
     func setData(data: [Marker]) {
         arrayMarker = data
-//        rootView.tableView.reloadData()
     }
 }

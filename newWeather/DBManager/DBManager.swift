@@ -9,13 +9,9 @@ import Foundation
 import RealmSwift
 
 protocol DBManager {
-    
     func save(data: CityModel)
-    
     func obtainCities() -> [CityModel]
-    
     func obtain(city: String) -> String
-    
     func removeCity(city: String)
 }
 

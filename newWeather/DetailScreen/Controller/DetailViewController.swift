@@ -42,16 +42,16 @@ class DetailViewController: UIViewController {
     
     @objc private func buttonTapped() {
         rootView.changeSpinnerStatus()
-        repository.getWeatherForCity(lat: "\(weather.coord.lat)", lon: "\(weather.coord.lon)") { [self] result in
+        repository.getWeatherForCity(lat: "\(weather.coord.lat)", lon: "\(weather.coord.lon)") { [weak self] result in
             switch result {
             case .success(let response):
-                self.hourlyModels = response.hourly
-                self.dailyModels = response.daily
-                self.rootView.changeSpinnerStatus()
-                rootView.showMore()
+                self?.hourlyModels = response.hourly
+                self?.dailyModels = response.daily
+                self?.rootView.changeSpinnerStatus()
+                self?.rootView.showMore()
             case .failure(let error):
                 print(error)
-                self.rootView.changeSpinnerStatus()
+                self?.rootView.changeSpinnerStatus()
             }
         }
         rootView.downloadMoreButton.isHidden = true
