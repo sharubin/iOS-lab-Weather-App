@@ -44,7 +44,7 @@ class CityScreenView: UIView {
         $0.tintColor = .blue
         $0.setTitleColor(.black, for: .selected)
     }
-    
+  
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -61,6 +61,7 @@ class CityScreenView: UIView {
         addSubview(downloadButton)
         addSubview(toFavouriteButton)
         addSubview(toMapButton)
+
     }
     
     override func updateConstraints() {
@@ -90,5 +91,6 @@ class CityScreenView: UIView {
             $0.top.equalTo(toFavouriteButton.snp.bottom).offset(10)
             $0.trailing.equalToSuperview().inset(16)
         }
+
     }
 }
