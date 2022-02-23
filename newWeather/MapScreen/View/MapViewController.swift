@@ -50,6 +50,7 @@ class MapViewController: UIViewController {
         setupGoogleMap()
         rootView.ToMyLocationButton.addTarget(self, action: #selector(goToMyLocation), for: .touchUpInside)
         putMarkersOnMap()
+        setupNavigationBar()
     }
     
     private func putMarkersOnMap() {
@@ -72,6 +73,13 @@ class MapViewController: UIViewController {
         mapView.isMyLocationEnabled = true
     }
     
+    private func setupNavigationBar() {
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.barTintColor = .black
+        navigationController?.navigationBar.backIndicatorImage = UIImage(systemName: "arrow.backward.square")
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(systemName: "arrow.backward.square")
+        navigationController?.navigationBar.tintColor = Colors.whiteColor
+    }
 }
 
 extension MapViewController: CLLocationManagerDelegate {

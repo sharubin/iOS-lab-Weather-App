@@ -11,7 +11,7 @@ import GoogleMaps
 class MapView: UIView {
     
     let ToMyLocationButton = UIButton().then {
-        $0.setImage(UIImage(systemName: "location.square.fill"), for: .normal)
+        $0.setBackgroundImage(UIImage(systemName: "location.square.fill"), for: .normal)
     }
     
     let mapView = GMSMapView().then {
@@ -42,13 +42,11 @@ class MapView: UIView {
             $0.edges.equalToSuperview()
         }
         
-//        let ToMyLocationButton = UIButton().then {
-//            $0.setImage(UIImage(systemName: "location.square.fill"), for: .normal)
-//        }
+
         ToMyLocationButton.snp.makeConstraints {
-            $0.width.height.equalTo(60)
-            $0.bottom.equalToSuperview().inset(30)
-            $0.trailing.equalToSuperview().inset(30)
+            $0.width.height.equalTo(45)
+            $0.bottom.equalToSuperview().inset(20)
+            $0.trailing.equalToSuperview().inset(20)
         }
     }
 }
