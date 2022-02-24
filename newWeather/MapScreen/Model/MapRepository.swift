@@ -40,9 +40,7 @@ class MapRepository: MapRepositoryProtocol {
     }
     
     func fetchUpdatedWeather(for cities: [CityModel]) {
-        let group = DispatchGroup()
         for city in cities {
-            group.enter()
             getWeatherForCoordinates(lat: String(city.lat), lon: String(city.lon)) { result in
                 switch result {
                 case .success(let data):
@@ -51,7 +49,6 @@ class MapRepository: MapRepositoryProtocol {
                 case .failure:
                     break
                 }
-                group.leave()
             }
         }
     }

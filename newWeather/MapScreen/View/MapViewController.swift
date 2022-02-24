@@ -9,7 +9,6 @@ import UIKit
 import GoogleMaps
 import CoreLocation
 
-
 protocol MapViewProtocol: AnyObject {
     func pushTo(controller: UIViewController)
     func setData(data: [Marker])
@@ -20,7 +19,6 @@ class MapViewController: UIViewController {
     var rootView: MapView {
         self.view as! MapView
     }
-    let managerLocation = CLLocationManager()
     var arrayMarker = [Marker]()
     var presenter: MapPresenterProtocol!
     var mapView: GMSMapView {
@@ -64,8 +62,8 @@ class MapViewController: UIViewController {
     }
     
     private func setupCurrentLocation() {
-        managerLocation.delegate = self
-        managerLocation.startUpdatingLocation()
+        presenter.managerLocation.delegate = self
+        presenter.managerLocation.startUpdatingLocation()
     }
     
     private func setupGoogleMap() {
@@ -74,21 +72,29 @@ class MapViewController: UIViewController {
     }
     
     private func setupNavigationBar() {
-        navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.barTintColor = .black
         navigationController?.navigationBar.backIndicatorImage = UIImage(systemName: "arrow.backward.square")
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(systemName: "arrow.backward.square")
         navigationController?.navigationBar.tintColor = Colors.whiteColor
     }
+    
+    private func createCustomMarker(lat: Double, lon: Double) {
+        let marker = GMSMarker()
+        marker.position = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+        marker.title = "MyLocation"
+        marker.icon = UIImage(named: "marker")
+        marker.map = mapView
+    }
+    
 }
 
 extension MapViewController: CLLocationManagerDelegate {
     
     @objc func goToMyLocation() {
-        guard let lat = mapView.myLocation?.coordinate.latitude,
-              let lon = mapView.myLocation?.coordinate.longitude else { return }
+        guard let lat = presenter.managerLocation.location?.coordinate.latitude,
+              let lon = presenter.managerLocation.location?.coordinate.longitude else { return }
         let camera = GMSCameraPosition.camera(withLatitude: lat ,longitude: lon , zoom: 12)
         mapView.animate(to: camera)
+        createCustomMarker(lat: lat, lon: lon)
     }
 }
 

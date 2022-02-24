@@ -7,16 +7,19 @@
 
 import Foundation
 import GoogleMaps
+import CoreLocation
 
 protocol MapPresenterProtocol {
     func getWeather(lat: String, lon: String)
     func obtainCities()
+    var managerLocation: CLLocationManager {get}
 }
 
 class MapPresenter {
 
     weak private var view: MapViewProtocol?
     private let repository: MapRepositoryProtocol
+    var managerLocation = CLLocationManager()
     
     init(view: MapViewProtocol, repository: MapRepositoryProtocol = MapRepository()) {
         self.view = view
@@ -49,3 +52,5 @@ extension MapPresenter: MapPresenterProtocol {
         self.view?.setData(data: arrayOfMarkers)
     }
 }
+
+

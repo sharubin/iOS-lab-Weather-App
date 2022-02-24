@@ -42,7 +42,6 @@ class MapView: UIView {
             $0.edges.equalToSuperview()
         }
         
-
         ToMyLocationButton.snp.makeConstraints {
             $0.width.height.equalTo(45)
             $0.bottom.equalToSuperview().inset(20)
