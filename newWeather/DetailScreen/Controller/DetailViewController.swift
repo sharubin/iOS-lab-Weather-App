@@ -73,6 +73,7 @@ class DetailViewController: UIViewController {
         navigationController?.navigationBar.backIndicatorImage = UIImage(systemName: "arrow.backward.square")
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(systemName: "arrow.backward.square")
         navigationController?.navigationBar.tintColor = Colors.whiteColor
+
         navigationItem.rightBarButtonItem?.tintColor = Colors.whiteColor
     }
     

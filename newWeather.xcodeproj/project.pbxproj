@@ -261,6 +261,7 @@
 			path = MapScreen;
 			sourceTree = "<group>";
 		};
+
 		EBD1F77727A935320030B5F0 /* ChooseCityScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -460,7 +461,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB3B721027B808EF0009556E /* FavouriteCityRepository.swift in Sources */,
+
 				EBDFFE2C27C61BF7005758BF /* MapView.swift in Sources */,
+
 				EB3B720B27B803310009556E /* CityModel.swift in Sources */,
 				EBD1F78D27B3C12D0030B5F0 /* Structs.swift in Sources */,
 				EBD1F77E27AB298D0030B5F0 /* DailyTableViewCell.swift in Sources */,
@@ -468,6 +471,7 @@
 				EB3B720527B678320009556E /* FavouriteTableViewCell.swift in Sources */,
 				EBD1F78527AD3D680030B5F0 /* NetworkEngine.swift in Sources */,
 				EBDFFE2A27C4F8ED005758BF /* Marker.swift in Sources */,
+
 				EB5B62C427BA4B1D00BC4788 /* FavouritePresenter.swift in Sources */,
 				EB3B720327B66ECA0009556E /* FavouriteViewController.swift in Sources */,
 				EBD1F77C27AACF3B0030B5F0 /* HourlyCollectionViewCell.swift in Sources */,
@@ -480,6 +484,7 @@
 				EB3B720E27B803BE0009556E /* DBManager.swift in Sources */,
 				EBDFFE2827C39BBF005758BF /* MapPresenter.swift in Sources */,
 				EBDFFE2327C397B7005758BF /* MapRepository.swift in Sources */,
+
 				EBD1F77027A844F30030B5F0 /* DetailScreenView.swift in Sources */,
 				EBC61A6127BEB072003729BA /* DetailControllerDelegateDataSource.swift in Sources */,
 				EB7D8E4827A82DD3004B33F1 /* DetailViewController.swift in Sources */,

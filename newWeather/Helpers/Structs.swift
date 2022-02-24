@@ -18,6 +18,7 @@ struct Strings {
         static let noData = "Город введен не корректно, данные отсутсвуют"
         static let buttonFavourite = "To Favourites"
         static let toMapButton = "To Map"
+
     }
     
     struct DetailView {
@@ -41,6 +42,7 @@ struct Strings {
     }
     
     struct FavouriteView {
+
         static let header = "Favourite cities"
         static let delete = "Delete"
         static let error = "print error"
