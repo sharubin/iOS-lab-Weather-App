@@ -12,6 +12,7 @@ import CoreLocation
 protocol MapViewProtocol: AnyObject {
     func pushTo(controller: UIViewController)
     func setData(data: [Marker])
+    func setCoordinate(coordinate: CLLocationCoordinate2D)
 }
 
 class MapViewController: UIViewController {
@@ -25,6 +26,7 @@ class MapViewController: UIViewController {
         rootView.mapView
     }
     var markers = [GMSMarker]()
+    var usersCoordinate: CLLocationCoordinate2D?
     
     override func loadView() {
         super.loadView()
@@ -54,6 +56,7 @@ class MapViewController: UIViewController {
     }
     
     func putMarkersOnMap() {
+        mapView.clear()
         for model in arrayMarker {
             let marker = GMSMarker()
             marker.position = CLLocationCoordinate2D(latitude: model.lat, longitude: model.lon)
@@ -62,6 +65,7 @@ class MapViewController: UIViewController {
             marker.map = mapView
             markers.append(marker)
         }
+        createCustomMarker()
     }
     
     private func setupCurrentLocation() {
@@ -78,11 +82,14 @@ class MapViewController: UIViewController {
         navigationController?.navigationBar.backIndicatorImage = UIImage(systemName: "arrow.backward.circle.fill")
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(systemName: "arrow.backward.circle.fill")
         navigationController?.navigationBar.backItem?.backButtonTitle = ""
-        navigationController?.navigationBar.tintColor = Colors.whiteColor
+        navigationController?.navigationBar.tintColor = .black
     }
     
-    private func createCustomMarker(lat: Double, lon: Double) {
+    private func createCustomMarker() {
         let marker = GMSMarker()
+        presenter.getCoordinates()
+        guard let lat = usersCoordinate?.latitude,
+              let lon = usersCoordinate?.longitude else { return }
         marker.position = CLLocationCoordinate2D(latitude: lat, longitude: lon)
         marker.title = "MyLocation"
         marker.icon = UIImage(named: "marker")
@@ -102,11 +109,11 @@ class MapViewController: UIViewController {
 extension MapViewController: CLLocationManagerDelegate {
     
     @objc func goToMyLocation() {
-        guard let lat = presenter.managerLocation.location?.coordinate.latitude,
-              let lon = presenter.managerLocation.location?.coordinate.longitude else { return }
-        let camera = GMSCameraPosition.camera(withLatitude: lat ,longitude: lon , zoom: 12)
+        presenter.getCoordinates()
+        guard let lat = usersCoordinate?.latitude,
+              let lon = usersCoordinate?.longitude else { return }
+        let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: lon , zoom: 12)
         mapView.animate(to: camera)
-        createCustomMarker(lat: lat, lon: lon)
     }
 }
 
@@ -124,5 +131,9 @@ extension MapViewController: MapViewProtocol {
     
     func setData(data: [Marker]) {
         arrayMarker = data
+    }
+    
+    func setCoordinate(coordinate: CLLocationCoordinate2D) {
+        self.usersCoordinate = coordinate
     }
 }

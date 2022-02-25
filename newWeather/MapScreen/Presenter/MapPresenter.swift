@@ -12,6 +12,7 @@ import CoreLocation
 protocol MapPresenterProtocol {
     func getWeather(lat: String, lon: String)
     func obtainCities()
+    func getCoordinates()
     var managerLocation: CLLocationManager {get}
 }
 
@@ -40,6 +41,12 @@ extension MapPresenter: MapPresenterProtocol {
                 print(error)
             }
         }
+    }
+    
+    func getCoordinates()  {
+        guard let lat = managerLocation.location?.coordinate.latitude,
+              let lon = managerLocation.location?.coordinate.longitude else { return }
+        self.view?.setCoordinate(coordinate: CLLocationCoordinate2D(latitude: lat, longitude: lon))
     }
     
     func obtainCities() {

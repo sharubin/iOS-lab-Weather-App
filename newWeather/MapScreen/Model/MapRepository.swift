@@ -27,6 +27,10 @@ class MapRepository: MapRepositoryProtocol {
         networkEngine.request(endpoint: CurrentCoordinateEndpoint.getCurrenWeather(lat: lat, lon: lon), completion: completion)
     }
     
+    func getWeatherForCity(city: String, completion: @escaping (Result< WeatherData,Error>) -> Void) {
+        networkEngine.request(endpoint: CurrentEndpoint.getCurrenWeather(city: city), completion: completion)
+    }
+    
     func obtainCities() -> [CityModel] {
        var dbArray = dbManager.obtainCities()
         fetchUpdatedWeather(for: dbArray)
@@ -41,10 +45,9 @@ class MapRepository: MapRepositoryProtocol {
     
     func fetchUpdatedWeather(for cities: [CityModel]) {
         for city in cities {
-            getWeatherForCoordinates(lat: String(city.lat), lon: String(city.lon)) { result in
+            getWeatherForCity(city: city.city) { result in
                 switch result {
                 case .success(let data):
-                    print("data loaded \(city.city)")
                     self.saveFavourite(dataModel: data)
                 case .failure:
                     break

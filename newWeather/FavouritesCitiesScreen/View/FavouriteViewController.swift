@@ -8,9 +8,7 @@
 import UIKit
 
 protocol FavouriteViewProtocol: AnyObject {
-    
     func setData(data: [FavouriteWeatherCellModel])
-    
     func pushTo(controller: UIViewController)
 }
 

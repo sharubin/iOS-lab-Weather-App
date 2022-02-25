@@ -38,7 +38,7 @@ class FavouriteScreenView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = .black
+        backgroundColor = .systemBrown
         setup()
         setNeedsUpdateConstraints()
     }
