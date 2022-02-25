@@ -24,6 +24,7 @@ class MapViewController: UIViewController {
     var mapView: GMSMapView {
         rootView.mapView
     }
+    var markers = [GMSMarker]()
     
     override func loadView() {
         super.loadView()
@@ -46,18 +47,20 @@ class MapViewController: UIViewController {
     private func setup() {
         setupCurrentLocation()
         setupGoogleMap()
-        rootView.ToMyLocationButton.addTarget(self, action: #selector(goToMyLocation), for: .touchUpInside)
+        rootView.toMyLocationButton.addTarget(self, action: #selector(goToMyLocation), for: .touchUpInside)
+        rootView.zoomForMarkersButton.addTarget(self, action: #selector(zoomForMarkers), for: .touchUpInside)
         putMarkersOnMap()
         setupNavigationBar()
     }
     
-    private func putMarkersOnMap() {
+    func putMarkersOnMap() {
         for model in arrayMarker {
             let marker = GMSMarker()
             marker.position = CLLocationCoordinate2D(latitude: model.lat, longitude: model.lon)
             marker.title = "\(model.name)"
             marker.snippet = String(format: Strings.MapView.minMaxTemp, model.minTemp, model.maxTemp)
             marker.map = mapView
+            markers.append(marker)
         }
     }
     
@@ -72,8 +75,9 @@ class MapViewController: UIViewController {
     }
     
     private func setupNavigationBar() {
-        navigationController?.navigationBar.backIndicatorImage = UIImage(systemName: "arrow.backward.square")
-        navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(systemName: "arrow.backward.square")
+        navigationController?.navigationBar.backIndicatorImage = UIImage(systemName: "arrow.backward.circle.fill")
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(systemName: "arrow.backward.circle.fill")
+        navigationController?.navigationBar.backItem?.backButtonTitle = ""
         navigationController?.navigationBar.tintColor = Colors.whiteColor
     }
     
@@ -83,6 +87,14 @@ class MapViewController: UIViewController {
         marker.title = "MyLocation"
         marker.icon = UIImage(named: "marker")
         marker.map = mapView
+    }
+    
+    @objc private func zoomForMarkers() {
+        var bounds = GMSCoordinateBounds()
+        for marker in markers {
+            bounds = bounds.includingCoordinate(marker.position)
+        }
+        mapView.animate(with: GMSCameraUpdate.fit(bounds, with: UIEdgeInsets(top: 50, left: 50, bottom: 50, right: 50)))
     }
     
 }

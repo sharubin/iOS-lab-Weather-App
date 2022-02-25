@@ -72,7 +72,6 @@ class CityViewController: UIViewController {
         rootView.downloadButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         rootView.toFavouriteButton.addTarget(self, action: #selector(buttonFavouriteTapped), for: .touchUpInside)
         rootView.toMapButton.addTarget(self, action: #selector(buttonMapTapped), for: .touchUpInside)
-
     }
     
     private func alertFieldIsEmpty() {
