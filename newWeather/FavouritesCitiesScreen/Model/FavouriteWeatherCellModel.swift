@@ -8,14 +8,13 @@
 import UIKit
 
 struct FavouriteWeatherCellModel {
-    
     let id: Int
     let city: String
     let description: String
     let temp: Double
     let minTemp: Double
     let maxTemp: Double
-    
+
     init(model: CityModel) {
         self.id = model.id
         self.city = model.city
@@ -24,7 +23,7 @@ struct FavouriteWeatherCellModel {
         self.minTemp = model.tempMin
         self.maxTemp = model.tempMax
     }
-    
+
     init(model: WeatherData) {
         self.id = model.weather[0].id
         self.city = model.name
@@ -33,7 +32,7 @@ struct FavouriteWeatherCellModel {
         self.minTemp = model.main.tempMin
         self.maxTemp = model.main.tempMax
     }
-    
+
     public func getBackgroundColor() -> UIColor {
         switch id {
         case 200...499, 502...531, 701...781, 802...804, 600...622:

@@ -8,34 +8,34 @@
 import Foundation
 
 enum CurrentCoordinateEndpoint: Endpoint {
-    
+
     case getCurrenWeather(lat: String, lon: String)
-    
+
     var scheme: String {
         switch self {
         default:
             return "https"
         }
     }
-    
+
     var baseURl: String {
         switch self {
         default:
             return "api.openweathermap.org"
         }
     }
-    
+
     var path: String {
         switch self {
         case .getCurrenWeather:
             return "/data/2.5/weather"
         }
     }
-    
+
     var parameters: [URLQueryItem] {
         let apiKey = Keys.apiKey
         let units = "metric"
-        
+
         switch self {
         case .getCurrenWeather(let lat, let lon):
             return [URLQueryItem(name: "lat", value: lat),
@@ -45,12 +45,11 @@ enum CurrentCoordinateEndpoint: Endpoint {
             ]
         }
     }
-    
+
     var method: String {
         switch self {
         case .getCurrenWeather:
             return "GET"
         }
     }
-    
 }

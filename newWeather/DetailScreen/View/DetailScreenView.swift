@@ -10,138 +10,139 @@ import Then
 import SnapKit
 
 class DetailScreenView: UIView {
-    
+
     private let cityLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textColor = Colors.whiteColor
         $0.textAlignment = .center
         $0.font = Fonts.mainFontForDetailScreen
     }
-    
+
     private let temperatureLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textColor = Colors.whiteColor
         $0.textAlignment = .center
         $0.font = Fonts.mainFontForDetailScreen
     }
-    
+
     private let iconImage = UIImageView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
-    
+
     private let descriptionLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textColor = Colors.whiteColor
         $0.font = Fonts.mainFontForDetailScreen
     }
-    
+
     private let maxTempLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textColor = Colors.whiteColor
         $0.font = Fonts.fontForDetailScreen
     }
-    
+
     private let minTempLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textColor = Colors.whiteColor
         $0.font = Fonts.fontForDetailScreen
     }
-    
+
     private let feelsLikeLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textColor = Colors.whiteColor
         $0.font = Fonts.fontForDetailScreen
     }
-    
+
     private let pressureLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textColor = Colors.whiteColor
         $0.font = Fonts.fontForDetailScreen
     }
-    
+
     private let humidityLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textColor = Colors.whiteColor
         $0.font = Fonts.fontForDetailScreen
     }
-    
+
     private let visibilityLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textColor = Colors.whiteColor
         $0.font = Fonts.fontForDetailScreen
     }
-    
+
     private let windSpeedLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textColor = Colors.whiteColor
         $0.font = Fonts.fontForDetailScreen
     }
-    
+
     private let windDegreeLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textColor = Colors.whiteColor
         $0.font = Fonts.fontForDetailScreen
     }
-    
+
     private let textMinTemp = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = Strings.DetailView.minTemp
         $0.font = Fonts.fontForDetailScreen
         $0.textColor = Colors.whiteColor
     }
-    
+
     private let textMaxTemp = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = Strings.DetailView.maxTemp
         $0.font = Fonts.fontForDetailScreen
         $0.textColor = Colors.whiteColor
     }
-    
+
     private let textFeels = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = Strings.DetailView.feelsLike
         $0.font = Fonts.fontForDetailScreen
         $0.textColor = Colors.whiteColor
     }
+
     private let textPressure = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = Strings.DetailView.pressure
         $0.font = Fonts.fontForDetailScreen
         $0.textColor = Colors.whiteColor
     }
-    
+
     private let textHumidity = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = Strings.DetailView.humidity
         $0.font = Fonts.fontForDetailScreen
         $0.textColor = Colors.whiteColor
     }
-    
+
     private let textVisibility = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = Strings.DetailView.visibility
         $0.font = Fonts.fontForDetailScreen
         $0.textColor = Colors.whiteColor
     }
-    
+
     private let textSpeed = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = Strings.DetailView.windSpeed
         $0.font = Fonts.fontForDetailScreen
         $0.textColor = Colors.whiteColor
     }
-    
+
     private let textDegree = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = Strings.DetailView.windDirection
         $0.font = Fonts.fontForDetailScreen
         $0.textColor = Colors.whiteColor
     }
-    
+
     private let scrollView = UIScrollView()
-    
+
     private let view = UIView()
-    
+
     private let fullStack = UIStackView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .vertical
@@ -149,7 +150,7 @@ class DetailScreenView: UIView {
         $0.distribution = .fill
         $0.spacing = 10
     }
-    
+
     private let topStack = UIStackView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .vertical
@@ -157,7 +158,7 @@ class DetailScreenView: UIView {
         $0.distribution = .fill
         $0.spacing = 10
     }
-    
+
     private let bottomStack = UIStackView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .horizontal
@@ -165,7 +166,7 @@ class DetailScreenView: UIView {
         $0.distribution = .fill
         $0.spacing = 10
     }
-    
+
     private let rightBottomStack = UIStackView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .vertical
@@ -173,7 +174,7 @@ class DetailScreenView: UIView {
         $0.distribution = .fill
         $0.spacing = 10
     }
-    
+
     private let leftBottomStack = UIStackView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .vertical
@@ -181,7 +182,7 @@ class DetailScreenView: UIView {
         $0.distribution = .fill
         $0.spacing = 10
     }
-    
+
     let downloadMoreButton = UIButton().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.setTitle(Strings.DetailView.textButton, for: .normal)
@@ -189,20 +190,20 @@ class DetailScreenView: UIView {
         $0.backgroundColor = .white
         $0.layer.cornerRadius = 10
     }
-    
+
     private let spinner = UIActivityIndicatorView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.isHidden = true
         $0.color = Colors.whiteColor
     }
-    
+
     private let hourlyCollectionViewFlowLayout = UICollectionViewFlowLayout().with {
         $0.scrollDirection = .horizontal
         $0.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         $0.minimumInteritemSpacing = 16
         $0.itemSize = CGSize(width: 70, height: 100)
     }
-    
+
     lazy var hourlyCollectionView = UICollectionView(frame: .zero, collectionViewLayout: hourlyCollectionViewFlowLayout).with {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.showsHorizontalScrollIndicator = false
@@ -212,7 +213,7 @@ class DetailScreenView: UIView {
         $0.isHidden = true
         $0.layer.cornerRadius = 20
     }
-    
+
     let dailyTableView = UITableView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.isScrollEnabled = false
@@ -220,27 +221,23 @@ class DetailScreenView: UIView {
         $0.isHidden = true
         $0.layer.cornerRadius = 20
     }
-    
+
     private func setup() {
         addSubview(scrollView)
         scrollView.addSubview(view)
         view.addSubview(fullStack)
-        
         fullStack.addArrangedSubview(topStack)
         fullStack.addArrangedSubview(bottomStack)
         fullStack.addArrangedSubview(downloadMoreButton)
         fullStack.addArrangedSubview(spinner)
         fullStack.addArrangedSubview(hourlyCollectionView)
         fullStack.addArrangedSubview(dailyTableView)
-        
         topStack.addArrangedSubview(cityLabel)
         topStack.addArrangedSubview(iconImage)
         topStack.addArrangedSubview(descriptionLabel)
         topStack.addArrangedSubview(temperatureLabel)
-        
         bottomStack.addArrangedSubview(leftBottomStack)
         bottomStack.addArrangedSubview(rightBottomStack)
-        
         leftBottomStack.addArrangedSubview(textMinTemp)
         leftBottomStack.addArrangedSubview(textMaxTemp)
         leftBottomStack.addArrangedSubview(textFeels)
@@ -249,7 +246,6 @@ class DetailScreenView: UIView {
         leftBottomStack.addArrangedSubview(textVisibility)
         leftBottomStack.addArrangedSubview(textSpeed)
         leftBottomStack.addArrangedSubview(textDegree)
-        
         rightBottomStack.addArrangedSubview(minTempLabel)
         rightBottomStack.addArrangedSubview(maxTempLabel)
         rightBottomStack.addArrangedSubview(feelsLikeLabel)
@@ -259,7 +255,7 @@ class DetailScreenView: UIView {
         rightBottomStack.addArrangedSubview(windSpeedLabel)
         rightBottomStack.addArrangedSubview(windDegreeLabel)
     }
-    
+
     func changeSpinnerStatus() {
         if spinner.isHidden == false {
             spinner.isHidden = true
@@ -269,16 +265,15 @@ class DetailScreenView: UIView {
             spinner.startAnimating()
         }
     }
-    
+
     func showMore() {
         dailyTableView.isHidden = false
         hourlyCollectionView.isHidden = false
         dailyTableView.reloadData()
         hourlyCollectionView.reloadData()
     }
-    
+
     func updateCurrent(weather: WeatherData) {
-        
         backgroundColor = weather.getBackgroundColor()
         hourlyCollectionView.backgroundColor = weather.getCellsBackgroundColor()
         dailyTableView.backgroundColor = weather.getCellsBackgroundColor()
@@ -296,52 +291,50 @@ class DetailScreenView: UIView {
         windSpeedLabel.text = String(format: Strings.DetailView.speedMS, weather.wind.speed)
         windDegreeLabel.text = weather.getDirectionForDegree()
     }
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+
         setup()
         setNeedsUpdateConstraints()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func updateConstraints() {
         super.updateConstraints()
-        
+
         scrollView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
-        
+
         view.snp.makeConstraints {
             $0.edges.equalToSuperview()
             $0.width.equalToSuperview()
         }
-        
+
         fullStack.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.trailing.equalToSuperview().inset(16)
             $0.bottom.equalToSuperview()
         }
-        
+
         iconImage.snp.makeConstraints {
             $0.width.height.equalTo(120)
         }
-        
+
         downloadMoreButton.snp.makeConstraints {
             $0.height.equalTo(30)
         }
-       
+
         hourlyCollectionView.snp.makeConstraints {
             $0.height.equalTo(100)
         }
-        
+
         dailyTableView.snp.makeConstraints {
             $0.height.equalTo(700)
         }
     }
 }
-
-

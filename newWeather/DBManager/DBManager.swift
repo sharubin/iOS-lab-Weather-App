@@ -16,15 +16,14 @@ protocol DBManager {
 }
 
 class DBManagerImpl: DBManager {
-    
     var mainRealm = try! Realm()
-    
+
     func save(data: CityModel) {
         try! mainRealm.write {
             mainRealm.add(data, update: .modified)
         }
     }
-        
+
     func removeCity(city: String) {
         let model = Array(mainRealm.objects(CityModel.self).filter("city == %@", city))
         guard let model = model.first else { return }
@@ -33,7 +32,7 @@ class DBManagerImpl: DBManager {
             mainRealm.delete(model)
         }
     }
-    
+
     func obtain(city: String) -> String {
         let model = Array(mainRealm.objects(CityModel.self).filter("city == %@", city))
         let firstModel = model.first
@@ -41,10 +40,9 @@ class DBManagerImpl: DBManager {
         let cityFromDB = firstModel.city
         return cityFromDB
     }
-    
+
     func obtainCities() -> [CityModel] {
         let models = mainRealm.objects(CityModel.self)
         return Array(models)
     }
-    
 }

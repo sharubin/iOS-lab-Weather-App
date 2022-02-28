@@ -9,7 +9,6 @@ import RealmSwift
 
 @objcMembers
 class CityModel: Object {
-    
     dynamic var id = Int()
     dynamic var city = String()
     dynamic var descriptionWeather = String()
@@ -19,13 +18,11 @@ class CityModel: Object {
     dynamic var lat = Double()
     dynamic var lon = Double()
 
-  
     override static func primaryKey() -> String? {
       return "city"
     }
-    
 
-    convenience init(city: String, descriptionWeather: String, temp: Double, tempMin: Double, tempMax: Double,id: Int, lat: Double, lon: Double ) {
+    convenience init(city: String, descriptionWeather: String, temp: Double, tempMin: Double, tempMax: Double, id: Int, lat: Double, lon: Double ) {
         self.init()
         self.id = id
         self.city = city
@@ -37,11 +34,11 @@ class CityModel: Object {
         self.lon = lon
 
     }
-    
+
     override init() {
         super.init()
     }
-    
+
     init(weather: WeatherData) {
         self.id = weather.weather[0].id
         self.city = weather.name
@@ -51,6 +48,5 @@ class CityModel: Object {
         self.tempMax = weather.main.tempMax
         self.lat = weather.coord.lat
         self.lon = weather.coord.lon
-
     }
 }
