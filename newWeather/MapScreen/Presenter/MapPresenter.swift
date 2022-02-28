@@ -44,9 +44,8 @@ extension MapPresenter: MapPresenterProtocol {
     }
 
     func getCoordinates() {
-        guard let lat = managerLocation.location?.coordinate.latitude,
-              let lon = managerLocation.location?.coordinate.longitude else { return }
-        self.view?.setCoordinate(coordinate: CLLocationCoordinate2D(latitude: lat, longitude: lon))
+        guard let coord = managerLocation.location?.coordinate else { return }
+        self.view?.setCoordinate(coordinate: coord)
     }
 
     func obtainCities() {

@@ -85,14 +85,7 @@ class MapViewController: UIViewController {
     }
 
     private func createCustomMarker() {
-        let marker = GMSMarker()
         presenter.getCoordinates()
-        guard let lat = usersCoordinate?.latitude,
-              let lon = usersCoordinate?.longitude else { return }
-        marker.position = CLLocationCoordinate2D(latitude: lat, longitude: lon)
-        marker.title = "MyLocation"
-        marker.icon = UIImage(named: "marker")
-        marker.map = mapView
     }
 
     @objc private func zoomForMarkers() {
@@ -118,6 +111,7 @@ extension MapViewController: CLLocationManagerDelegate {
 extension MapViewController: GMSMapViewDelegate {
 
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+        rootView.isUserInteractionEnabled = false
         presenter.getWeather(lat: String(coordinate.latitude), lon: String(coordinate.longitude))
     }
 }
@@ -125,6 +119,7 @@ extension MapViewController: GMSMapViewDelegate {
 extension MapViewController: MapViewProtocol {
     func pushTo(controller: UIViewController) {
         navigationController?.pushViewController(controller, animated: true)
+        rootView.isUserInteractionEnabled = true
     }
 
     func setData(data: [Marker]) {
@@ -133,5 +128,13 @@ extension MapViewController: MapViewProtocol {
 
     func setCoordinate(coordinate: CLLocationCoordinate2D) {
         self.usersCoordinate = coordinate
+
+        let marker = GMSMarker()
+        guard let lat = usersCoordinate?.latitude,
+              let lon = usersCoordinate?.longitude else { return }
+        marker.position = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+        marker.title = "MyLocation"
+        marker.icon = UIImage(named: "marker")
+        marker.map = mapView
     }
 }
