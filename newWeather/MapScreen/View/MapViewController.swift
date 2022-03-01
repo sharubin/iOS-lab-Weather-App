@@ -14,7 +14,7 @@ protocol MapViewProtocol: AnyObject {
     func setData(data: [Marker])
     func setCoordinate(coordinate: CLLocationCoordinate2D)
     func setupMarker()
-    func ableDisableMap()
+    func enableMap(bool: Bool)
 }
 
 class MapViewController: UIViewController {
@@ -113,7 +113,7 @@ extension MapViewController: CLLocationManagerDelegate {
 extension MapViewController: GMSMapViewDelegate {
 
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
-        ableDisableMap()
+        enableMap(bool: false)
         presenter.getWeather(lat: String(coordinate.latitude), lon: String(coordinate.longitude))
     }
 }
@@ -142,11 +142,11 @@ extension MapViewController: MapViewProtocol {
         marker.map = mapView
     }
 
-    func ableDisableMap() {
-        if rootView.isUserInteractionEnabled == true {
-            rootView.isUserInteractionEnabled = false
-        } else {
+    func enableMap(bool: Bool) {
+        if bool {
             rootView.isUserInteractionEnabled = true
+        } else {
+            rootView.isUserInteractionEnabled = false
         }
     }
 }
