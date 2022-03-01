@@ -13,6 +13,7 @@ protocol MapViewProtocol: AnyObject {
     func pushTo(controller: UIViewController)
     func setData(data: [Marker])
     func setCoordinate(coordinate: CLLocationCoordinate2D)
+    func setupMarker()
 }
 
 class MapViewController: UIViewController {
@@ -128,7 +129,10 @@ extension MapViewController: MapViewProtocol {
 
     func setCoordinate(coordinate: CLLocationCoordinate2D) {
         self.usersCoordinate = coordinate
+        setupMarker()
+    }
 
+    func setupMarker() {
         let marker = GMSMarker()
         guard let lat = usersCoordinate?.latitude,
               let lon = usersCoordinate?.longitude else { return }
@@ -137,4 +141,5 @@ extension MapViewController: MapViewProtocol {
         marker.icon = UIImage(named: "marker")
         marker.map = mapView
     }
+
 }
