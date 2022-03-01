@@ -32,7 +32,6 @@ class CityModel: Object {
         self.tempMax = tempMax
         self.lat = lat
         self.lon = lon
-
     }
 
     override init() {
