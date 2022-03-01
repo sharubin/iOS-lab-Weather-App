@@ -8,34 +8,34 @@
 import Foundation
 
 enum OneCallEndpoint: Endpoint {
-    
+
     case getCurrenWeather(lat: String, lon: String, exclude: String)
-    
+
     var scheme: String {
         switch self {
         default:
             return "https"
         }
     }
-    
+
     var baseURl: String {
         switch self {
         default:
             return "api.openweathermap.org"
         }
     }
-    
+
     var path: String {
         switch self {
         case .getCurrenWeather:
             return "/data/2.5/onecall"
         }
     }
-    
+
     var parameters: [URLQueryItem] {
         let apiKey = Keys.apiKey
         let units = "metric"
-        
+
         switch self {
         case .getCurrenWeather(let lat, let lon, let exclude):
             return [URLQueryItem(name: "lat", value: lat),
@@ -46,12 +46,11 @@ enum OneCallEndpoint: Endpoint {
             ]
         }
     }
-    
+
     var method: String {
         switch self {
         case .getCurrenWeather:
             return "GET"
         }
     }
-    
 }

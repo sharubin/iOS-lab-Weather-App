@@ -9,40 +9,40 @@ import Foundation
 import SwiftUI
 
 protocol MapRepositoryProtocol {
-    func getWeatherForCoordinates(lat: String, lon: String, completion: @escaping (Result< WeatherData,Error>) -> Void)
+    func getWeatherForCoordinates(lat: String, lon: String, completion: @escaping (Result< WeatherData, Error>) -> Void)
     func obtainCities() -> [CityModel]
 }
 
 class MapRepository: MapRepositoryProtocol {
-    
+
     private let networkEngine: NetworkEngine
     private let dbManager: DBManager
-    
+
     init(networkEngine: NetworkEngine = NetworkEngine(), dbManager: DBManager = DBManagerImpl()) {
         self.networkEngine = networkEngine
         self.dbManager = dbManager
     }
-        
-    func getWeatherForCoordinates(lat: String, lon: String, completion: @escaping (Result< WeatherData,Error>) -> Void) {
+
+    func getWeatherForCoordinates(lat: String, lon: String, completion: @escaping (Result< WeatherData, Error>) -> Void) {
         networkEngine.request(endpoint: CurrentCoordinateEndpoint.getCurrenWeather(lat: lat, lon: lon), completion: completion)
     }
-    
-    func getWeatherForCity(city: String, completion: @escaping (Result< WeatherData,Error>) -> Void) {
+
+    func getWeatherForCity(city: String, completion: @escaping (Result< WeatherData, Error>) -> Void) {
         networkEngine.request(endpoint: CurrentEndpoint.getCurrenWeather(city: city), completion: completion)
     }
-    
+
     func obtainCities() -> [CityModel] {
        var dbArray = dbManager.obtainCities()
         fetchUpdatedWeather(for: dbArray)
         dbArray = dbManager.obtainCities()
         return dbArray
     }
-    
+
     func saveFavourite(dataModel: WeatherData) {
         let dataModel = CityModel(weather: dataModel)
         dbManager.save(data: dataModel)
     }
-    
+
     func fetchUpdatedWeather(for cities: [CityModel]) {
         for city in cities {
             getWeatherForCity(city: city.city) { result in
@@ -55,5 +55,4 @@ class MapRepository: MapRepositoryProtocol {
             }
         }
     }
-    
 }

@@ -13,7 +13,7 @@ struct Marker {
     let lat: Double
     let minTemp: Double
     let maxTemp: Double
-    
+
     init(data: CityModel) {
         self.name = data.city
         self.lon = data.lon
@@ -21,5 +21,4 @@ struct Marker {
         self.minTemp = data.tempMin
         self.maxTemp = data.tempMax
     }
-    
 }

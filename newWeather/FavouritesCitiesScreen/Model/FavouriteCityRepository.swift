@@ -8,39 +8,38 @@
 import Foundation
 
 protocol FavouriteRepositoryProtocol {
-    
-    func getWeatherForCity(name: String, completion: @escaping (Result< WeatherData,Error>) -> Void)
+    func getWeatherForCity(name: String, completion: @escaping (Result< WeatherData, Error>) -> Void)
     func deleteFromDB(city: String)
-    func getData(completion: @escaping (Result< [FavouriteWeatherCellModel],Error>) -> Void)
-    func fetchUpdatedWeather(for cities:[String], completion: @escaping (Result< [FavouriteWeatherCellModel],Error>) -> Void )
+    func getData(completion: @escaping (Result< [FavouriteWeatherCellModel], Error>) -> Void)
+    func fetchUpdatedWeather(for cities: [String], completion: @escaping (Result< [FavouriteWeatherCellModel], Error>) -> Void )
 }
 
 class FavouriteCityRepository: FavouriteRepositoryProtocol {
-    
+
     private let networkEngine: NetworkEngine
     private let dbManager: DBManager
-    
-    init(networkEngine: NetworkEngine = NetworkEngine(),dbManager: DBManager = DBManagerImpl()) {
+
+    init(networkEngine: NetworkEngine = NetworkEngine(), dbManager: DBManager = DBManagerImpl()) {
         self.networkEngine = networkEngine
         self.dbManager = dbManager
     }
-    
-    func getWeatherForCity(name: String, completion: @escaping (Result< WeatherData,Error>) -> Void) {
+
+    func getWeatherForCity(name: String, completion: @escaping (Result< WeatherData, Error>) -> Void) {
         networkEngine.request(endpoint: CurrentEndpoint.getCurrenWeather(city: name), completion: completion)
     }
-    
+
     func deleteFromDB(city: String) {
         dbManager.removeCity(city: city)
     }
-    
-    func getData(completion: @escaping (Result< [FavouriteWeatherCellModel],Error>) -> Void) {
+
+    func getData(completion: @escaping (Result< [FavouriteWeatherCellModel], Error>) -> Void) {
         let dbArray = dbManager.obtainCities()
         let cellModels = dbArray.map { FavouriteWeatherCellModel(model: $0) }
         completion(.success(cellModels))
         fetchUpdatedWeather(for: cellModels.map { $0.city }, completion: completion)
     }
-    
-    func fetchUpdatedWeather(for cities:[String], completion: @escaping (Result< [FavouriteWeatherCellModel],Error>) -> Void ) {
+
+    func fetchUpdatedWeather(for cities: [String], completion: @escaping (Result< [FavouriteWeatherCellModel], Error>) -> Void ) {
         var cellModels = [FavouriteWeatherCellModel]()
         let group = DispatchGroup()
         for city in cities {

@@ -10,33 +10,32 @@ protocol DetailRepositoryProtocol {
     func obtainFor(city: String) -> String
     func deleteFromDB(city: String)
     func check(name: String) -> Bool
-    func getWeatherForCity(lat: String, lon: String, completion: @escaping (Result< MoreWeatherData,Error>) -> Void)
+    func getWeatherForCity(lat: String, lon: String, completion: @escaping (Result< MoreWeatherData, Error>) -> Void)
 }
 
-
 class DetailCityRepository: DetailRepositoryProtocol {
-    
+
     private let networkEngine: NetworkEngine
     private let dbManager: DBManager
-    
-    init(networkEngine: NetworkEngine = NetworkEngine(),dbManager: DBManager = DBManagerImpl()) {
+
+    init(networkEngine: NetworkEngine = NetworkEngine(), dbManager: DBManager = DBManagerImpl()) {
         self.networkEngine = networkEngine
         self.dbManager = dbManager
     }
-    
+
     func saveFavourite(dataModel: WeatherData) {
         let dataModel = CityModel(weather: dataModel)
         dbManager.save(data: dataModel)
     }
-    
+
     func obtainFor(city: String) -> String {
         dbManager.obtain(city: city)
     }
-        
+
     func deleteFromDB(city: String) {
         dbManager.removeCity(city: city)
     }
-    
+
     func check(name: String) -> Bool {
         let cityFromDB = obtainFor(city: name)
         if name == cityFromDB {
@@ -45,8 +44,8 @@ class DetailCityRepository: DetailRepositoryProtocol {
             return false
         }
     }
-    
-    func getWeatherForCity(lat: String, lon: String, completion: @escaping (Result< MoreWeatherData,Error>) -> Void) {
+
+    func getWeatherForCity(lat: String, lon: String, completion: @escaping (Result< MoreWeatherData, Error>) -> Void) {
         networkEngine.request(endpoint: OneCallEndpoint.getCurrenWeather(lat: lat, lon: lon, exclude: "current,minutely,alerts"), completion: completion)
     }
 }

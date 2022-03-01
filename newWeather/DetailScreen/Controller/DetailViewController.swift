@@ -8,38 +8,38 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-    
+
     var rootView: DetailScreenView {
         self.view as! DetailScreenView
     }
-    
+
     var dailyModels = [Daily]()
     var hourlyModels = [Hourly]()
     private let repository: DetailRepositoryProtocol
     private var weather: WeatherData
-    
+
     init(repository: DetailRepositoryProtocol = DetailCityRepository(), weather: WeatherData) {
         self.repository = repository
         self.weather = weather
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func loadView() {
         super.loadView()
-        
+
         self.view = DetailScreenView()
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setup()
     }
-    
+
     @objc private func buttonTapped() {
         rootView.changeSpinnerStatus()
         repository.getWeatherForCity(lat: "\(weather.coord.lat)", lon: "\(weather.coord.lon)") { [weak self] result in
@@ -56,7 +56,7 @@ class DetailViewController: UIViewController {
         }
         rootView.downloadMoreButton.isHidden = true
     }
-    
+
     private func setup() {
         rootView.downloadMoreButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         rootView.hourlyCollectionView.dataSource = self
@@ -67,7 +67,7 @@ class DetailViewController: UIViewController {
         setupNavigationBar()
         check()
     }
-    
+
     private func setupNavigationBar() {
         navigationController?.navigationBar.barTintColor = weather.getBackgroundColor()
         navigationController?.navigationBar.backIndicatorImage = UIImage(systemName: "arrow.backward.square")
@@ -76,7 +76,7 @@ class DetailViewController: UIViewController {
 
         navigationItem.rightBarButtonItem?.tintColor = Colors.whiteColor
     }
-    
+
     private func check() {
         if repository.check(name: weather.name) {
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: Strings.DetailView.removeFv,
@@ -90,7 +90,7 @@ class DetailViewController: UIViewController {
                                                                 action: #selector(updateFavourite))
         }
     }
-    
+
     @objc private func updateFavourite() {
         if repository.check(name: weather.name) {
             repository.deleteFromDB(city: weather.name)
@@ -101,4 +101,3 @@ class DetailViewController: UIViewController {
         }
     }
 }
-
