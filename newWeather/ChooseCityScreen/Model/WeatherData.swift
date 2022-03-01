@@ -16,11 +16,11 @@ struct WeatherData: Codable {
     let wind: Wind
     let timezone: Int
     let name: String
-    
-    func getLink() -> URL?  {
+
+    func getLink() -> URL? {
         URL(string: "https://openweathermap.org/img/wn/\(weather[0].icon)@2x.png")
     }
-    
+
     public func getDirectionForDegree() -> String {
         switch wind.deg {
         case 337...360:
@@ -45,7 +45,7 @@ struct WeatherData: Codable {
             return "mistake"
         }
     }
-    
+
     public func getBackgroundColor() -> UIColor {
         switch weather.first!.id {
         case 200...499, 502...531, 701...781, 802...804, 600...622:
@@ -56,7 +56,7 @@ struct WeatherData: Codable {
             return .white
         }
     }
-    
+
     public func getCellsBackgroundColor() -> UIColor {
         switch weather.first!.id {
         case 200...499, 502...531, 701...781, 802...804, 600...622:
@@ -82,7 +82,7 @@ struct Main: Codable {
     let tempMax: Double
     let pressure: Int
     let humidity: Int
-    
+
     enum CodingKeys: String, CodingKey {
         case temp
         case feelsLike = "feels_like"
@@ -92,13 +92,11 @@ struct Main: Codable {
     }
 }
 
-
-
 // MARK: - Weather
 struct Weather: Codable {
     let id: Int
     let weatherDescription, icon: String
-    
+
     enum CodingKeys: String, CodingKey {
         case weatherDescription = "description"
         case icon

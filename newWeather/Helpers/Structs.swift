@@ -8,7 +8,7 @@
 import UIKit
 
 struct Strings {
-    
+
     struct CityView {
         static let placeholderText = "Enter the city"
         static let buttonText = "Get the weather"
@@ -20,7 +20,7 @@ struct Strings {
         static let toMapButton = "To Map"
 
     }
-    
+
     struct DetailView {
         static let minTemp = "min temp"
         static let maxTemp = "max temp"
@@ -40,14 +40,14 @@ struct Strings {
         static let addFv = "add fv"
         static let removeFv = "remove fv"
     }
-    
+
     struct FavouriteView {
 
         static let header = "Favourite cities"
         static let delete = "Delete"
         static let error = "print error"
     }
-    
+
     struct MapView {
         static let minMaxTemp = "min.: %.0f°, max.: %.0f°"
     }

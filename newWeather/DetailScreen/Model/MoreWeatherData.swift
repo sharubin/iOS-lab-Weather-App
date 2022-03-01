@@ -6,7 +6,7 @@
 //
 
 import Foundation
- 
+
 // MARK: - MoreWeatherData
 struct MoreWeatherData: Codable {
     let timezone: String
@@ -19,11 +19,11 @@ struct Hourly: Codable {
     let dt: Int
     let temp: Double
     let weather: [WeatherMore]
-    
-    func getLink() -> URL?  {
+
+    func getLink() -> URL? {
         URL(string: "https://openweathermap.org/img/wn/\(weather[0].icon)@2x.png")
     }
-    
+
     public func getTimeForDate() -> String {
         let inputDate = Date(timeIntervalSince1970: Double(dt))
         let formatter = DateFormatter()
@@ -31,7 +31,6 @@ struct Hourly: Codable {
         return formatter.string(from: inputDate)
     }
 }
-
 
 // MARK: - Weather
 struct WeatherMore: Codable {
@@ -43,11 +42,11 @@ struct Daily: Codable {
     let dt: Int
     let temp: Temp
     let weather: [WeatherMore]
-    
-    func getLink() -> URL?  {
+
+    func getLink() -> URL? {
         URL(string: "https://openweathermap.org/img/wn/\(weather[0].icon)@2x.png")
     }
-    
+
     public func getDayForDate() -> String {
         let inputDate = Date(timeIntervalSince1970: Double(dt))
         let formatter = DateFormatter()
@@ -60,6 +59,3 @@ struct Daily: Codable {
 struct Temp: Codable {
     let min, max: Double
 }
- 
-
-

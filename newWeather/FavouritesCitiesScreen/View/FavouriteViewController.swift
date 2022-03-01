@@ -13,19 +13,19 @@ protocol FavouriteViewProtocol: AnyObject {
 }
 
 class FavouriteViewController: UIViewController {
-    
+
     private var rootView: FavouriteScreenView {
         self.view as! FavouriteScreenView
     }
     var presenter: FavouritePresenterProtocol!
     var dataSource = [FavouriteWeatherCellModel]()
-    
+
     override func loadView() {
         super.loadView()
-        
+
         self.view = FavouriteScreenView()
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,17 +34,17 @@ class FavouriteViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         presenter.fetchData()
     }
-    
+
     private func setup() {
         rootView.tableView.dataSource = self
         rootView.tableView.delegate = self
         presenter = FavouritePresenter(view: self)
         setupNavigationBar()
     }
-    
+
     private func setupNavigationBar() {
         navigationController?.navigationBar.barTintColor = view.backgroundColor
         navigationController?.navigationBar.backIndicatorImage = UIImage(systemName: "arrow.backward.square")
@@ -54,15 +54,13 @@ class FavouriteViewController: UIViewController {
 }
 
 extension FavouriteViewController: FavouriteViewProtocol {
-    
+
     func pushTo(controller: UIViewController) {
         navigationController?.pushViewController(controller, animated: true)
     }
-    
+
     func setData(data: [FavouriteWeatherCellModel]) {
         dataSource = data
         rootView.tableView.reloadData()
     }
 }
-
-
