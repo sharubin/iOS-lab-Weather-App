@@ -33,11 +33,13 @@ case getCurrenWeather(city: String)
     var parameters: [URLQueryItem] {
         let apiKey = Keys.apiKey
         let units = "metric"
+        let language = NSLocale.current.languageCode
 
         switch self {
         case .getCurrenWeather(let city):
             return [URLQueryItem(name: "q", value: city),
                     URLQueryItem(name: "units", value: units),
+                    URLQueryItem(name: "lang", value: language),
                     URLQueryItem(name: "appid", value: apiKey)
             ]
         }
