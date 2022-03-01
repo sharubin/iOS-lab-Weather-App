@@ -1,15 +1,15 @@
 //
-//  OneCallEndpoint.swift
+//  CurrentCoordinateEndpoint.swift
 //  newWeather
 //
-//  Created by Artsem Sharubin on 04.02.2022.
+//  Created by Artsem Sharubin on 21.02.2022.
 //
 
 import Foundation
 
-enum OneCallEndpoint: Endpoint {
+enum CurrentCoordinateEndpoint: Endpoint {
     
-    case getCurrenWeather(lat: String, lon: String, exclude: String)
+    case getCurrenWeather(lat: String, lon: String)
     
     var scheme: String {
         switch self {
@@ -28,7 +28,7 @@ enum OneCallEndpoint: Endpoint {
     var path: String {
         switch self {
         case .getCurrenWeather:
-            return "/data/2.5/onecall"
+            return "/data/2.5/weather"
         }
     }
     
@@ -37,10 +37,9 @@ enum OneCallEndpoint: Endpoint {
         let units = "metric"
         
         switch self {
-        case .getCurrenWeather(let lat, let lon, let exclude):
+        case .getCurrenWeather(let lat, let lon):
             return [URLQueryItem(name: "lat", value: lat),
                     URLQueryItem(name: "lon", value: lon),
-                    URLQueryItem(name: "exclude", value: exclude),
                     URLQueryItem(name: "units", value: units),
                     URLQueryItem(name: "appid", value: apiKey)
             ]

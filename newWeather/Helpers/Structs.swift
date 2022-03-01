@@ -5,7 +5,6 @@
 //  Created by Artsem Sharubin on 09.02.2022.
 //
 
-import Foundation
 import UIKit
 
 struct Strings {
@@ -17,6 +16,9 @@ struct Strings {
         static let okString = "OK"
         static let emptyText = "Город не введен"
         static let noData = "Город введен не корректно, данные отсутсвуют"
+        static let buttonFavourite = "To Favourites"
+        static let toMapButton = "To Map"
+
     }
     
     struct DetailView {
@@ -32,8 +34,22 @@ struct Strings {
         static let celsium = "%.0f °С"
         static let mmHg = "%.0f mm Hg"
         static let percent = "%.0d pct"
-        static let speedMS = "%.0d m/c"
-        static let meters = "m"
+        static let speedMS = "%.0f m/c"
+        static let meters = "%.0d m"
+        static let minMaxTemp = "min.: %.0f°, max.: %.0f°"
+        static let addFv = "add fv"
+        static let removeFv = "remove fv"
+    }
+    
+    struct FavouriteView {
+
+        static let header = "Favourite cities"
+        static let delete = "Delete"
+        static let error = "print error"
+    }
+    
+    struct MapView {
+        static let minMaxTemp = "min.: %.0f°, max.: %.0f°"
     }
 }
 
@@ -52,3 +68,7 @@ struct Fonts {
     static let boldFontForDaily = UIFont(name: "Copperplate-Bold", size: 17)
 }
 
+struct Keys {
+    static let googleKey = "AIzaSyCs7j4Ngv12hif30OndDfzpmqCKXkYDsAY"
+    static let apiKey = "b0809fedc7ea832cdc5cc0f793119331"
+}

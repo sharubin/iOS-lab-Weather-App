@@ -12,20 +12,21 @@ class HourlyCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "HourlyCollectionViewCell"
     
-    var iconImageView = UIImageView().then {
+    private let iconImageView = UIImageView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    var tempLabel = UILabel().then {
-        $0.textColor = .white
+    private let tempLabel = UILabel().then {
+        $0.textColor = Colors.whiteColor
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    var timeLabel = UILabel().then {
-        $0.textColor = .white
+    private let timeLabel = UILabel().then {
+        $0.textColor = Colors.whiteColor
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
-    let stack = UIStackView().then {
+    
+    private let stack = UIStackView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .vertical
         $0.alignment = .fill
@@ -36,17 +37,17 @@ class HourlyCollectionViewCell: UICollectionViewCell {
     func updateHourly(weather: Hourly) {
         timeLabel.text = weather.getTimeForDate()
         iconImageView.kf.setImage(with: weather.getLink(), placeholder: nil, options: nil)
-        tempLabel.text = String(format: "%.0f °", weather.temp)
+        tempLabel.text = String(format: Strings.DetailView.celsium, weather.temp)
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        contentViewAddSubview()
+        setup()
         setNeedsUpdateConstraints()
     }
     
-    private func contentViewAddSubview() {
+    private func setup() {
         contentView.addSubview(stack)
         stack.addArrangedSubview(timeLabel)
         stack.addArrangedSubview(iconImageView)

@@ -6,10 +6,25 @@
 //
 
 import UIKit
+import CoreLocation
 
 class CityViewController: UIViewController {
     
-    private let repository = ChooseCityRepositoriy()
+    let managerLocation = CLLocationManager()
+
+    private let repository: CityRepositoryProtocol
+    private var rootView: CityScreenView {
+        self.view as! CityScreenView
+    }
+    
+    init(repository: CityRepositoryProtocol = ChooseCityRepository()) {
+        self.repository = repository
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func loadView() {
         super.loadView()
@@ -21,31 +36,42 @@ class CityViewController: UIViewController {
         super.viewDidLoad()
         
         setup()
+        managerLocation.requestWhenInUseAuthorization()
+
     }
     
      @objc private func buttonTapped() {
-        let view = self.view as! CityScreenView
-        let text = view.textField.text
+        
+        let text = rootView.textField.text
         guard let text = text, !text.isEmpty else {
             alertFieldIsEmpty()
             return
         }
-         repository.getWeatherForCity(name: text) { result in
+         repository.getWeatherForCity(name: text) { [weak self] result in
              switch result {
              case .success(let response):
-                 let vc = DetailViewController()
-                 vc.weather = response
-                 self.navigationController?.pushViewController(vc, animated: true)
+                 let vc = DetailViewController(weather: response)
+                 self?.navigationController?.pushViewController(vc, animated: true)
              case .failure(let error):
                  print(error)
-                 self.alertNoData()
+                 self?.alertNoData()
              }
          }
     }
     
+    @objc private func buttonFavouriteTapped() {
+        self.navigationController?.pushViewController(FavouriteViewController(), animated: true)
+    }
+    
+
+    @objc private func buttonMapTapped() {
+        self.navigationController?.pushViewController(MapViewController(), animated: true)
+    }
+    
     private func setup() {
-        let view = self.view as? CityScreenView
-        view?.downloadButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        rootView.downloadButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        rootView.toFavouriteButton.addTarget(self, action: #selector(buttonFavouriteTapped), for: .touchUpInside)
+        rootView.toMapButton.addTarget(self, action: #selector(buttonMapTapped), for: .touchUpInside)
     }
     
     private func alertFieldIsEmpty() {

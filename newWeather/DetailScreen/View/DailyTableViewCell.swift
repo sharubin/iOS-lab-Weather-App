@@ -13,36 +13,39 @@ class DailyTableViewCell: UITableViewCell {
     
     static let identifier = "DailyTableViewCell"
     
-    var dayLabel = UILabel().then {
-        $0.textColor = .white
+    private let dayLabel = UILabel().then {
+        $0.textColor = Colors.whiteColor
         $0.font = Fonts.fontForDetailScreen
     }
     
-    var lowTempLabel = UILabel().then {
-        $0.textColor = .white
+    private let lowTempLabel = UILabel().then {
+        $0.textColor = Colors.whiteColor
         $0.font = Fonts.lightFontForDaily
     }
     
-    var highTempLabel = UILabel().then {
-        $0.textColor = .white
+    private let highTempLabel = UILabel().then {
+        $0.textColor = Colors.whiteColor
         $0.font = Fonts.boldFontForDaily
     }
     
-    var iconImageView = UIImageView()
+    private let iconImageView = UIImageView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        contentView.addSubview(dayLabel)
-        contentView.addSubview(iconImageView)
-        contentView.addSubview(lowTempLabel)
-        contentView.addSubview(highTempLabel)
-        
+        setup()
         setNeedsUpdateConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setup() {
+        contentView.addSubview(dayLabel)
+        contentView.addSubview(iconImageView)
+        contentView.addSubview(lowTempLabel)
+        contentView.addSubview(highTempLabel)
     }
     
     func updateDaily(weather: Daily) {
