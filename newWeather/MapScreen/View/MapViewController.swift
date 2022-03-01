@@ -16,6 +16,7 @@ protocol MapViewProtocol: AnyObject {
 }
 
 class MapViewController: UIViewController {
+
     var rootView: MapView {
         self.view as! MapView
     }
