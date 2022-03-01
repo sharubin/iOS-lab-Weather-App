@@ -6,9 +6,12 @@
 //
 
 import UIKit
+import CoreLocation
 
 class CityViewController: UIViewController {
     
+    let managerLocation = CLLocationManager()
+
     private let repository: CityRepositoryProtocol
     private var rootView: CityScreenView {
         self.view as! CityScreenView
@@ -33,6 +36,8 @@ class CityViewController: UIViewController {
         super.viewDidLoad()
         
         setup()
+        managerLocation.requestWhenInUseAuthorization()
+
     }
     
      @objc private func buttonTapped() {
@@ -58,9 +63,15 @@ class CityViewController: UIViewController {
         self.navigationController?.pushViewController(FavouriteViewController(), animated: true)
     }
     
+
+    @objc private func buttonMapTapped() {
+        self.navigationController?.pushViewController(MapViewController(), animated: true)
+    }
+    
     private func setup() {
         rootView.downloadButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         rootView.toFavouriteButton.addTarget(self, action: #selector(buttonFavouriteTapped), for: .touchUpInside)
+        rootView.toMapButton.addTarget(self, action: #selector(buttonMapTapped), for: .touchUpInside)
     }
     
     private func alertFieldIsEmpty() {

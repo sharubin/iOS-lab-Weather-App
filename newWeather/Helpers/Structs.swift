@@ -17,6 +17,8 @@ struct Strings {
         static let emptyText = "Город не введен"
         static let noData = "Город введен не корректно, данные отсутсвуют"
         static let buttonFavourite = "To Favourites"
+        static let toMapButton = "To Map"
+
     }
     
     struct DetailView {
@@ -40,9 +42,14 @@ struct Strings {
     }
     
     struct FavouriteView {
-        static let header = "Избранные города"
-        static let delete = "Удалить"
+
+        static let header = "Favourite cities"
+        static let delete = "Delete"
         static let error = "print error"
+    }
+    
+    struct MapView {
+        static let minMaxTemp = "min.: %.0f°, max.: %.0f°"
     }
 }
 
@@ -61,3 +68,7 @@ struct Fonts {
     static let boldFontForDaily = UIFont(name: "Copperplate-Bold", size: 17)
 }
 
+struct Keys {
+    static let googleKey = "AIzaSyCs7j4Ngv12hif30OndDfzpmqCKXkYDsAY"
+    static let apiKey = "b0809fedc7ea832cdc5cc0f793119331"
+}

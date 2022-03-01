@@ -77,28 +77,21 @@ class FavouriteTableViewCell: UITableViewCell {
         
         citylabel.snp.makeConstraints {
             $0.top.leading.equalToSuperview().offset(10)
-            $0.height.equalTo(30)
-            $0.width.equalTo(170)
         }
         
         tempLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(10)
             $0.trailing.equalToSuperview().inset(10)
-            $0.height.equalTo(30)
-            $0.width.equalTo(90)
         }
         
         descriptionWeatherLabel.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(10)
             $0.leading.equalToSuperview().offset(10)
-            $0.height.equalTo(30)
-            $0.width.equalTo(150)
         }
         
         minMaxTempLabel.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(10)
-            $0.left.equalTo(descriptionWeatherLabel.snp.right).offset(60)
-            $0.height.equalTo(30)
+            $0.trailing.equalToSuperview().inset(10)
         }
     }
 }

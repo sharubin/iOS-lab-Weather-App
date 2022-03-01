@@ -8,9 +8,7 @@
 import UIKit
 
 protocol FavouriteViewProtocol: AnyObject {
-    
     func setData(data: [FavouriteWeatherCellModel])
-    
     func pushTo(controller: UIViewController)
 }
 
@@ -33,6 +31,7 @@ class FavouriteViewController: UIViewController {
 
         setup()
     }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
