@@ -37,8 +37,10 @@ extension MapPresenter: MapPresenterProtocol {
             case .success(let response):
                 let nextController = DetailViewController(weather: response)
                 self?.view?.pushTo(controller: nextController)
+                self?.view?.ableDisableMap()
             case .failure(let error):
                 print(error)
+                self?.view?.ableDisableMap()
             }
         }
     }
