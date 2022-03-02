@@ -13,10 +13,11 @@ protocol MapViewProtocol: AnyObject {
     func pushTo(controller: UIViewController)
     func setData(data: [Marker])
     func setCoordinate(coordinate: CLLocationCoordinate2D)
+    func setupMarker()
+    func enableMap(bool: Bool)
 }
 
 class MapViewController: UIViewController {
-
     var rootView: MapView {
         self.view as! MapView
     }
@@ -86,14 +87,7 @@ class MapViewController: UIViewController {
     }
 
     private func createCustomMarker() {
-        let marker = GMSMarker()
         presenter.getCoordinates()
-        guard let lat = usersCoordinate?.latitude,
-              let lon = usersCoordinate?.longitude else { return }
-        marker.position = CLLocationCoordinate2D(latitude: lat, longitude: lon)
-        marker.title = "MyLocation"
-        marker.icon = UIImage(named: "marker")
-        marker.map = mapView
     }
 
     @objc private func zoomForMarkers() {
@@ -119,6 +113,7 @@ extension MapViewController: CLLocationManagerDelegate {
 extension MapViewController: GMSMapViewDelegate {
 
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+        enableMap(bool: false)
         presenter.getWeather(lat: String(coordinate.latitude), lon: String(coordinate.longitude))
     }
 }
@@ -134,5 +129,24 @@ extension MapViewController: MapViewProtocol {
 
     func setCoordinate(coordinate: CLLocationCoordinate2D) {
         self.usersCoordinate = coordinate
+        setupMarker()
+    }
+
+    func setupMarker() {
+        let marker = GMSMarker()
+        guard let lat = usersCoordinate?.latitude,
+              let lon = usersCoordinate?.longitude else { return }
+        marker.position = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+        marker.title = "MyLocation"
+        marker.icon = UIImage(named: "marker")
+        marker.map = mapView
+    }
+
+    func enableMap(bool: Bool) {
+        if bool {
+            rootView.isUserInteractionEnabled = true
+        } else {
+            rootView.isUserInteractionEnabled = false
+        }
     }
 }

@@ -35,12 +35,14 @@ enum CurrentCoordinateEndpoint: Endpoint {
     var parameters: [URLQueryItem] {
         let apiKey = Keys.apiKey
         let units = "metric"
+        let language = NSLocale.current.languageCode
 
         switch self {
         case .getCurrenWeather(let lat, let lon):
             return [URLQueryItem(name: "lat", value: lat),
                     URLQueryItem(name: "lon", value: lon),
                     URLQueryItem(name: "units", value: units),
+                    URLQueryItem(name: "lang", value: language),
                     URLQueryItem(name: "appid", value: apiKey)
             ]
         }

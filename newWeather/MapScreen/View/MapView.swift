@@ -36,6 +36,7 @@ class MapView: UIView {
     }
 
     func setup() {
+
         addSubview(mapView)
         mapView.addSubview(toMyLocationButton)
         mapView.addSubview(zoomForMarkersButton)
