@@ -27,6 +27,7 @@ ___
 ### Detail weather screen
 
 ![screenshot of the screen with detailed weather information](screenshots/detailScreen.png)
+
 On this screen we can see detailed information about the weather, when you click on the "Download more" button, another request is made and we receive data about the hourly and daytime weather. You can also add a city to favorites on this screen (or delete it if the city is already in favorites).
 
 Depending on the weather, the color of the screen changes. Below are examples for good and bad weather
