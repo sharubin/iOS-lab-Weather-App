@@ -7,12 +7,19 @@ The application supports two languages - English and Russian.
 ___
 ### _Code_
  __MVC__ and __MVP__ architecture patterns were used.
+ 
  Also I was following the __SOLID__ principles.
+ 
 To get data for hourly and daytime weather, used https://openweathermap.org/api and the __URL Session__  to receive data by name coordinates.
+
 __Then__ library is used, to improve the appearance of the code when creating the UI, 
+
 The __SnapKit__ library I used for making UI
+
 The __Realm__ was used by me for saving favourite places.
+
 The __Kingfisher__ library is used to download and cache images.
+
 __Google Maps__ maps also were used.
 
 ___
