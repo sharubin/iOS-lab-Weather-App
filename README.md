@@ -40,7 +40,7 @@ ___
 ### Screen with selected cities
 This screen stores the selected cities that the user has added to the database. By swiping a city, you can delete a city from your favorites
 Depending on the weather in the city, the color of the cell changes. Below are examples for good and bad weather
-![screenshot of the screen with selected cities](screenshots/favoritescreen.png)
+![screenshot of the screen with selected cities](screenshots/favoriteScreen.png)
 
 ##### _code_
 When writing the code for this screen, the __MVP__ architecture from Apple and the __SOLID__ principles were used.
@@ -50,7 +50,7 @@ The __SnapKit__ library is used for layout
 To add to the database, use __Realm__
 ___
 ### Map screen
-![screenshot of the map screen](screenshots/MapScreen.png)
+![screenshot of the map screen](screenshots/mapScreen.png)
 
 
 ##### _code_
