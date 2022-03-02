@@ -6,13 +6,14 @@ With this application, you can find out the weather anywhere in the world. For y
 The application supports two languages - English and Russian.
 ___
 ### _Code_
+
  __MVC__ and __MVP__ architecture patterns were used.
  
  Also I was following the __SOLID__ principles.
  
-To get data for hourly and daytime weather, used https://openweathermap.org/api and the __URL Session__  to receive data by name coordinates.
+To get data for hourly and daytime weather used https://openweathermap.org/api and the __URL Session__  to receive data by city name and coordinates.
 
-__Then__ library is used, to improve the appearance of the code when creating the UI, 
+__Then__ library is used to improve the appearance of the code when creating the UI, 
 
 The __SnapKit__ library I used for making UI
 
@@ -20,7 +21,7 @@ The __Realm__ was used by me for saving favourite places.
 
 The __Kingfisher__ library is used to download and cache images.
 
-__Google Maps__ maps also were used.
+__Google Maps__ library also were used.
 
 ___
 ### _Structure of the project_:
