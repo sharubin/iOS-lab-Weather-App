@@ -58,6 +58,7 @@ struct Colors {
     static let goodWeatherColor = UIColor(red: 59/255.0, green: 143/255.0, blue: 195/255.0, alpha: 1.0)
     static let goodWeatherColorCells = UIColor(red: 26/255.0, green: 130/255.0, blue: 196/255.0, alpha: 1.0)
     static let whiteColor = UIColor.white
+    static let blackColor = UIColor.black
 }
 
 struct Fonts {
@@ -65,7 +66,7 @@ struct Fonts {
     static let fontForDetailScreen = UIFont(name: "Copperplate", size: 17)
     static let lightFontForDaily = UIFont(name: "Copperplate-Light", size: 17)
     static let boldFontForDaily = UIFont(name: "Copperplate-Bold", size: 17)
-    static let special = UIFont(name: "Copperplate-Light", size: 15)
+    static let special = UIFont(name: "Copperplate-Light", size: 13)
 }
 
 struct Keys {

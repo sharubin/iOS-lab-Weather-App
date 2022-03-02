@@ -16,6 +16,7 @@ class CityScreenView: UIView {
         $0.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: $0.frame.height))
         $0.leftViewMode = .always
         $0.backgroundColor = Colors.whiteColor
+        $0.textColor = Colors.blackColor
     }
 
     let downloadButton = UIButton().then {

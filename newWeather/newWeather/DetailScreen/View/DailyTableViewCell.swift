@@ -78,7 +78,7 @@ class DailyTableViewCell: UITableViewCell {
 
         lowTempLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(45)
-            $0.left.equalTo(iconImageView.snp.right).offset(50)
+            $0.left.equalTo(iconImageView.snp.right).offset(20)
         }
 
         highTempLabel.snp.makeConstraints {
