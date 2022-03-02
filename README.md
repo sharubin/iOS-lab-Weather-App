@@ -12,7 +12,9 @@ With this application, you can find out the weather anywhere in the world. For y
 The application supports two languages - English and Russian.
 ___
 ### Start screen
+
 ![screenshot of the first screen](screenshots/firstScreen.png)
+
 This is the first screen that is displayed when the application is loaded. From it, we can go to the screens with the selected cities and the map using the buttons in the upper right corner. We can go to the screen with detailed weather information by entering the name of the city and click on the "Get weather" button.
 If the city is entered incorrectly and the application could not get the data, the application shows an alert with an error. Similarly, we will see an alert with an error if the field for entering the city is empty.
 
