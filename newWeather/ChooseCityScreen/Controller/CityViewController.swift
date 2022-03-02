@@ -41,6 +41,7 @@ class CityViewController: UIViewController {
     }
 
      @objc private func buttonTapped() {
+        enableView(bool: false)
         let text = rootView.textField.text
         guard let text = text, !text.isEmpty else {
             alertFieldIsEmpty()
@@ -51,7 +52,9 @@ class CityViewController: UIViewController {
              case .success(let response):
                  let nextController = DetailViewController(weather: response)
                  self?.navigationController?.pushViewController(nextController, animated: true)
+                 self?.enableView(bool: true)
              case .failure(let error):
+                 self?.enableView(bool: true)
                  print(error)
                  self?.alertNoData()
              }
@@ -70,6 +73,14 @@ class CityViewController: UIViewController {
         rootView.downloadButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         rootView.toFavouriteButton.addTarget(self, action: #selector(buttonFavouriteTapped), for: .touchUpInside)
         rootView.toMapButton.addTarget(self, action: #selector(buttonMapTapped), for: .touchUpInside)
+    }
+
+    func enableView(bool: Bool) {
+        if bool {
+            rootView.isUserInteractionEnabled = true
+        } else {
+            rootView.isUserInteractionEnabled = false
+        }
     }
 
     private func alertFieldIsEmpty() {

@@ -37,16 +37,17 @@ extension MapPresenter: MapPresenterProtocol {
             case .success(let response):
                 let nextController = DetailViewController(weather: response)
                 self?.view?.pushTo(controller: nextController)
+                self?.view?.enableMap(bool: true)
             case .failure(let error):
                 print(error)
+                self?.view?.enableMap(bool: true)
             }
         }
     }
 
     func getCoordinates() {
-        guard let lat = managerLocation.location?.coordinate.latitude,
-              let lon = managerLocation.location?.coordinate.longitude else { return }
-        self.view?.setCoordinate(coordinate: CLLocationCoordinate2D(latitude: lat, longitude: lon))
+        guard let coord = managerLocation.location?.coordinate else { return }
+        self.view?.setCoordinate(coordinate: coord)
     }
 
     func obtainCities() {

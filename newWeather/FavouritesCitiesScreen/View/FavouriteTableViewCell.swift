@@ -22,7 +22,7 @@ class FavouriteTableViewCell: UITableViewCell {
     private let descriptionWeatherLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textColor = .black
-        $0.font = Fonts.lightFontForDaily
+        $0.font = Fonts.special
         $0.textColor = Colors.whiteColor
     }
 
@@ -36,7 +36,7 @@ class FavouriteTableViewCell: UITableViewCell {
     private let minMaxTempLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textColor = .black
-        $0.font = Fonts.lightFontForDaily
+        $0.font = Fonts.special
         $0.textColor = Colors.whiteColor
     }
 

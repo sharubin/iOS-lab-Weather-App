@@ -64,8 +64,8 @@ class DailyTableViewCell: UITableViewCell {
         }
 
         dayLabel.snp.makeConstraints {
-            $0.height.equalTo(100)
             $0.width.equalTo(115)
+            $0.top.equalToSuperview().inset(45)
             $0.leading.equalToSuperview().offset(10)
         }
 
@@ -77,15 +77,13 @@ class DailyTableViewCell: UITableViewCell {
         }
 
         lowTempLabel.snp.makeConstraints {
-            $0.height.equalTo(100)
-            $0.width.equalTo(60)
-            $0.left.equalTo(iconImageView.snp.right).offset(30)
+            $0.top.equalToSuperview().inset(45)
+            $0.left.equalTo(iconImageView.snp.right).offset(50)
         }
 
         highTempLabel.snp.makeConstraints {
-            $0.height.equalTo(100)
-            $0.width.equalTo(60)
-            $0.trailing.equalToSuperview().offset(10)
+            $0.top.equalToSuperview().inset(45)
+            $0.trailing.equalToSuperview().inset(10)
         }
     }
 }

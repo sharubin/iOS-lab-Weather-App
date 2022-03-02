@@ -1,0 +1,29 @@
+"Get the weather" = "Узнать погоду";
+"Enter the city" = "Введите город";
+"error" = "Ошибка";
+"The textfield is empty" = "Город не введен";
+"The city was entered incorrectly, there is no data" = "Город введен не корректно, данные отсутсвуют";
+"To Favourites" = "К избранному";
+"To Map" = "К карте";
+
+"min temp" = "мин.темп";
+"max temp" = "макс.темп";
+"feels like" = "ощущается как";
+"pressure" = "давление";
+"humidity" = "влажность";
+"visibility" = "видимость";
+"wind speed" = "скорость ветра";
+"wind direction" = "направление ветра";
+"load more" = "загрузить больше";
+"%.0f °С" = "";
+"%.0f mm Hg" = "%.0f мм.рт.ст";
+"%.0d pct" = "%.0d прц";
+"%.0f m/c" = "%.0f м/с";
+"%.0d m" = "%.0d м";
+"min.: %.0f°, max.: %.0f°" = "мин.: %.0f°, макс.: %.0f°";
+"add fv" = "добавить в избранное";
+"remove fv" = "удалить из избранного";
+
+"Favourite cities" = "Избранные города";
+"Delete" = "Удалить";
+"print error" = "Ошибка";

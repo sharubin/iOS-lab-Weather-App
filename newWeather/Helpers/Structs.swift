@@ -10,46 +10,45 @@ import UIKit
 struct Strings {
 
     struct CityView {
-        static let placeholderText = "Enter the city"
-        static let buttonText = "Get the weather"
-        static let error = "Ошибка"
+        static let placeholderText = "Enter the city".localizedLanguage()
+        static let buttonText = "Get the weather".localizedLanguage()
+        static let error = "error".localizedLanguage()
         static let okString = "OK"
-        static let emptyText = "Город не введен"
-        static let noData = "Город введен не корректно, данные отсутсвуют"
-        static let buttonFavourite = "To Favourites"
-        static let toMapButton = "To Map"
-
+        static let emptyText = "The textfield is empty".localizedLanguage()
+        static let noData = "The city was entered incorrectly, there is no data".localizedLanguage()
+        static let buttonFavourite = "To Favourites".localizedLanguage()
+        static let toMapButton = "To Map".localizedLanguage()
     }
 
     struct DetailView {
-        static let minTemp = "min temp"
-        static let maxTemp = "max temp"
-        static let feelsLike = "feels like"
-        static let pressure = "pressure"
-        static let humidity = "humidity"
-        static let visibility = "visibility"
-        static let windSpeed = "wind speed"
-        static let windDirection = "wind direction"
-        static let textButton = "load more"
+        static let minTemp = "min temp".localizedLanguage()
+        static let maxTemp = "max temp".localizedLanguage()
+        static let feelsLike = "feels like".localizedLanguage()
+        static let pressure = "pressure".localizedLanguage()
+        static let humidity = "humidity".localizedLanguage()
+        static let visibility = "visibility".localizedLanguage()
+        static let windSpeed = "wind speed".localizedLanguage()
+        static let windDirection = "wind direction".localizedLanguage()
+        static let textButton = "load more".localizedLanguage()
         static let celsium = "%.0f °С"
-        static let mmHg = "%.0f mm Hg"
-        static let percent = "%.0d pct"
-        static let speedMS = "%.0f m/c"
-        static let meters = "%.0d m"
-        static let minMaxTemp = "min.: %.0f°, max.: %.0f°"
-        static let addFv = "add fv"
-        static let removeFv = "remove fv"
+        static let mmHg = "%.0f mm Hg".localizedLanguage()
+        static let percent = "%.0d pct".localizedLanguage()
+        static let speedMS = "%.0f m/c".localizedLanguage()
+        static let meters = "%.0d m".localizedLanguage()
+        static let minMaxTemp = "min.: %.0f°, max.: %.0f°".localizedLanguage()
+        static let addFv = "add fv".localizedLanguage()
+        static let removeFv = "remove fv".localizedLanguage()
     }
 
     struct FavouriteView {
 
-        static let header = "Favourite cities"
-        static let delete = "Delete"
-        static let error = "print error"
+        static let header = "Favourite cities".localizedLanguage()
+        static let delete = "Delete".localizedLanguage()
+        static let error = "print error".localizedLanguage()
     }
 
     struct MapView {
-        static let minMaxTemp = "min.: %.0f°, max.: %.0f°"
+        static let minMaxTemp = "min.: %.0f°, max.: %.0f°".localizedLanguage()
     }
 }
 
@@ -66,6 +65,7 @@ struct Fonts {
     static let fontForDetailScreen = UIFont(name: "Copperplate", size: 17)
     static let lightFontForDaily = UIFont(name: "Copperplate-Light", size: 17)
     static let boldFontForDaily = UIFont(name: "Copperplate-Bold", size: 17)
+    static let special = UIFont(name: "Copperplate-Light", size: 15)
 }
 
 struct Keys {
