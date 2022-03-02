@@ -24,11 +24,13 @@ To get the data, used https://openweathermap.org/api and the __network layer__ i
 To improve the appearance of the code when creating the UI, the __Then library is used__
 The __SnapKit library is used for layout__
 ___
-### Detailed weather screen
+### Detail weather screen
+
 ![screenshot of the screen with detailed weather information](screenshots/detailScreen.png)
 On this screen we can see detailed information about the weather, when you click on the "Download more" button, another request is made and we receive data about the hourly and daytime weather. You can also add a city to favorites on this screen (or delete it if the city is already in favorites).
 
 Depending on the weather, the color of the screen changes. Below are examples for good and bad weather
+
 ![screenshot of a screen with bad weather](screenshots/badWeatherDailyHourly.png) ![screenshot of a screen with good weather](screenshots/goodWeatherDailyHourly.png)
 
 ##### _code_
@@ -42,7 +44,8 @@ ___
 ### Screen with selected cities
 This screen stores the selected cities that the user has added to the database. By swiping a city, you can delete a city from your favorites
 Depending on the weather in the city, the color of the cell changes. Below are examples for good and bad weather
-![screenshot of the screen with selected cities](screenshots/favoriteScreen.png)
+
+![screenshot of the screen with selected cities](screenshots/favouriteScreen.png)
 
 ##### _code_
 When writing the code for this screen, the __MVP__ architecture from Apple and the __SOLID__ principles were used.
@@ -52,8 +55,8 @@ The __SnapKit__ library is used for layout
 To add to the database, use __Realm__
 ___
 ### Map screen
-![screenshot of the map screen](screenshots/mapScreen.png)
 
+![screenshot of the map screen](screenshots/mapScreen.png)
 
 ##### _code_
 __Google Maps__ used on this screen 
