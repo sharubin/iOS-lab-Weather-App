@@ -127,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				EB3B720D27B803BE0009556E /* DBManager.swift */,
+				EB3B720A27B803310009556E /* CityModel.swift */,
 			);
 			path = DBManager;
 			sourceTree = "<group>";
@@ -199,7 +200,6 @@
 		EBC61A5727BE9CD8003729BA /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				EB3B720A27B803310009556E /* CityModel.swift */,
 				EB5B62C527BA9B7B00BC4788 /* FavouriteWeatherCellModel.swift */,
 				EB3B720F27B808EE0009556E /* FavouriteCityRepository.swift */,
 			);

@@ -9,7 +9,7 @@ import Foundation
 
 protocol FavouriteRepositoryProtocol {
     func getWeatherForCity(name: String, completion: @escaping (Result< WeatherData, Error>) -> Void)
-    func deleteFromDB(city: String)
+    func deleteFromDB(city: Int)
     func getData(completion: @escaping (Result< [FavouriteWeatherCellModel], Error>) -> Void)
     func fetchUpdatedWeather(for cities: [String], completion: @escaping (Result< [FavouriteWeatherCellModel], Error>) -> Void )
 }
@@ -28,7 +28,7 @@ class FavouriteCityRepository: FavouriteRepositoryProtocol {
         networkEngine.request(endpoint: CurrentEndpoint.getCurrenWeather(city: name), completion: completion)
     }
 
-    func deleteFromDB(city: String) {
+    func deleteFromDB(city: Int) {
         dbManager.removeCity(city: city)
     }
 

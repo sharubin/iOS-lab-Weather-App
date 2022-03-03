@@ -17,12 +17,13 @@ class CityModel: Object {
     dynamic var tempMax = Double()
     dynamic var lat = Double()
     dynamic var lon = Double()
+    dynamic var cityId = Int()
 
     override static func primaryKey() -> String? {
-      return "city"
+      return "cityId"
     }
 
-    convenience init(city: String, descriptionWeather: String, temp: Double, tempMin: Double, tempMax: Double, id: Int, lat: Double, lon: Double ) {
+    convenience init(city: String, descriptionWeather: String, temp: Double, tempMin: Double, tempMax: Double, id: Int, lat: Double, lon: Double, cityId: Int ) {
         self.init()
         self.id = id
         self.city = city
@@ -32,6 +33,7 @@ class CityModel: Object {
         self.tempMax = tempMax
         self.lat = lat
         self.lon = lon
+        self.cityId = cityId
     }
 
     override init() {
@@ -47,5 +49,6 @@ class CityModel: Object {
         self.tempMax = weather.main.tempMax
         self.lat = weather.coord.lat
         self.lon = weather.coord.lon
+        self.cityId = weather.id
     }
 }

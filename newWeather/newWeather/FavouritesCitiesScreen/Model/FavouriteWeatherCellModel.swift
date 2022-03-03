@@ -14,6 +14,7 @@ struct FavouriteWeatherCellModel {
     let temp: Double
     let minTemp: Double
     let maxTemp: Double
+    let cityId: Int
 
     init(model: CityModel) {
         self.id = model.id
@@ -22,6 +23,7 @@ struct FavouriteWeatherCellModel {
         self.temp = model.temp
         self.minTemp = model.tempMin
         self.maxTemp = model.tempMax
+        self.cityId = model.cityId
     }
 
     init(model: WeatherData) {
@@ -31,6 +33,7 @@ struct FavouriteWeatherCellModel {
         self.temp = model.main.temp
         self.minTemp = model.main.tempMin
         self.maxTemp = model.main.tempMax
+        self.cityId = model.id
     }
 
     public func getBackgroundColor() -> UIColor {

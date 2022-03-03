@@ -67,6 +67,7 @@ struct Fonts {
     static let lightFontForDaily = UIFont(name: "Copperplate-Light", size: 17)
     static let boldFontForDaily = UIFont(name: "Copperplate-Bold", size: 17)
     static let special = UIFont(name: "Copperplate-Light", size: 13)
+    static let specialBigger = UIFont(name: "Copperplate", size: 24)
 }
 
 struct Keys {

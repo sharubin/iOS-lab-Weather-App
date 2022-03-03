@@ -7,9 +7,9 @@
 
 protocol DetailRepositoryProtocol {
     func saveFavourite(dataModel: WeatherData)
-    func obtainFor(city: String) -> String
-    func deleteFromDB(city: String)
-    func check(name: String) -> Bool
+    func obtainFor(city: Int) -> Int
+    func deleteFromDB(city: Int)
+    func check(name: Int) -> Bool
     func getWeatherForCity(lat: String, lon: String, completion: @escaping (Result< MoreWeatherData, Error>) -> Void)
 }
 
@@ -28,15 +28,15 @@ class DetailCityRepository: DetailRepositoryProtocol {
         dbManager.save(data: dataModel)
     }
 
-    func obtainFor(city: String) -> String {
+    func obtainFor(city: Int) -> Int {
         dbManager.obtain(city: city)
     }
 
-    func deleteFromDB(city: String) {
+    func deleteFromDB(city: Int) {
         dbManager.removeCity(city: city)
     }
 
-    func check(name: String) -> Bool {
+    func check(name: Int) -> Bool {
         let cityFromDB = obtainFor(city: name)
         if name == cityFromDB {
             return true
