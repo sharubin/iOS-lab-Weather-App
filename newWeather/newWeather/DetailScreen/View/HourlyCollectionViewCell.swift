@@ -29,7 +29,7 @@ class HourlyCollectionViewCell: UICollectionViewCell {
     private let stack = UIStackView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .vertical
-        $0.alignment = .fill
+        $0.alignment = .center
         $0.distribution = .fill
         $0.spacing = 5
     }
@@ -66,7 +66,8 @@ class HourlyCollectionViewCell: UICollectionViewCell {
         }
 
         stack.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.bottom.equalToSuperview()
+            $0.leading.trailing.equalToSuperview().inset(5)
         }
 
         iconImageView.snp.makeConstraints {
