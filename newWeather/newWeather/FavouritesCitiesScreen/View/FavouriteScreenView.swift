@@ -24,6 +24,7 @@ class FavouriteScreenView: UIView {
         $0.register(FavouriteTableViewCell.self, forCellReuseIdentifier: FavouriteTableViewCell.identifier)
         $0.layer.cornerRadius = 20
         $0.backgroundColor = .clear
+        $0.rowHeight = 125
     }
 
     private let scrollView = UIScrollView()

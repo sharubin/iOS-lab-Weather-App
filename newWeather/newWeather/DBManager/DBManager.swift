@@ -11,8 +11,8 @@ import RealmSwift
 protocol DBManager {
     func save(data: CityModel)
     func obtainCities() -> [CityModel]
-    func obtain(city: String) -> String
-    func removeCity(city: String)
+    func obtain(city: Int) -> Int
+    func removeCity(city: Int)
 }
 
 class DBManagerImpl: DBManager {
@@ -24,8 +24,8 @@ class DBManagerImpl: DBManager {
         }
     }
 
-    func removeCity(city: String) {
-        let model = Array(mainRealm.objects(CityModel.self).filter("city == %@", city))
+    func removeCity(city: Int) {
+        let model = Array(mainRealm.objects(CityModel.self).filter("cityId == %@", city))
         guard let model = model.first else { return }
         dump(model)
         try! mainRealm.write {
@@ -33,11 +33,11 @@ class DBManagerImpl: DBManager {
         }
     }
 
-    func obtain(city: String) -> String {
-        let model = Array(mainRealm.objects(CityModel.self).filter("city == %@", city))
+    func obtain(city: Int) -> Int {
+        let model = Array(mainRealm.objects(CityModel.self).filter("cityId == %@", city))
         let firstModel = model.first
-        guard let firstModel = firstModel else { return ""}
-        let cityFromDB = firstModel.city
+        guard let firstModel = firstModel else { return 0 }
+        let cityFromDB = firstModel.cityId
         return cityFromDB
     }
 

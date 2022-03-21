@@ -16,6 +16,7 @@ struct WeatherData: Codable {
     let wind: Wind
     let timezone: Int
     let name: String
+    let id: Int
 
     func getLink() -> URL? {
         URL(string: "https://openweathermap.org/img/wn/\(weather[0].icon)@2x.png")

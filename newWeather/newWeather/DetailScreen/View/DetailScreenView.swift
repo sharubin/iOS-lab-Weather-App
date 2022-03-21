@@ -199,9 +199,8 @@ class DetailScreenView: UIView {
 
     private let hourlyCollectionViewFlowLayout = UICollectionViewFlowLayout().with {
         $0.scrollDirection = .horizontal
-        $0.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-        $0.minimumInteritemSpacing = 16
-        $0.itemSize = CGSize(width: 70, height: 100)
+        $0.minimumInteritemSpacing = 10
+        $0.minimumLineSpacing = 10
     }
 
     lazy var hourlyCollectionView = UICollectionView(frame: .zero, collectionViewLayout: hourlyCollectionViewFlowLayout).with {
@@ -220,6 +219,7 @@ class DetailScreenView: UIView {
         $0.register(DailyTableViewCell.self, forCellReuseIdentifier: DailyTableViewCell.identifier)
         $0.isHidden = true
         $0.layer.cornerRadius = 20
+        $0.rowHeight = 100
     }
 
     private func setup() {

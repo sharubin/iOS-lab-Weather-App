@@ -58,11 +58,6 @@ class DailyTableViewCell: UITableViewCell {
     override func updateConstraints() {
         super.updateConstraints()
 
-        contentView.snp.makeConstraints {
-            $0.height.equalTo(100)
-            $0.edges.equalToSuperview()
-        }
-
         dayLabel.snp.makeConstraints {
             $0.width.equalTo(115)
             $0.top.equalToSuperview().inset(45)

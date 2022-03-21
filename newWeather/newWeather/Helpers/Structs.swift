@@ -41,7 +41,6 @@ struct Strings {
     }
 
     struct FavouriteView {
-
         static let header = "Favourite cities".localizedLanguage()
         static let delete = "Delete".localizedLanguage()
         static let error = "print error".localizedLanguage()
@@ -67,6 +66,7 @@ struct Fonts {
     static let lightFontForDaily = UIFont(name: "Copperplate-Light", size: 17)
     static let boldFontForDaily = UIFont(name: "Copperplate-Bold", size: 17)
     static let special = UIFont(name: "Copperplate-Light", size: 13)
+    static let specialBigger = UIFont(name: "Copperplate", size: 24)
 }
 
 struct Keys {

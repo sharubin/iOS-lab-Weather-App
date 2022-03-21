@@ -26,7 +26,7 @@ class FavouritePresenter {
 
 extension FavouritePresenter: FavouritePresenterProtocol {
     func deleteByIndex(index: Int) {
-        repository.deleteFromDB(city: (dataSource[index].city))
+        repository.deleteFromDB(city: (dataSource[index].cityId))
         dataSource.remove(at: index)
         view?.setData(data: dataSource)
     }

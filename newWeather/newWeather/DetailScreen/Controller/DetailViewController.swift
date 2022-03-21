@@ -78,7 +78,7 @@ class DetailViewController: UIViewController {
     }
 
     private func check() {
-        if repository.check(name: weather.name) {
+        if repository.check(name: weather.id) {
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: Strings.DetailView.removeFv,
                                                                 style: .plain,
                                                                 target: self,
@@ -92,8 +92,8 @@ class DetailViewController: UIViewController {
     }
 
     @objc private func updateFavourite() {
-        if repository.check(name: weather.name) {
-            repository.deleteFromDB(city: weather.name)
+        if repository.check(name: weather.id) {
+            repository.deleteFromDB(city: weather.id)
             navigationItem.rightBarButtonItem?.title = Strings.DetailView.addFv
         } else {
             repository.saveFavourite(dataModel: weather)

@@ -15,7 +15,7 @@ class FavouriteTableViewCell: UITableViewCell {
     private let citylabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textColor = .black
-        $0.font = Fonts.mainFontForDetailScreen
+        $0.font = Fonts.specialBigger
         $0.textColor = Colors.whiteColor
     }
 
@@ -29,7 +29,7 @@ class FavouriteTableViewCell: UITableViewCell {
     private let tempLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textColor = .black
-        $0.font = Fonts.mainFontForDetailScreen
+        $0.font = Fonts.specialBigger
         $0.textColor = Colors.whiteColor
     }
 
@@ -68,11 +68,6 @@ class FavouriteTableViewCell: UITableViewCell {
 
     override func updateConstraints() {
         super.updateConstraints()
-
-        contentView.snp.makeConstraints {
-            $0.height.equalTo(126)
-            $0.edges.equalToSuperview()
-        }
 
         citylabel.snp.makeConstraints {
             $0.top.leading.equalToSuperview().offset(10)
