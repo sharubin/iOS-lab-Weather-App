@@ -7,7 +7,6 @@ target 'newWeather' do
 
   # Pods for newWeather
   pod 'Then'
-  pod 'Alamofire'
   pod 'SnapKit'
   pod 'Kingfisher'
   pod 'RealmSwift'

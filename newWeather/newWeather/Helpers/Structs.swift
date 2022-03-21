@@ -41,7 +41,6 @@ struct Strings {
     }
 
     struct FavouriteView {
-
         static let header = "Favourite cities".localizedLanguage()
         static let delete = "Delete".localizedLanguage()
         static let error = "print error".localizedLanguage()

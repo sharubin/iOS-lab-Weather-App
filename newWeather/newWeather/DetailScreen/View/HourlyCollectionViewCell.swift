@@ -19,19 +19,13 @@ class HourlyCollectionViewCell: UICollectionViewCell {
     private let tempLabel = UILabel().then {
         $0.textColor = Colors.whiteColor
         $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.textAlignment = .center
     }
 
     private let timeLabel = UILabel().then {
         $0.textColor = Colors.whiteColor
         $0.translatesAutoresizingMaskIntoConstraints = false
-    }
-
-    private let stack = UIStackView().then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.axis = .vertical
-        $0.alignment = .center
-        $0.distribution = .fill
-        $0.spacing = 5
+        $0.textAlignment = .center
     }
 
     func updateHourly(weather: Hourly) {
@@ -47,31 +41,31 @@ class HourlyCollectionViewCell: UICollectionViewCell {
         setNeedsUpdateConstraints()
     }
 
-    private func setup() {
-        contentView.addSubview(stack)
-        stack.addArrangedSubview(timeLabel)
-        stack.addArrangedSubview(iconImageView)
-        stack.addArrangedSubview(tempLabel)
-    }
-
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    private func setup() {
+        contentView.addSubview(timeLabel)
+        contentView.addSubview(iconImageView)
+        contentView.addSubview(tempLabel)
     }
 
     override func updateConstraints() {
         super.updateConstraints()
 
-        contentView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
-
-        stack.snp.makeConstraints {
-            $0.top.bottom.equalToSuperview()
-            $0.leading.trailing.equalToSuperview().inset(5)
+        timeLabel.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview()
         }
 
         iconImageView.snp.makeConstraints {
+            $0.top.equalTo(timeLabel.snp.bottom).offset(5)
+            $0.leading.equalToSuperview().inset(10)
             $0.height.width.equalTo(50)
+        }
+
+        tempLabel.snp.makeConstraints {
+            $0.bottom.leading.trailing.equalToSuperview()
         }
     }
 }

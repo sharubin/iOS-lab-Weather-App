@@ -69,11 +69,6 @@ class FavouriteTableViewCell: UITableViewCell {
     override func updateConstraints() {
         super.updateConstraints()
 
-        contentView.snp.makeConstraints {
-            $0.height.equalTo(126)
-            $0.edges.equalToSuperview()
-        }
-
         citylabel.snp.makeConstraints {
             $0.top.leading.equalToSuperview().offset(10)
         }

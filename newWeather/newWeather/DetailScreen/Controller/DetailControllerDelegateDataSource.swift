@@ -25,6 +25,12 @@ extension DetailViewController: UICollectionViewDelegate {
 
 }
 
+extension DetailViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            CGSize(width: 70, height: 100)
+    }
+}
+
 extension DetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         dailyModels.count

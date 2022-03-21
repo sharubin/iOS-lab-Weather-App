@@ -37,7 +37,6 @@ class CityViewController: UIViewController {
 
         setup()
         managerLocation.requestWhenInUseAuthorization()
-
     }
 
      @objc private func buttonTapped() {
