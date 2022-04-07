@@ -44,6 +44,7 @@ class CityViewController: UIViewController {
         let text = rootView.textField.text
         guard let text = text, !text.isEmpty else {
             alertFieldIsEmpty()
+            enableView(bool: true)
             return
         }
          repository.getWeatherForCity(name: text) { [weak self] result in
